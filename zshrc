@@ -76,7 +76,7 @@ typeset -A key
 autoload -U colors && colors
 
 # Alias definitions.
-if [ -f ~/.aliases ]; then
+if [ -e ~/.aliases ]; then
 	. ~/.aliases
 fi
 
