@@ -1,0 +1,91 @@
+background yes
+border_width 0
+cpu_avg_samples 1
+default_color white
+default_outline_color black
+default_shade_color green
+draw_borders no
+draw_graph_borders yes
+draw_outline yes
+draw_shades no
+use_xft yes
+xftfont Fira Mono OT:size=11
+#xftfont DejaVu Sans Mono:size=11
+#xftfont Ubuntu Mono:size=11
+#xftfont Source Code Pro:size=11
+#xftfont Linux Libertine Mono O:size=11
+gap_x 1150
+gap_y 50
+minimum_size 5 5
+net_avg_samples 1
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window no
+own_window_colour 080810
+#own_window_transparent true
+own_window_argb_visual true
+own_window_argb_value 128
+double_buffer yes
+own_window_class Conky
+own_window_type desktop
+own_window_hints undecorated,skip_taskbar,skip_pager,sticky
+stippled_borders 0
+update_interval 2.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+top_cpu_separate true
+pad_percents 2
+TEXT
+IND ${tztime Asia/Calcutta %b %d %R}
+GER ${tztime Europe/Berlin %b %d %R}
+#${font Ubuntu:size=12}
+${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR temperature}°C ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR humidity}%# ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR pressure}mbar
+${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR cloud_cover}
+${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR weather}$font
+$hr
+${color #f46d4c}CPU0:${freq 1} ${cpu cpu1}%$color
+${color #f46d4c}CPU1:${freq 2} ${cpu cpu2}%$color
+${color #74add1}RAM%:$memperc%$color
+${color #74add1}RAM :$mem$color
+${color #a6d96a}Batt:$battery_short $battery_time $color
+$hr
+# look in /sys/class/hwmon/
+#${color grey}GFX :$color${hwmon 1 temp 1}
+# ${color grey}CPU0:$color${hwmon 0 temp 2}   ${color grey}CPU1:$color${hwmon 0 temp 3}
+# ${color grey}SKN :$color${hwmon 1 temp 4}   ${color grey}CPU :$color${hwmon 1 temp 3}
+# ${color grey}DTS :$color${hwmon 1 temp 2}   ${color grey}FDT :$color${hwmon 1 temp 6}
+# ${color grey}BAT :$color${hwmon 1 temp 5}
+${color grey}CPU0:$color${hwmon 1 temp 2}   ${color grey}CPU1:$color${hwmon 1 temp 3}
+${color grey}SKN :$color${hwmon 0 temp 4}   ${color grey}CPU :$color${hwmon 0 temp 3}
+${color grey}DTS :$color${hwmon 0 temp 2}   ${color grey}FDT :$color${hwmon 0 temp 6}
+${color grey}BAT :$color${hwmon 0 temp 5}
+$hr
+#${color grey}Name                CPU%   MEM%
+$alignc${color grey}\#Procs:$color ($processes)
+${color #f46d4c}${top cpu 1}$color ${top name 1}
+${color #f46d4c}${top cpu 2}$color ${top name 2}
+${color #f46d4c}${top cpu 3}$color ${top name 3}
+${color #f46d4c}${top cpu 4}$color ${top name 4}$color
+${color #74add1}${top_mem mem 1}$color ${top_mem name 1}
+${color #74add1}${top_mem mem 2}$color ${top_mem name 2}
+${color #74add1}${top_mem mem 3}$color ${top_mem name 3}
+${color #74add1}${top_mem mem 4}$color ${top_mem name 4}$color$font
+$hr
+${font DejaVu Sans Mono:size=11}$alignc NET
+$alignc${color #ffff33}eth$color
+${addrs eth0}
+↑${upspeed eth0} ↓${downspeed eth0}
+↑${totalup eth0} ↓${totaldown eth0}
+$alignc${color #ffff33}wlan$color
+${addrs wlan0}
+↑${upspeed wlan0} ↓${downspeed wlan0}
+↑${totalup wlan0} ↓${totaldown wlan0}
+#$alignc${color #ffff33}ppp$color
+#${addrs ppp0}
+#↑${upspeed ppp0} ↓${downspeed ppp0}
+#↑${totalup ppp0} ↓${totaldown ppp0}
+${font}

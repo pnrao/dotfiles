@@ -1,0 +1,70 @@
+URxvt.depth:				32
+URxvt.termName:				rxvt-256color
+URxvt.scrollBar_right:		True
+URxvt.iconFile:				/usr/share/icons/oxygen/16x16/apps/utilities-terminal.png
+URxvt.iso14755:				False
+URxvt.iso14755_52:			False
+URxvt.loginShell:			True
+URxvt.perl-ext-common:		default,selection-autotransform,clipboard,matcher,vtwheel
+URxvt.selection.pattern-0:	([_0-9a-zA-Z-/.~]+)
+!URxvt.selection.pattern-0: ([^\\]]+)
+URxvt.matcher.button:		1
+URxvt.url-launcher:			xdg-open
+!URxvt.termName:			rxvt-unicode
+
+
+URxvt.font:					xft:Monaco:pixelsize=10
+!URxvt.font:					xft:Ubuntu Mono:pixelsize=12
+!URxvt.boldFont:				xft:Monaco:Bold:pixelsize=10
+!URxvt.italicFont:				xft:Monaco:Italic:pixelsize=10
+!URxvt.boldItalicFont:			xft:Monaco:bold:italic:pixelsize=10
+URxvt.letterSpace:			-1
+
+URxvt.geometry:				100x29
+URxvt.background:			rgba:0000/0000/0000/ffff
+URxvt.foreground:			#e4e4e4
+URxvt.colorBD:				white
+URxvt.colorIT:				#eee8d5
+URxvt.colorUL:				#fdf6e3
+
+! Black
+URxvt.color0:				Black
+URxvt.color8:				grey50
+! Red
+URxvt.color1:				OrangeRed
+URxvt.color9:				#dc322f
+! Green
+URxvt.color2:				MediumSpringGreen
+URxvt.color10:				#859900
+! Yellow
+URxvt.color3:				gold
+URxvt.color11:				#b58900
+! Blue
+URxvt.color4:				RoyalBlue
+URxvt.color12:				#268bd2
+! Magenta
+URxvt.color5:				magenta2
+URxvt.color13:				#d33682
+! Cyan
+URxvt.color6:				turquoise2
+URxvt.color14:				#2aa198
+! White
+URxvt.color7:				grey80
+URxvt.color15:				White
+
+
+
+
+
+
+!XTerm*omitTranslation: wheel-mouse
+XTerm*scrollBar:			true
+XTerm*utf8:					true
+XTerm*faceName:				Ubuntu Mono
+XTerm*faceSize:				9
+XTerm*selectToClipboard:	true
+XTerm*rightScrollBar:		true
+
+
+
+xfce4-appfinder.geometry:	+312+340

@@ -1,0 +1,56 @@
+alias        du="du -h"
+alias        df="df -hT"
+
+alias         e="emacs -nw"
+s()           { (scite $* &) }
+k()           { (kate $* 2> /dev/null &) }
+alias     uhtop="htop -u prash"
+#alias       nc="nc.openbsd"
+alias     pless="pygmentize -g $1|less"
+alias      hman="man -H"
+alias         f="find"
+alias     dmesg="dmesg -H"
+
+# CDs
+# alias      ..="cd .." # not necessary in zsh
+alias       ...="cd ../.."
+alias      ....="cd ../../.."
+alias       aur="cd /usr/src/AUR"
+
+# SSH
+alias      coli="ssh -XC prashrao@login.coli.uni-saarland.de"
+
+# Installers
+alias        pc="pacman --color=always"
+alias       spc="sudo pacman --color=always"
+alias        ya="yaourt --color"
+alias       yaq="yaourt --color -Q"
+alias      yaqi="yaourt --color -Qi"
+alias      yaql="yaourt --color -Qql"
+alias      yaqo="yaourt --color -Qqo"
+alias     yaqoe="yaourt --color -Qqo `which $1`"
+alias      yaqs="yaourt --color -Qqs"
+alias     yaqtd="yaourt --color -Qtd"
+alias       yau="yaourt -U"
+alias       yas="yaourt --color -S"
+alias      yasi="yaourt --color -Si"
+alias      yass="yaourt --color -Ss"
+alias       yar="yaourt -Rns"
+alias       ygr="yaourt --color -Syu"
+alias      ygra="yaourt --color -Sayu"
+alias       yag="yaourt -G"
+
+alias     mkdir='mkdir -p'
+
+#alias       lt=lxterminal
+
+alias       yt="youtube-dl -t "
+
+if [ "$0" = "/usr/bin/zsh" ] ; then
+   # Suffixes
+	alias -s     tar="tar xf"
+	alias -s  tar.gz="tar xzf"
+	alias -s     tgz="tar xzf"
+	alias -s tar.bz2="tar xjf"
+	alias -s     tbz="tar xjf"
+fi
