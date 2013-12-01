@@ -13,3 +13,4 @@ ln -s $thisdir/pystartup ~/.pystartup
 ln -s $thisdir/vimrc ~/.vimrc
 ln -s $thisdir/xbindkeysrc ~/.xbindkeysrc
 ln -s $thisdir/zshrc ~/.zshrc
+ln -s $thisdir/Xdefaukts ~/.Xdefaults
