@@ -9,11 +9,11 @@ draw_graph_borders yes
 draw_outline yes
 draw_shades no
 use_xft yes
-xftfont Fira Mono OT:size=11
+#xftfont Fira Mono OT:size=11
 #xftfont DejaVu Sans Mono:size=11
-#xftfont Ubuntu Mono:size=11
+#xftfont Ubuntu Mono:size=13
 #xftfont Source Code Pro:size=11
-#xftfont Linux Libertine Mono O:size=11
+xftfont Monaco:size=11
 gap_x 1150
 gap_y 50
 minimum_size 5 5

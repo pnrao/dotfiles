@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-HISTFILE=~/.bash_history
+HISTFILE=~/.sh_history
 HISTSIZE=100000
 SAVEHIST=100000
 

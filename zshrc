@@ -16,7 +16,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.zsh_history
+HISTFILE=~/.sh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
@@ -60,16 +60,16 @@ typeset -A key
 # # Finally, make sure the terminal is in application mode, when zle is
 # # active. Only then are the values from $terminfo valid.
 # if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-# 	function zle-line-init () {
-# 		printf '%s' "${terminfo[smkx]}"
-# 	}
-# 	function zle-line-finish () {
-# 		printf '%s' "${terminfo[rmkx]}"
-# 	}
-# 	zle -N zle-line-init
-# 	zle -N zle-line-finish
+#	function zle-line-init () {
+#		printf '%s' "${terminfo[smkx]}"
+#	}
+#	function zle-line-finish () {
+#		printf '%s' "${terminfo[rmkx]}"
+#	}
+#	zle -N zle-line-init
+#	zle -N zle-line-finish
 # fi
-# 
+#
 # [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
 # [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
 
