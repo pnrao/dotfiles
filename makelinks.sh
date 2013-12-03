@@ -15,3 +15,4 @@ ln -s $thisdir/xbindkeysrc ~/.xbindkeysrc
 ln -s $thisdir/zshrc ~/.zshrc
 ln -s $thisdir/Xdefaukts ~/.Xdefaults
 ln -s $thisdir/awesome ~/.config/awesome
+ln -s $thisdir/bin/startup.sh ~/bin/startup.sh
