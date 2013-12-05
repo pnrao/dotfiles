@@ -73,13 +73,6 @@ local layouts =
 }
 -- }}}
 
--- {{{ Wallpaper
---~ if beautiful.wallpaper then
-	--~ for s = 1, screen.count() do
-		--~ gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-	--~ end
---~ end
--- }}}
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
@@ -116,7 +109,6 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 -- {{{ Wibox
 -- Create a textclock widget
---mytextclock = awful.widget.textclock(" %a %b %d, %H:%M:%S ", 1)
 mytextclock = awful.widget.textclock(" %a %b %d, %H:%M ")
 
 --~ volumebar = awful.widget.progressbar()
@@ -126,43 +118,43 @@ mytextclock = awful.widget.textclock(" %a %b %d, %H:%M ")
 --~ volumebar:set_color('#AECF96')
 --~ volumebar:set_value(0.5)
 --~ volumebar:buttons(awful.util.table.join(
---~ 	awful.button({ }, 1, function()
---~ 		awful.util.spawn("pavucontrol", false)
---~ 	end),
---~ 	awful.button({ }, 3, function()
---~ 		volume('m')
---~ 	end),
---~ 	awful.button({ }, 4, function()
---~ 		volume('u')
---~ 	end),
---~ 	awful.button({ }, 5, function()
---~ 		volume('d')
---~ 	end)
+--~		awful.button({ }, 1, function()
+--~			awful.util.spawn("pavucontrol", false)
+--~		end),
+--~		awful.button({ }, 3, function()
+--~			volume('m')
+--~		end),
+--~		awful.button({ }, 4, function()
+--~			volume('u')
+--~		end),
+--~		awful.button({ }, 5, function()
+--~			volume('d')
+--~		end)
 --~ ))
 
 --~ pa_channel = " 0 "
 --~ pa_volume = 32768
 --~ pa_step = 2048
 --~ function volume(mode)
---~ 	if mode == 'u' then
---~ 		pa_volume = pa_volume + pa_step
---~ 		if pa_volume > 65535 then
---~ 			pa_volume = 65535
---~ 		end
---~ 		awful.util.spawn("pactl set-sink-volume 0 -- +1%", false)
---~ 		-- print(pa_volume)
---~ 		volumebar:set_value(pa_volume/65535)
---~ 	elseif mode == 'd' then
---~ 		pa_volume = pa_volume - pa_step
---~ 		if pa_volume < 0 then
---~ 			pa_volume = 0
---~ 		end
---~ 		awful.util.spawn("pactl set-sink-volume 0 -- -1%", false)
---~ 		-- print(pa_volume)
---~ 		volumebar:set_value(pa_volume/65535)
---~ 	elseif mode == 'm' then
---~ 		-- mute
---~ 	end
+--~		if mode == 'u' then
+--~			pa_volume = pa_volume + pa_step
+--~			if pa_volume > 65535 then
+--~				pa_volume = 65535
+--~			end
+--~			awful.util.spawn("pactl set-sink-volume 0 -- +1%", false)
+--~			-- print(pa_volume)
+--~			volumebar:set_value(pa_volume/65535)
+--~		elseif mode == 'd' then
+--~			pa_volume = pa_volume - pa_step
+--~			if pa_volume < 0 then
+--~				pa_volume = 0
+--~			end
+--~			awful.util.spawn("pactl set-sink-volume 0 -- -1%", false)
+--~			-- print(pa_volume)
+--~			volumebar:set_value(pa_volume/65535)
+--~		elseif mode == 'm' then
+--~			-- mute
+--~		end
 --~ end
 
 -- Create a wibox for each screen and add it
@@ -311,17 +303,10 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, "Shift"   }, "Up",    function () awful.client.moveresize(  0, -10,   0,   0) end),
 	awful.key({ modkey, "Shift"   }, "Left",  function () awful.client.moveresize(-10,   0,   0,   0) end),
 	awful.key({ modkey, "Shift"   }, "Right", function () awful.client.moveresize( 10,   0,   0,   0) end),
-	--awful.key({ modkey,           }, "Tab",
-	--    function ()
-	--        awful.client.focus.history.previous()
-	--        if client.focus then
-	--            client.focus:raise()
-	--        end
-	--    end),
 
 	-- Standard program
 	awful.key({ modkey,           }, "t", function () awful.util.spawn(terminal) end),
-	-- awful.key({ modkey,           }, "u", function () awful.util.spawn("urxvt -bg " .. awful.util.pread("/home/prash/bin/bgcolor")) end),
+
 	awful.key({ modkey, "Control" }, "r", awesome.restart),
 	awful.key({ modkey, "Control" }, "q", awesome.quit),
 
@@ -336,8 +321,6 @@ globalkeys = awful.util.table.join(
 
 	awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
-	-- Prompt
-	-- awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
 	awful.key({ modkey }, "x",
 			  function ()
@@ -346,8 +329,6 @@ globalkeys = awful.util.table.join(
 				  awful.util.eval, nil,
 				  awful.util.getdir("cache") .. "/history_eval")
 			  end)
-	-- Menubar
-	-- awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
@@ -436,12 +417,14 @@ rules.rules = {
 	  properties = { floating = true } },
 	{ rule = { class = "gimp" },
 	  properties = { floating = true } },
+	{ rule = { class = "wicd-client.py" },
+	  properties = { floating = true, height = 450, width = 400} },
 	{ rule = { class = "eric5.py", name = "Mercurial" },
 	  properties = { floating = true } },
 	{ rule = { class = "thunar"},
 	  properties = { height = 382, width = 672} },
 	{ rule = { class = "pavucontrol"},
-	  properties = { height = 382, width = 672} },
+	  properties = { floating = true, height = 382, width = 672} },
 	{ rule_any = { role = {"About", "about"} },
 	  properties = { floating = true} },
 	{ rule_any = { role = {"kile", "okular"} },
@@ -549,15 +532,4 @@ function run_once(prg,arg_string,pname,screen)
 	end
 end
 
--- run_once("python2", "-O /usr/share/wicd/gtk/wicd-client.py -t") -- wicd
--- run_once("pidgin",nil,nil,2)
--- run_once("smartbg", "/home/prash/wallpapers")
--- run_once("start-pulseaudio-x11", "--start -D")
--- run_once("xfce4-power-manager")
--- run_once("xscreensaver","-no-splash")
--- run_once("killall conky; conky -a top_left -b")
--- run_once("xset", "r rate 250 30")
--- run_once("volumeicon")
--- run_once("nm-applet", "--sm-disable") -- networkmanager
--- run_once("launchy")
 run_once("/home/prash/bin/startup.sh")
