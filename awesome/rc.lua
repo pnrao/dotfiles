@@ -445,7 +445,7 @@ rules.rules = {
 	  properties = { tag = tags[1][5] } },
 	{ rule = { class = "xdot" },
 	  properties = { tag = tags[1][5] } },
-	{ rule = { class = "spotify" },
+	{ rule = { class = "ktorrent" },
 	  properties = { tag = tags[1][7] } },
 }
 -- }}}

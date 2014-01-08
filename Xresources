@@ -1,5 +1,6 @@
 URxvt.depth:				32
 URxvt.termName:				rxvt-256color
+!URxvt.termName:				rxvt-unicode
 URxvt.scrollBar_right:		True
 URxvt.iconFile:				/usr/share/icons/oxygen/16x16/apps/utilities-terminal.png
 URxvt.iso14755:				False
@@ -10,7 +11,6 @@ URxvt.selection.pattern-0:	([_0-9a-zA-Z-/.~]+)
 !URxvt.selection.pattern-0: ([^\\]]+)
 URxvt.matcher.button:		1
 URxvt.url-launcher:			xdg-open
-!URxvt.termName:			rxvt-unicode
 
 
 URxvt.font:					xft:Monaco:pixelsize=10
@@ -23,9 +23,9 @@ URxvt.letterSpace:			-1
 URxvt.geometry:				100x29
 URxvt.background:			rgba:0000/0000/0000/ffff
 URxvt.foreground:			#e4e4e4
-URxvt.colorBD:				white
-URxvt.colorIT:				#eee8d5
-URxvt.colorUL:				#fdf6e3
+URxvt.colorBD:				#80ffff
+URxvt.colorIT:				blue
+URxvt.colorUL:				green
 
 ! Black
 URxvt.color0:				Black
