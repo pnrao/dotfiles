@@ -10,8 +10,6 @@ export BROWSER
 
 LESS="-i -r"
 export LESS
-LESSCOLORIZER=pygmentize
-export LESSCOLORIZER
 
 OPENCCG_HOME=/home/prash/src/openccg-git
 export OPENCCG_HOME
@@ -22,7 +20,7 @@ export OPENCCG_HOME
 GOPATH=/home/prash/src/golib:$GOPATH
 export GOPATH
 
-PATH=$HOME/bin:$PATH
+PATH=.:$HOME/bin:$PATH
 export PATH
 
 #PYTHONPATH=$PYTHONPATH:~/lib/python
@@ -40,7 +38,7 @@ export PYMACS_PYTHON
 # export CUPS_SERVER=print.coli.uni-saarland.de
 
 # source /opt/context-minimals/setuptex
-ANALYSIS_PATH=/home/prash/src/prash/analysis
+ANALYSIS_PATH=/home/prash/src/analysis
 export ANALYSIS_PATH
 
 ANDROID_HOME=/opt/android-sdk

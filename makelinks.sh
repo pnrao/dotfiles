@@ -16,5 +16,8 @@ ln -s $thisdir/zshrc ~/.zshrc
 ln -s $thisdir/Xdefaukts ~/.Xdefaults
 ln -s $thisdir/awesome ~/.config/awesome
 ln -s $thisdir/bin/startup.sh ~/bin/startup.sh
-ln -s $thisdir/bin/fan-off ~/bin/fan-off
+ln -s $thisdir/bin/fan-off ~/bin/
+ln -s $thisdir/bin/context ~/bin/
+ln -s $thisdir/bin/mtxrun ~/bin/
+ln -s $thisdir/bin/bibtex ~/bin/
 gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o ~/bin/bgcolor

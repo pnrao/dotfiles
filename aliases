@@ -1,12 +1,27 @@
+alias         l="/usr/bin/ls --color"
+alias         ls="/usr/bin/ls --color"
+alias         ll="/usr/bin/ls -lh --color"
+alias         la="/usr/bin/ls -Alh --color"
+alias         l.="/usr/bin/ls -Alh --ignore=\* --color"
+
+alias         rm="rm -i"
+alias         mv="mv -i"
+alias         cp="cp -i"
+
+alias         grep="egrep --color"
+
+
 alias        du="du -h"
 alias        df="df -hT"
 
-alias         e="TERM=rxvt-256color emacs -nw"
+alias         e="TERM=xterm-256color emacs -nw"
+alias        ec="emacs -nw"
 s()           { (scite $* &) }
 k()           { (kate $* 2> /dev/null &) }
 alias     uhtop="htop -u prash"
 #alias       nc="nc.openbsd"
 alias     pless="pygmentize -g $1|less"
+alias     vless="/usr/share/vim/vim74/macros/less.sh"
 alias      hman="man -H"
 alias         f="find"
 alias     dmesg="dmesg -H"
@@ -15,7 +30,9 @@ alias     dmesg="dmesg -H"
 # alias      ..="cd .." # not necessary in zsh
 alias       ...="cd ../.."
 alias      ....="cd ../../.."
-alias       aur="cd /usr/src/AUR"
+alias       aur="cd /run//media/prash/shared/AUR/"
+alias        pd="pushd"
+alias        ud="popd"
 
 # SSH
 alias      coli="ssh -XC prashrao@login.coli.uni-saarland.de"
