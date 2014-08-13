@@ -30,7 +30,8 @@ alias     dmesg="dmesg -H"
 # alias      ..="cd .." # not necessary in zsh
 alias       ...="cd ../.."
 alias      ....="cd ../../.."
-alias       aur="cd /run//media/prash/shared/AUR/"
+alias       aur="cd /run/media/prash/shared/AUR/"
+alias    shared="cd /run/media/prash/shared/"
 alias        pd="pushd"
 alias        ud="popd"
 

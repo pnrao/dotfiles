@@ -70,10 +70,10 @@
 ;; Shell script mode for Arch PKGBUILDs
 (setq auto-mode-alist (cons '("\\PKGBUILD$" . sh-mode) auto-mode-alist))
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/usr/share/emacs/site-lisp/auto-complete/ac-dict")
-(ac-config-default)
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete")
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories "/usr/share/emacs/site-lisp/auto-complete/ac-dict")
+;; (ac-config-default)
 
 
 ;; (require 'mercury)
@@ -86,12 +86,12 @@
 (autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
 (setq prolog-system 'swi)
 (setq auto-mode-alist (append '(("\.pl$" . prolog-mode)
-								("\.m$" . mercury-mode))
-								auto-mode-alist))
+				("\.m$" . mercury-mode))
+			      auto-mode-alist))
 
 (add-to-list 'load-path "/usr/lib/mercury/elisp")
 (autoload 'mdb "gud" "Invoke the Mercury debugger" t)
-(require 'go-mode-load)
+;; (require 'go-mode-load)
 
 (autoload 'graphviz-dot-mode "graphviz-dot-mode.el" "graphviz dot mode." t)
 (add-to-list 'auto-mode-alist '("\.dot" . graphviz-dot-mode))

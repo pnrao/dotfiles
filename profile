@@ -44,5 +44,4 @@ export ANALYSIS_PATH
 ANDROID_HOME=/opt/android-sdk
 export ANDROID_HOME
 
-fortune
 echo ________________________________________________________________________________
