@@ -2,8 +2,8 @@ if [ -z $DISPLAY ]; then
 	EDITOR=emacs
 	BROWSER=lynx
 else
-	EDITOR=kwrite
-	BROWSER=~/bin/some-browser.sh
+	EDITOR=subl3
+	BROWSER=/usr/bin/google-chrome-unstable
 fi
 export EDITOR
 export BROWSER

@@ -1,3 +1,7 @@
+(setq load-path (cons "/usr/share/emacs/site-lisp/icicles" load-path))
+(require 'icicles)
+(eval-after-load "ring" '(progn (require 'ring+)))
+
 (setq inhibit-splash-screen t)
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)
@@ -27,10 +31,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
  '(c-basic-offset 4)
  '(c-default-style (quote ((c-mode . "linux") (c++-mode . "stroustrup") (java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
  '(c-report-syntactic-errors t)
- '(rng-nxml-auto-validate-flag nil))
+ '(column-number-mode t)
+ '(cua-mode t nil (cua-base))
+ '(current-language-environment "UTF-8")
+ '(rng-nxml-auto-validate-flag nil)
+ '(size-indication-mode t)
+ '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
