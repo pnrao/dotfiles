@@ -1,6 +1,6 @@
-(setq load-path (cons "/usr/share/emacs/site-lisp/icicles" load-path))
-(require 'icicles)
-(eval-after-load "ring" '(progn (require 'ring+)))
+;; (setq load-path (cons "/usr/share/emacs/site-lisp/icicles" load-path))
+;; (require 'icicles)
+;; (eval-after-load "ring" '(progn (require 'ring+)))
 
 (setq inhibit-splash-screen t)
 ;; Prevent the cursor from blinking
@@ -15,6 +15,9 @@
 ;; then enter your username
 ;; (setq inhibit-startup-echo-area-message "prash")
 
+
+;; warn when opening files bigger than 100MB
+(setq large-file-warning-threshold 100000000)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq scroll-step           1
@@ -63,6 +66,8 @@
  '(trailing-whitespace ((t (:background "gray")))))
 
 
+(add-to-list 'load-path "~/.emacs.d/vlfi")
+(require 'vlf-integrate)
 
 ;; (autoload 'python-mode "python-mode.el" "Python mode." t)
 ;; (package-initialize)
@@ -80,10 +85,10 @@
 ;; Shell script mode for Arch PKGBUILDs
 (setq auto-mode-alist (cons '("\\PKGBUILD$" . sh-mode) auto-mode-alist))
 
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete")
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "/usr/share/emacs/site-lisp/auto-complete/ac-dict")
-;; (ac-config-default)
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/usr/share/emacs/site-lisp/auto-complete/ac-dict")
+(ac-config-default)
 
 
 ;; (require 'mercury)
@@ -105,3 +110,14 @@
 
 (autoload 'graphviz-dot-mode "graphviz-dot-mode.el" "graphviz dot mode." t)
 (add-to-list 'auto-mode-alist '("\.dot" . graphviz-dot-mode))
+
+
+(add-to-list 'load-path "~/.emacs.d/sparql-mode")
+(autoload 'sparql-mode "sparql-mode.el"
+    "Major mode for editing SPARQL files" t)
+(add-to-list 'auto-mode-alist '("\\.sparql$" . sparql-mode))
+(add-to-list 'auto-mode-alist '("\\.rq$" . sparql-mode))
+
+(autoload 'ttl-mode "ttl-mode" "Major mode for OWL or Turtle files" t)
+(setq auto-mode-alist (append '(("\.ttl$" . ttl-mode)
+				("\.n3$" . ttl-mode)) auto-mode-alist))

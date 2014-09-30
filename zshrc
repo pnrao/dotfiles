@@ -30,11 +30,11 @@ autoload -U colors && colors
 
 # Alias definitions.
 if [ -e ~/.aliases ]; then
-	. ~/.aliases
+    . ~/.aliases
 fi
 
 precmd () { vcs_info }
-prompt='[%{$fg_bold[green]%}%? %{$fg_bold[blue]%}%n %{$fg_bold[red]%}%~%{$fg_no_bold[default]%}${vcs_info_msg_0_}]
+prompt='[%{$fg_bold[green]%}%? %{$fg_bold[blue]%}%n@%m %{$fg_bold[red]%}%~%{$fg_no_bold[default]%}${vcs_info_msg_0_}]
 %# '
 
 # create a zkbd compatible hash;
@@ -62,17 +62,17 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
 [[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
 [[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" history-beginning-search-forward
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     function zle-line-init () {
-        printf '%s' "${terminfo[smkx]}"
+	printf '%s' "${terminfo[smkx]}"
     }
     function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
+	printf '%s' "${terminfo[rmkx]}"
     }
     zle -N zle-line-init
     zle -N zle-line-finish

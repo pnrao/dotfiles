@@ -16,7 +16,7 @@ alias        df="df -hT"
 
 alias         e="TERM=xterm-256color emacs -nw"
 alias        ec="emacs -nw"
-s()           { (scite $* &) }
+s()           { (subl3 $* &) }
 k()           { (kate $* 2> /dev/null &) }
 alias     uhtop="htop -u prash"
 #alias       nc="nc.openbsd"
@@ -46,7 +46,9 @@ alias       yaq="yaourt -Q --color"
 alias      yaqi="yaourt -Qi --color"
 alias      yaql="yaourt -Qql"
 alias      yaqo="yaourt -Qqo"
-alias     yaqoe="yaourt -Qqo `which $1`"
+if [[ -n $ZSH_NAME ]]; then
+    alias yaqoe="yaourt -Qqo $(which $1)"
+fi
 alias      yaqs="yaourt -Qqs --color"
 alias     yaqtd="yaourt -Qtd --color"
 alias       yau="yaourt -U"
@@ -64,11 +66,11 @@ alias     mkdir='mkdir -p'
 
 alias       yt="youtube-dl -t "
 
-if [ "$0" = "/usr/bin/zsh" ] ; then
-   # Suffixes
-	alias -s     tar="tar xf"
-	alias -s  tar.gz="tar xzf"
-	alias -s     tgz="tar xzf"
-	alias -s tar.bz2="tar xjf"
-	alias -s     tbz="tar xjf"
+if [[ -n $ZSH_NAME ]]; then
+    # Suffixes
+    alias -s     tar="tar xf"
+    alias -s  tar.gz="tar xzf"
+    alias -s     tgz="tar xzf"
+    alias -s tar.bz2="tar xjf"
+    alias -s     tbz="tar xjf"
 fi
