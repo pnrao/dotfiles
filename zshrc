@@ -83,5 +83,4 @@ TIMEFMT="%J
 %XKB avg. code, %DKB avg. data, %KKB avg. both, %MKB peak, %F disk swaps"
 
 stty -ixon -ixoff
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fortune

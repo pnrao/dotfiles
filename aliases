@@ -4,7 +4,7 @@ alias         ll="/usr/bin/ls -lh --color"
 alias         la="/usr/bin/ls -Alh --color"
 alias         l.="/usr/bin/ls -Alh --ignore=\* --color"
 
-alias         rm="rm -i"
+# alias         rm="rm -i"
 alias         mv="mv -i"
 alias         cp="cp -i"
 

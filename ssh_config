@@ -11,7 +11,11 @@ Host cervelatwurst
      User rao
      Compression yes
      CompressionLevel 9
-     # ForwardX11 yes
-     # ControlPath /home/prash/.ssh/tmp/%h_%p_%r
-     ControlMaster auto
+     ForwardX11 yes
      ProxyCommand ssh -X -q %r@viscenter -W %h:%p
+
+Host viscenter
+     User rao
+     Compression yes
+     CompressionLevel 9
+     ForwardX11 yes

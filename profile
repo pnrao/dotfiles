@@ -44,4 +44,5 @@ export ANALYSIS_PATH
 ANDROID_HOME=/opt/android-sdk
 export ANDROID_HOME
 
-echo ________________________________________________________________________________
+eval $(ssh-agent)
+ssh-add
