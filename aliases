@@ -18,6 +18,7 @@ alias         e="TERM=xterm-256color emacs -nw"
 alias        ec="emacs -nw"
 s()           { (subl3 $* &) }
 k()           { (kate $* 2> /dev/null &) }
+g()           { (geeqie $* &) }
 alias     uhtop="htop -u prash"
 #alias       nc="nc.openbsd"
 alias     pless="pygmentize -g $1|less"

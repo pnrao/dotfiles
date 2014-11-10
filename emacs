@@ -1,7 +1,3 @@
-;; (setq load-path (cons "/usr/share/emacs/site-lisp/icicles" load-path))
-;; (require 'icicles)
-;; (eval-after-load "ring" '(progn (require 'ring+)))
-
 (setq inhibit-splash-screen t)
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)
@@ -16,6 +12,13 @@
 ;; (setq inhibit-startup-echo-area-message "prash")
 
 
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			 ("marmalade" . "https://marmalade-repo.org/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+(require 'package)
+(package-initialize)
+
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)
 
@@ -29,21 +32,36 @@
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
+;; (require 'icicles)
+;; (icy-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
  '(blink-cursor-mode nil)
  '(c-basic-offset 4)
- '(c-default-style (quote ((c-mode . "linux") (c++-mode . "stroustrup") (java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
+ '(c-default-style
+   (quote
+    ((c-mode . "linux")
+     (c++-mode . "stroustrup")
+     (java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu"))))
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(current-language-environment "UTF-8")
+ '(custom-enabled-themes (quote (wheatgrass)))
+ '(python-indent-guess-indent-offset nil)
  '(rng-nxml-auto-validate-flag nil)
  '(size-indication-mode t)
- '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify))))
+ '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
+ '(tool-bar-max-label-size 10)
+ '(tool-bar-style (quote text)))
 
 
 ; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^A, ^F, ^O,
@@ -81,9 +99,6 @@
  '(tool-bar ((t nil)))
  '(trailing-whitespace ((t (:background "gray")))))
 
-
-(add-to-list 'load-path "~/.emacs.d/vlfi")
-(require 'vlf-integrate)
 
 ;; (autoload 'python-mode "python-mode.el" "Python mode." t)
 ;; (package-initialize)

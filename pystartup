@@ -18,11 +18,17 @@ readline.parse_and_bind('tab: complete')
 
 
 def save_history(historyPath=historyPath):
-        import readline
-        readline.write_history_file(historyPath)
+    import readline
+    readline.write_history_file(historyPath)
 
 if os.path.exists(historyPath):
-        readline.read_history_file(historyPath)
+    readline.read_history_file(historyPath)
 
 atexit.register(save_history)
 del os, atexit, readline, rlcompleter, save_history, historyPath
+
+def mdir(a=None):
+    try:
+        return [x+'()' if hasattr(getattr(a, x), '__call__') else x+'*' for x in dir(a)]
+    except:
+        return [x+'()' if hasattr(x, '__call__') else x+'*' for x in dir()]
