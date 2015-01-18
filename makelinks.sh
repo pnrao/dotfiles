@@ -22,6 +22,8 @@ ln -s $thisdir/bin/fan-off ~/bin/
 ln -s $thisdir/bin/context ~/bin/
 ln -s $thisdir/bin/mtxrun ~/bin/
 ln -s $thisdir/bin/bibtex ~/bin/
+ln -s $thisdir/bin/sd-photos ~/bin/
+ln -s $thisdir/bin/network-gui ~/bin/
 mkdir -p ~/.ssh/tmp
 ln -s $thisdir/ssh_config ~/.ssh/config
 gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o ~/bin/bgcolor

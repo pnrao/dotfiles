@@ -20,7 +20,7 @@ export OPENCCG_HOME
 GOPATH=/home/prash/src/golib:$GOPATH
 export GOPATH
 
-PATH=.:$HOME/bin:$PATH
+PATH=.:$HOME/bin:$PATH:$HOME/node_modules/.bin
 export PATH
 
 #PYTHONPATH=$PYTHONPATH:~/lib/python

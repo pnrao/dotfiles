@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if systemctl status connman
+then
+    (/usr/bin/cmst -m &)
+    exit 0
+fi
+
+if systemctl status wicd
+then
+    (/usr/bin/wicd-gtk -t &)
+    exit 0
+fi
