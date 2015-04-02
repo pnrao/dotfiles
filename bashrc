@@ -21,6 +21,6 @@ fi
 _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_AWT_WM_NONREPARENTING
 
-export PS1="[\[\033[1;32m\]\$? \[\033[1;34m\]\u\[\033[1;31m\] \w\[\033[0m\]]
+export PS1="[\[\033[1;32m\]\$? \[\033[1;34m\]\u@\h\[\033[1;31m\] \w\[\033[0m\]]
 \\$ "
 # . ~/src/theli/theli-1.6.1/pipesetup/pipe_env.bash.Linux_64

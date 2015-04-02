@@ -9,7 +9,7 @@ alias         mv="mv -i"
 alias         cp="cp -i"
 
 alias         grep="egrep --color"
-
+alias          agg="ag -g"
 
 alias        du="du -h"
 alias        df="df -hT"
