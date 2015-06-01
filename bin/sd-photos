@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /run/media/prash/shared/Photos
+cd /run/media/prash/redsea/Photos
 /usr/bin/vendor_perl/exiftool -r -d %Y/%m/%d "-directory<datetimeoriginal" /run/media/prash/CAMERA/DCIM

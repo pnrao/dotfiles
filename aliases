@@ -32,8 +32,9 @@ alias        py="pypy3"
 # alias      ..="cd .." # not necessary in zsh
 alias       ...="cd ../.."
 alias      ....="cd ../../.."
-alias       aur="cd /run/media/prash/shared/AUR/"
+alias       aur="cd /run/media/prash/redsea/AUR/"
 alias    shared="cd /run/media/prash/shared/"
+alias    redsea="cd /run/media/prash/redsea/"
 alias        pd="pushd"
 alias        ud="popd"
 
@@ -76,3 +77,9 @@ if [[ -n $ZSH_NAME ]]; then
     alias -s tar.bz2="tar xjf"
     alias -s     tbz="tar xjf"
 fi
+
+alias doreadsea="udisksctl mount -b /dev/disk/by-label/redsea"
+alias unreadsea="udisksctl unmount -b /dev/disk/by-label/redsea"
+
+alias  doshared="udisksctl mount -b /dev/disk/by-label/shared"
+alias  unshared="udisksctl unmount -b /dev/disk/by-label/shared"
