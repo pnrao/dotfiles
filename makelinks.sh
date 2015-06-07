@@ -27,3 +27,6 @@ ln -s $thisdir/bin/network-gui ~/bin/
 mkdir -p ~/.ssh/tmp
 ln -s $thisdir/ssh_config ~/.ssh/config
 gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o ~/bin/bgcolor
+
+mkdir -p ~/.config/openbox
+ln -s $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
