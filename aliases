@@ -1,5 +1,5 @@
 alias         l="/usr/bin/ls --color"
-alias         ls="/usr/bin/ls --color"
+alias         ls="/usr/bin/ls -s --color"
 alias         ll="/usr/bin/ls -lh --color"
 alias         la="/usr/bin/ls -Alh --color"
 alias         l.="/usr/bin/ls -Alh --ignore=\* --color"
