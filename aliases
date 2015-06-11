@@ -78,8 +78,8 @@ if [[ -n $ZSH_NAME ]]; then
     alias -s     tbz="tar xjf"
 fi
 
-alias doreadsea="udisksctl mount -b /dev/disk/by-label/redsea"
-alias unreadsea="udisksctl unmount -b /dev/disk/by-label/redsea"
+alias doredsea="udisksctl mount -b /dev/disk/by-label/redsea"
+alias unredsea="udisksctl unmount -b /dev/disk/by-label/redsea"
 
-alias  doshared="udisksctl mount -b /dev/disk/by-label/shared"
-alias  unshared="udisksctl unmount -b /dev/disk/by-label/shared"
+alias doshared="udisksctl mount -b /dev/disk/by-label/shared"
+alias unshared="udisksctl unmount -b /dev/disk/by-label/shared"
