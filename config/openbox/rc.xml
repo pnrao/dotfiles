@@ -807,5 +807,8 @@
     <application class="Google-chrome-unstable" role="browser">
       <decor>no</decor>
     </application>
+    <application class="Opera">
+      <decor>no</decor>
+    </application>
   </applications>
 </openbox_config>
