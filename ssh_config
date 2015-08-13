@@ -1,5 +1,9 @@
+# Ignore SSH keys unless specified in Host subsection
+IdentitiesOnly yes
+
 Host cluster-*.coli.uni-saarland.de forbin.coli.uni-saarland.de
      User prashrao
+     IdentityFile ~/.ssh/id_rsa
      Compression yes
      CompressionLevel 9
      # ForwardX11 yes
@@ -16,6 +20,10 @@ Host cervelatwurst
 
 Host viscenter
      User rao
+     IdentityFile ~/.ssh/id_rsa
      Compression yes
      CompressionLevel 9
      ForwardX11 yes
+
+Host github.com
+     IdentityFile ~/.ssh/id_rsa

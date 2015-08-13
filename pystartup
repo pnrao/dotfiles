@@ -12,6 +12,10 @@ import atexit
 import os
 import readline
 import rlcompleter
+import pprint
+import sys
+
+orig_displayhook = sys.displayhook
 
 historyPath = os.path.expanduser("~/.pyhistory")
 readline.parse_and_bind('tab: complete')
@@ -32,3 +36,11 @@ def mdir(a=None):
         return [x+'()' if hasattr(getattr(a, x), '__call__') else x+'*' for x in dir(a)]
     except:
         return [x+'()' if hasattr(x, '__call__') else x+'*' for x in dir()]
+
+def myhook(value):
+    if value != None:
+        __builtins__._ = value
+        pprint.pprint(value)
+
+__builtins__.pprint_on = lambda: setattr(sys, 'displayhook', myhook)
+__builtins__.pprint_off = lambda: setattr(sys, 'displayhook', orig_displayhook)

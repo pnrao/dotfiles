@@ -17,13 +17,11 @@ export XDG_CONFIG_HOME
 OPENCCG_HOME=$HOME/src/openccg-git
 export OPENCCG_HOME
 
-#GOROOT=$HOME/src/go
-#export GOROOT
-
-GOPATH=$HOME/src/golib:$GOPATH
+GOPATH=$HOME/.local/go
 export GOPATH
 
-PATH=$HOME/bin:$PATH:$HOME/.npm-packages/bin:$HOME/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/
+
+PATH=$HOME/bin:$PATH:$HOME/.npm-packages/bin:$HOME/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/:$GOPATH/bin
 export PATH
 
 #PYTHONPATH=$PYTHONPATH:~/lib/python
