@@ -48,4 +48,4 @@ export ANDROID_HOME
 NODE_REPL_HISTORY_FILE=~/.node_history
 export NODE_REPL_HISTORY_FILE
 
-pgrep -u $EUID ssh-agent || (eval $(ssh-agent) && ssh-add)
+pgrep -u $EUID ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)

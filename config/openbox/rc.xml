@@ -804,7 +804,7 @@
     <application class="Firefox" role="browser">
       <decor>no</decor>
     </application>
-    <application class="Google-chrome-unstable" role="browser">
+    <application class="google-chrome-unstable" role="browser">
       <decor>no</decor>
     </application>
     <application class="Opera">
