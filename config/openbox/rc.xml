@@ -171,9 +171,6 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-    <keybind key="W-Left">
-      <action name="DesktopLeft"/>
-    </keybind>
     <keybind key="A-W-1">
       <action name="SendToDesktop">
         <desktop>1</desktop>
@@ -201,8 +198,11 @@
     <keybind key="W-x">
       <action name="ToggleMaximizeFull"/>
     </keybind>
+    <keybind key="W-Left">
+      <action name="DesktopPrevious"/>
+    </keybind>
     <keybind key="W-Right">
-      <action name="DesktopRight"/>
+      <action name="DesktopNext"/>
     </keybind>
     <keybind key="W-Up">
       <action name="DesktopUp"/>
