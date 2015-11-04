@@ -37,7 +37,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Wblue</name>
+    <name>Simple</name>
     <titleLayout>NDLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.

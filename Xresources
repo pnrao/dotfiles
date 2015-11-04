@@ -26,9 +26,9 @@ URxvt.font:                 xft:Ubuntu Mono:pixelsize=14
 !URxvt.boldFont:            xft:Monaco:Bold:pixelsize=10
 !URxvt.italicFont:          xft:Monaco:Italic:pixelsize=10
 !URxvt.boldItalicFont:      xft:Monaco:bold:italic:pixelsize=10
-URxvt.letterSpace:          -2
+URxvt.letterSpace:          0
 
-URxvt.geometry:             100x29
+URxvt.geometry:             93x26
 URxvt.background:           rgba:0000/0000/0000/ffff
 URxvt.foreground:           #e4e4e4
 URxvt.colorBD:              #80ffff

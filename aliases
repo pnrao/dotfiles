@@ -26,7 +26,7 @@ alias     vless="/usr/share/vim/vim74/macros/less.sh"
 alias      hman="man -H"
 alias         f="find"
 alias     dmesg="dmesg -H"
-alias        py="pypy3"
+alias        py="python3"
 
 # CDs
 # alias      ..="cd .." # not necessary in zsh
