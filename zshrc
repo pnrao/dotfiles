@@ -9,7 +9,7 @@ zstyle ':completion:*' verbose true
 HISTFILE=~/.sh_history
 HISTSIZE=100000
 SAVEHIST=100000
-setopt appendhistory autocd extendedglob notify histreduceblanks prompt_subst Autopushd
+setopt appendhistory autocd extendedglob notify histreduceblanks prompt_subst Autopushd HIST_IGNORE_SPACE
 unsetopt beep nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -30,7 +30,7 @@ autoload -U colors && colors
 
 # Alias definitions.
 if [ -e ~/.aliases ]; then
-    . ~/.aliases
+	. ~/.aliases
 fi
 
 precmd () { vcs_info }
@@ -68,14 +68,14 @@ key[PageDown]=${terminfo[knp]}
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
+	function zle-line-init () {
 	printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
+	}
+	function zle-line-finish () {
 	printf '%s' "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
+	}
+	zle -N zle-line-init
+	zle -N zle-line-finish
 fi
 
 TIMEFMT="%J

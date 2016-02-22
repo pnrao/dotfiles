@@ -4,17 +4,18 @@ alias         ll="/usr/bin/ls -lh --color"
 alias         la="/usr/bin/ls -Alh --color"
 alias         l.="/usr/bin/ls -Alh --ignore=\* --color"
 
-# alias         rm="rm -i"
+# alias       rm="rm -i"
 alias         mv="mv -i"
 alias         cp="cp -i"
 
-alias         grep="egrep --color"
-alias          agg="ag -g"
+alias       grep="egrep --color"
+alias        agg="ag -g"
 
 alias        du="du -h"
 alias        df="df -hT"
 alias    uptime="uptime -p"
-alias     clear="/usr/bin/clear; echo -ne '\e[3J'"
+alias      sudo="sudo "
+alias       cls='/usr/bin/clear; echo -ne \\033c'
 
 alias         e="TERM=xterm-256color emacs -nw"
 alias        ec="emacs -nw"
@@ -37,6 +38,8 @@ alias      ....="cd ../../.."
 alias       aur="cd /run/media/prash/redsea/AUR/"
 alias    shared="cd /run/media/prash/shared/"
 alias    redsea="cd /run/media/prash/redsea/"
+alias      fuji="cd /mnt/fuji320/"
+alias     curat="cd /mnt/fuji320/src/curator-1.1.4/dist"
 alias        pd="pushd"
 alias        ud="popd"
 
@@ -44,15 +47,15 @@ alias        ud="popd"
 alias      coli="ssh -XC prashrao@login.coli.uni-saarland.de"
 
 # Installers
-alias        pc="pacman --color=always"
-alias       spc="sudo pacman --color=always"
+alias        pm="pacman --color=always"
+alias       spm="sudo pacman --color=always"
 alias        ya="yaourt --color"
 alias       yaq="yaourt -Q --color"
 alias      yaqi="yaourt -Qi --color"
 alias      yaql="yaourt -Qql"
 alias      yaqo="yaourt -Qqo"
 if [[ -n $ZSH_NAME ]]; then
-    alias yaqoe="yaourt -Qqo $(which $1)"
+	alias yaqoe="yaourt -Qqo $(which $1)"
 fi
 alias      yaqs="yaourt -Qqs --color"
 alias     yaqtd="yaourt -Qtd --color"
@@ -72,12 +75,12 @@ alias     mkdir='mkdir -p'
 alias       yt="youtube-dl -t "
 
 if [[ -n $ZSH_NAME ]]; then
-    # Suffixes
-    alias -s     tar="tar xf"
-    alias -s  tar.gz="tar xzf"
-    alias -s     tgz="tar xzf"
-    alias -s tar.bz2="tar xjf"
-    alias -s     tbz="tar xjf"
+	# Suffixes
+	alias -s     tar="tar xf"
+	alias -s  tar.gz="tar xzf"
+	alias -s     tgz="tar xzf"
+	alias -s tar.bz2="tar xjf"
+	alias -s     tbz="tar xjf"
 fi
 
 alias doredsea="udisksctl mount -b /dev/disk/by-label/redsea && rm /home/prash/.cache/pkg ; ln -s /run/media/prash/redsea/var/cache/pacman/pkg /home/prash/.cache/pkg"
