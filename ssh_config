@@ -28,5 +28,12 @@ Host viscenter
 Host github.com
 	IdentityFile ~/.ssh/id_rsa
 
-Host archlinux.org
+Host aur.archlinux.org
 	IdentityFile ~/.ssh/id_rsa-aur
+	User aur
+
+Host 192.168.*.* 169.254.*.*
+	 IdentityFile ~/.ssh/id_ed25519
+	 Compression yes
+	 CompressionLevel 9
+	 ForwardX11 yes

@@ -67,20 +67,15 @@
  '(tool-bar-max-label-size 10)
  '(tool-bar-style (quote text)))
 
-
-; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^A, ^F, ^O,
-; ^S, ^W) and redefine (some of) the overridden Emacs functions.
+; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^O)
+; and redefine (some of) the overridden Emacs functions.
 (global-set-key [C-tab] 'next-multiframe-window)
 (global-set-key [C-S-tab] 'previous-multiframe-window)
 ;; (global-set-key [M-f4] 'save-buffers-kill-emacs)
-(global-set-key "\C-a" 'mark-whole-buffer)
-(global-set-key "\C-f" 'isearch-forward)
 (global-set-key "\C-o" 'find-file)
-(global-set-key "\C-s" 'save-buffer)
-(global-set-key "\C-w" 'kill-this-buffer)
+(global-set-key "\C-q" 'kill-this-buffer)
 (global-set-key (kbd "C-S-o") 'open-line)
 (global-set-key (kbd "C-S-w") 'kill-region)
-(define-key global-map (kbd "RET") 'newline-and-indent) ; For programming language modes
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 
 (custom-set-faces
