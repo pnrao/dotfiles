@@ -26,7 +26,7 @@ Host viscenter
 	ForwardX11 yes
 
 Host github.com
-	IdentityFile ~/.ssh/id_rsa
+	IdentityFile ~/.ssh/id_ed25519-github
 
 Host aur.archlinux.org
 	IdentityFile ~/.ssh/id_rsa-aur
