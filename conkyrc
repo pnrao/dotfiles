@@ -1,5 +1,14 @@
-alignment top_left
-background yes
+#==============================================================================
+#                               conkyrc_prash
+# Date    : 2016/02/28
+# Author  : Prash
+# Version : v0.1
+# License : Distributed under the terms of GNU GPL version 2 or later
+#
+#==============================================================================
+
+alignment top_right
+#background yes
 border_width 0
 cpu_avg_samples 1
 default_color white
@@ -12,9 +21,8 @@ draw_shades no
 use_xft yes
 #xftfont Fira Mono OT:size=11
 #xftfont DejaVu Sans Mono:size=11
-#xftfont Ubuntu Mono:size=13
+xftfont Ubuntu Mono:size=13
 #xftfont Source Code Pro:size=11
-xftfont Monaco:size=11
 gap_x 1150
 gap_y 50
 minimum_size 5 5
@@ -33,7 +41,7 @@ own_window_class Conky
 own_window_type desktop
 own_window_hints undecorated,skip_taskbar,skip_pager,sticky
 stippled_borders 0
-update_interval 2.0
+update_interval 2
 uppercase no
 use_spacer none
 show_graph_scale no
@@ -44,27 +52,27 @@ TEXT
 IND ${tztime Asia/Calcutta %b %d %R}
 GER ${tztime Europe/Berlin %b %d %R}
 #${font Ubuntu:size=12}
-${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR temperature}°C ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR humidity}%# ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR pressure}mbar
-${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR cloud_cover}
-${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR weather}$font
-$hr
-${color #f46d4c}CPU0:${freq 1} ${cpu cpu1}%$color
-${color #f46d4c}CPU1:${freq 2} ${cpu cpu2}%$color
-${color #74add1}RAM%:$memperc%$color
-${color #74add1}RAM :$mem$color
-${color #a6d96a}Batt:$battery_short $battery_time $color
-$hr
+# ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR temperature}°C ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR humidity}%# ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR pressure}mbar
+# ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR cloud_cover}
+# ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EDDR weather}$font
+# $hr
+# ${color #f46d4c}CPU0:${freq 1} ${cpu cpu1}%$color
+# ${color #f46d4c}CPU1:${freq 2} ${cpu cpu2}%$color
+# ${color #74add1}RAM%:$memperc%$color
+# ${color #74add1}RAM :$mem$color
+# ${color #a6d96a}Batt:$battery_short $battery_time $color
+# $hr
 # look in /sys/class/hwmon/
 #${color grey}GFX :$color${hwmon 1 temp 1}
 # ${color grey}CPU0:$color${hwmon 0 temp 2}   ${color grey}CPU1:$color${hwmon 0 temp 3}
 # ${color grey}SKN :$color${hwmon 1 temp 4}   ${color grey}CPU :$color${hwmon 1 temp 3}
 # ${color grey}DTS :$color${hwmon 1 temp 2}   ${color grey}FDT :$color${hwmon 1 temp 6}
 # ${color grey}BAT :$color${hwmon 1 temp 5}
-${color grey}CPU0:$color${hwmon 1 temp 2}   ${color grey}CPU1:$color${hwmon 1 temp 3}
-${color grey}SKN :$color${hwmon 0 temp 4}   ${color grey}CPU :$color${hwmon 0 temp 3}
-${color grey}DTS :$color${hwmon 0 temp 2}   ${color grey}FDT :$color${hwmon 0 temp 6}
-${color grey}BAT :$color${hwmon 0 temp 5}
-$hr
+# ${color grey}CPU0:$color${hwmon 1 temp 2}   ${color grey}CPU1:$color${hwmon 1 temp 3}
+# ${color grey}SKN :$color${hwmon 0 temp 4}   ${color grey}CPU :$color${hwmon 0 temp 3}
+# ${color grey}DTS :$color${hwmon 0 temp 2}   ${color grey}FDT :$color${hwmon 0 temp 6}
+# ${color grey}BAT :$color${hwmon 0 temp 5}
+# $hr
 #${color grey}Name                CPU%   MEM%
 $alignc${color grey}\#Procs:$color ($processes)
 ${color #f46d4c}${top cpu 1}$color ${top name 1}
@@ -78,13 +86,13 @@ ${color #74add1}${top_mem mem 4}$color ${top_mem name 4}$color$font
 $hr
 ${font DejaVu Sans Mono:size=11}$alignc NET
 $alignc${color #ffff33}eth$color
-${addrs eth0}
-↑${upspeed eth0} ↓${downspeed eth0}
-↑${totalup eth0} ↓${totaldown eth0}
+${addrs enp0s25}
+↑${upspeed enp0s25} ↓${downspeed enp0s25}
+↑${totalup enp0s25} ↓${totaldown enp0s25}
 $alignc${color #ffff33}wlan$color
-${addrs wlan0}
-↑${upspeed wlan0} ↓${downspeed wlan0}
-↑${totalup wlan0} ↓${totaldown wlan0}
+${addrs wlo1}
+↑${upspeed wlo1} ↓${downspeed wlo1}
+↑${totalup wlo1} ↓${totaldown wlo1}
 #$alignc${color #ffff33}ppp$color
 #${addrs ppp0}
 #↑${upspeed ppp0} ↓${downspeed ppp0}

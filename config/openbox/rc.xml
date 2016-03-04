@@ -804,6 +804,9 @@
     <application class="Firefox" role="browser">
       <decor>no</decor>
     </application>
+    <application class="Tor Browser" role="browser">
+      <decor>no</decor>
+    </application>
     <application class="google-chrome-unstable" role="browser">
       <decor>no</decor>
     </application>

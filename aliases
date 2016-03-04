@@ -24,8 +24,9 @@ k()           { (kate $* 2> /dev/null &) }
 n()           { (nomacs $* &) }
 alias     uhtop="htop -u prash"
 #alias       nc="nc.openbsd"
-alias     pless="pygmentize -g $1|less"
-alias     vless="/usr/share/vim/vim74/macros/less.sh"
+alias      pess="pygmentize -g $1|less"
+alias       pat="pygmentize -g $1"
+alias      vess="/usr/share/vim/vim74/macros/less.sh"
 alias      hman="man -H"
 alias         f="find"
 alias     dmesg="dmesg -H"
