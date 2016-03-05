@@ -36,9 +36,9 @@ alias        py="python3"
 # alias      ..="cd .." # not necessary in zsh
 alias       ...="cd ../.."
 alias      ....="cd ../../.."
-alias       aur="cd /run/media/prash/redsea/AUR/"
+alias       aur="cd /mnt/redsea/AUR/"
 alias    shared="cd /run/media/prash/shared/"
-alias    redsea="cd /run/media/prash/redsea/"
+alias    redsea="cd /mnt/redsea/"
 alias      fuji="cd /mnt/fuji320/"
 alias     curat="cd /mnt/fuji320/src/curator-1.1.4/dist"
 alias        pd="pushd"
@@ -84,8 +84,8 @@ if [[ -n $ZSH_NAME ]]; then
 	alias -s     tbz="tar xjf"
 fi
 
-alias doredsea="udisksctl mount -b /dev/disk/by-label/redsea && rm /home/prash/.cache/pkg ; ln -s /run/media/prash/redsea/var/cache/pacman/pkg /home/prash/.cache/pkg"
-alias unredsea="udisksctl unmount -b /dev/disk/by-label/redsea && rm /home/prash/.cache/pkg ; ln -s /tmp /home/prash/.cache/pkg"
+alias doredsea="mount /mnt/redsea && rm /home/prash/.cache/pkg ; ln -s /mnt/redsea/var/cache/pacman/pkg /home/prash/.cache/pkg"
+alias unredsea="umount /mnt/redsea && rm /home/prash/.cache/pkg ; ln -s /tmp /home/prash/.cache/pkg"
 
 alias doshared="udisksctl mount -b /dev/disk/by-label/shared"
 alias unshared="udisksctl unmount -b /dev/disk/by-label/shared"

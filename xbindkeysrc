@@ -1,36 +1,24 @@
 "xbindkeys_show"
    control+shift + q
 
-"urxvt -bg `/home/prash/bin/bgcolor`"
-	m:0x40 + c:30
-	Mod4 + u
+# "urxvt -bg `/home/prash/bin/bgcolor`"
+# 	m:0x40 + c:30
+# 	Mod4 + u
 
 "konsole"
 	Mod4 + t
 
-"xfce4-appfinder"
-   Mod4 + z
-
-"scite"
-   Mod4 + e
+"subl3"
+   Mod4 + s
 
 "quodlibet"
    Mod4 + q
 
-"recoll"
-   Mod4 + s
-
 "pidgin"
    Mod4 + p
 
-"wicd-gtk -n"
-   Mod4 + n
-
 "dolphin"
-   Mod4 + d
-
-"gmrun"
-   Mod4 + r
+   Mod4 + e
 
 "smplayer"
    Mod4 + v
@@ -48,11 +36,7 @@
 	m:0x40 + c:69
 	Mod4 + F3
 
-"chromium --allow-file-access-from-files"
-	m:0x40 + c:70
-	Mod4 + F4
-
-"~/bin/earlybird"
+"thunderbird"
 	m:0x40 + c:71
 	Mod4 + F5
 
