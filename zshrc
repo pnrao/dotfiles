@@ -42,7 +42,6 @@ prompt='[%{$fg_bold[green]%}%? %{$fg_bold[blue]%}%n@%m %{$fg_bold[red]%}%~%{$fg_
 typeset -A key
 
 key[Home]=${terminfo[khome]}
-
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}

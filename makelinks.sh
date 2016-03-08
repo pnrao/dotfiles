@@ -31,3 +31,6 @@ gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin
 
 mkdir -p ~/.config/openbox
 ln -s $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
+
+mkdir -p ~/.config/sway
+ln -s $thisdir/config/sway/config ~/.config/sway/config

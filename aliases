@@ -84,10 +84,8 @@ if [[ -n $ZSH_NAME ]]; then
 	alias -s     tbz="tar xjf"
 fi
 
-alias doredsea="mount /mnt/redsea && rm /home/prash/.cache/pkg ; ln -s /mnt/redsea/var/cache/pacman/pkg /home/prash/.cache/pkg"
-alias unredsea="umount /mnt/redsea && rm /home/prash/.cache/pkg ; ln -s /tmp /home/prash/.cache/pkg"
+alias doredsea="mount /mnt/redsea"
+alias unredsea="umount /mnt/redsea"
 
 alias doshared="udisksctl mount -b /dev/disk/by-label/shared"
 alias unshared="udisksctl unmount -b /dev/disk/by-label/shared"
-
-alias pkg-tmp="rm /home/prash/.cache/pkg ; ln -s /tmp /home/prash/.cache/pkg"
