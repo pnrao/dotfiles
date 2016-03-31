@@ -37,7 +37,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Simple</name>
+    <name>Simple-color</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -199,6 +199,9 @@
     </keybind>
     <keybind key="W-x">
       <action name="ToggleMaximizeFull"/>
+    </keybind>
+    <keybind key="A-F11">
+      <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="W-Left">
       <action name="DesktopPrevious"/>

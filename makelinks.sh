@@ -14,7 +14,7 @@ ln -s $thisdir/pystartup ~/.pystartup
 ln -s $thisdir/vimrc ~/.vimrc
 ln -s $thisdir/xbindkeysrc ~/.xbindkeysrc
 ln -s $thisdir/zshrc ~/.zshrc
-ln -s $thisdir/Xdefaukts ~/.Xdefaults
+ln -s $thisdir/Xdefaults ~/.Xdefaults
 ln -s $thisdir/tmux.conf ~/.tmux.conf
 ln -s $thisdir/awesome ~/.config/awesome
 ln -s $thisdir/bin/startup.sh ~/bin/startup.sh

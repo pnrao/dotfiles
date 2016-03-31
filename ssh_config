@@ -1,5 +1,7 @@
 # Ignore SSH keys unless specified in Host subsection
 IdentitiesOnly yes
+Compression    yes
+CompressionLevel 9
 
 Host cluster-*.coli.uni-saarland.de forbin.coli.uni-saarland.de
 	User prashrao
