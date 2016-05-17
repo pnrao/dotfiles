@@ -67,7 +67,7 @@ alias      yass="yaourt -Ss --color"
 alias       yar="yaourt -Rns"
 alias       ygr="yaourt -Syu --color"
 alias      ygra="yaourt -Sayu --color"
-alias       yag="yaourt -G"
+yag()         { aur && yaourt -G $1 && cd $1 }
 
 alias     mkdir='mkdir -p'
 

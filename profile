@@ -1,12 +1,9 @@
 if [ -z $DISPLAY ]; then
 	EDITOR=emacs
-	BROWSER=lynx
 else
 	EDITOR=subl3
-	BROWSER=/usr/bin/google-chrome-unstable
 fi
 export EDITOR
-export BROWSER
 
 LESS="-i -r"
 export LESS
@@ -50,5 +47,11 @@ export ANDROID_HOME
 
 NODE_REPL_HISTORY_FILE=~/.node_history
 export NODE_REPL_HISTORY_FILE
+
+WLC_REPEAT_DELAY=250
+export WLC_REPEAT_DELAY
+
+WLC_REPEAT_RATE=30
+export WLC_REPEAT_RATE
 
 pgrep -u $EUID ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)
