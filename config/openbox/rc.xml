@@ -29,7 +29,7 @@
     <!-- with Smart placement on a multi-monitor system, try to place new windows
 	   on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
 	   the active window is, 'Primary' - only on the primary monitor -->
-    <primaryMonitor>1</primaryMonitor>
+    <primaryMonitor>Active</primaryMonitor>
     <!-- The monitor where Openbox should place popup dialogs such as the
 	   focus cycling popup, or the desktop switch popup.  It can be an index
 	   from 1, specifying a particular monitor.  Or it can be one of the
@@ -49,7 +49,7 @@
 	  S: shade (roll up/down)
 	  D: omnipresent (on all desktops).
   -->
-    <keepBorder>no</keepBorder>
+    <keepBorder>yes</keepBorder>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>Ubuntu Medium</name>
