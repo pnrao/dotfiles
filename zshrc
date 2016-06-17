@@ -9,7 +9,7 @@ zstyle ':completion:*' verbose true
 HISTFILE=~/.sh_history
 HISTSIZE=100000
 SAVEHIST=100000
-setopt appendhistory autocd extendedglob notify histreduceblanks prompt_subst Autopushd HIST_IGNORE_SPACE
+setopt appendhistory autocd extendedglob notify histreduceblanks prompt_subst Autopushd HIST_IGNORE_SPACE HIST_IGNORE_DUPS
 unsetopt beep nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
