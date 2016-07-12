@@ -87,5 +87,5 @@ fi
 alias doredsea="mount /mnt/redsea"
 alias unredsea="umount /mnt/redsea"
 
-alias doshared="udisksctl mount -b /dev/disk/by-label/shared"
-alias unshared="udisksctl unmount -b /dev/disk/by-label/shared"
+alias doblacksea="udisksctl mount -b /dev/disk/by-label/blacksea"
+alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
