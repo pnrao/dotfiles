@@ -40,9 +40,9 @@ alias       aur="cd /mnt/redsea/AUR/"
 alias    shared="cd /run/media/prash/shared/"
 alias    redsea="cd /mnt/redsea/"
 alias      fuji="cd /mnt/fuji320/"
-alias     curat="cd /mnt/fuji320/src/curator-1.1.4/dist"
+alias     curat="cd /mnt/redsea/src/curator && source ./setEnvVars.sh"
 alias        pd="pushd"
-alias        ud="popd"
+alias        vd="popd"
 
 # SSH
 alias      coli="ssh -XC prashrao@login.coli.uni-saarland.de"
