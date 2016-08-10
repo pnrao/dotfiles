@@ -48,8 +48,24 @@ alias        vd="popd"
 alias      coli="ssh -XC prashrao@login.coli.uni-saarland.de"
 
 # Installers
-alias        pm="pacman --color=always"
-alias       spm="sudo pacman --color=always"
+alias        pa="pacman"
+alias       paq="pacman -Q"
+alias      paqi="pacman -Qi"
+alias      paql="pacman -Qql"
+alias      paqo="pacman -Qqo"
+if [[ -n $ZSH_NAME ]]; then
+	alias paqoe="pacman -Qqo $(which $1)"
+fi
+alias      paqs="pacman -Qqs"
+alias     paqtd="pacman -Qtd"
+alias       pau="sudo pacman -U"
+alias       pas="sudo pacman -S"
+alias      pasi="pacman -Si"
+alias      pass="pacman -Ss"
+alias       par="sudo pacman -Rns"
+alias       pgr="sudo pacman -Syu"
+
+
 alias        ya="yaourt --color"
 alias       yaq="yaourt -Q --color"
 alias      yaqi="yaourt -Qi --color"
