@@ -14,7 +14,7 @@ export XDG_CONFIG_HOME
 GOPATH=$HOME/.local/go
 export GOPATH
 
-PATH=$HOME/bin:$PATH:$GOPATH/bin
+PATH=$HOME/.local/bin:$HOME/bin:$PATH:$GOPATH/bin
 export PATH
 
 XKB_DEFAULT_MODEL=pc104

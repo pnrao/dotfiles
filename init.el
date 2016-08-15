@@ -1,4 +1,6 @@
 (setq inhibit-splash-screen t)
+;; (setq ring-bell-function 'ignore)
+(setq visible-bell 1)
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)
 ;; Don't use messages that you don't read

@@ -22,7 +22,7 @@ alias        ec="emacs -nw"
 s()           { (subl3 $* &) }
 k()           { (kate $* 2> /dev/null &) }
 n()           { (nomacs $* &) }
-alias     uhtop="htop -u prash"
+alias     uhtop="htop -u $USER"
 #alias       nc="nc.openbsd"
 alias      pess="pygmentize -g $1|less"
 alias       pat="pygmentize -g $1"
@@ -83,7 +83,7 @@ alias      yass="yaourt -Ss --color"
 alias       yar="yaourt -Rns"
 alias       ygr="yaourt -Syu --color"
 alias      ygra="yaourt -Sayu --color"
-yag()         { aur && yaourt -G $1 && cd $1 }
+yag()         { cd /mnt/redsea/AUR/ && yaourt -G $1 && popd && cd /mnt/redsea/AUR/$1 }
 
 alias     mkdir='mkdir -p'
 
