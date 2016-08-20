@@ -40,7 +40,7 @@ alias       aur="cd /mnt/redsea/AUR/"
 alias    shared="cd /run/media/prash/shared/"
 alias    redsea="cd /mnt/redsea/"
 alias      fuji="cd /mnt/fuji320/"
-alias     curat="cd /mnt/redsea/src/curator && source ./setEnvVars.sh"
+alias     curat="cd /mnt/redsea/src/curator && . ./setEnvVars.sh"
 alias        pd="pushd"
 alias        vd="popd"
 
@@ -83,7 +83,7 @@ alias      yass="yaourt -Ss --color"
 alias       yar="yaourt -Rns"
 alias       ygr="yaourt -Syu --color"
 alias      ygra="yaourt -Sayu --color"
-yag()         { cd /mnt/redsea/AUR/ && yaourt -G $1 && popd && cd /mnt/redsea/AUR/$1 }
+yag()         { pushd /mnt/redsea/AUR/ && yaourt -G $1 && popd && cd /mnt/redsea/AUR/$1 }
 
 alias     mkdir='mkdir -p'
 
@@ -105,3 +105,27 @@ alias unredsea="umount /mnt/redsea"
 
 alias doblacksea="udisksctl mount -b /dev/disk/by-label/blacksea"
 alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
+
+
+# man() {
+# 	env \
+# 		LESS_TERMCAP_mb=$(printf "\x1b[38;2;255;200;200m") \
+# 		LESS_TERMCAP_md=$(printf "\x1b[38;2;255;100;200m") \
+# 		LESS_TERMCAP_me=$(printf "\x1b[0m") \
+# 		LESS_TERMCAP_so=$(printf "\x1b[38;2;60;90;90;48;2;40;40;40m") \
+# 		LESS_TERMCAP_se=$(printf "\x1b[0m") \
+# 		LESS_TERMCAP_us=$(printf "\x1b[38;2;150;100;200m") \
+# 		LESS_TERMCAP_ue=$(printf "\x1b[0m") \
+# 		man "$@"
+# }
+
+
+man() {
+    LESS_TERMCAP_md=$(printf '\e[01;31m') \
+    LESS_TERMCAP_me=$(printf '\e[0m') \
+    LESS_TERMCAP_se=$(printf '\e[0m') \
+    LESS_TERMCAP_so=$(printf '\e[01;44;33m') \
+    LESS_TERMCAP_ue=$(printf '\e[0m') \
+    LESS_TERMCAP_us=$(printf '\e[01;32m') \
+    command man "$@"
+}

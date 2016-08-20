@@ -31,6 +31,8 @@ output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 	# start a terminal
 	bindsym $mod+u exec $term
+	bindsym $mod+t exec st -e tmux
+	bindsym $mod++Shift+t exec st
 
 	# kill focused window
 	bindsym Mod1+F4 kill
