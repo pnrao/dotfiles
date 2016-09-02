@@ -17,8 +17,8 @@ alias    uptime="uptime -p"
 alias      sudo="sudo "
 alias       cls='/usr/bin/clear; echo -ne \\033c'
 
-alias         e="TERM=xterm-256color emacs -nw"
-alias        ec="emacs -nw"
+alias        eu="TERM=xterm-256color emacs -nw"
+alias         e="emacs -nw"
 s()           { (subl3 $* &) }
 k()           { (kate $* 2> /dev/null &) }
 n()           { (nomacs $* &) }
@@ -48,21 +48,21 @@ alias        vd="popd"
 alias      coli="ssh -XC prashrao@login.coli.uni-saarland.de"
 
 # Installers
-alias        pa="pacman"
-alias       paq="pacman -Q"
-alias      paqi="pacman -Qi"
-alias      paql="pacman -Qql"
-alias      paqo="pacman -Qqo"
+alias        pm="pacman"
+alias       pmq="pacman -Q"
+alias      pmqi="pacman -Qi"
+alias      pmql="pacman -Qql"
+alias      pmqo="pacman -Qqo"
 if [[ -n $ZSH_NAME ]]; then
-	alias paqoe="pacman -Qqo $(which $1)"
+	alias pmqoe="pacman -Qqo $(which $1)"
 fi
-alias      paqs="pacman -Qqs"
-alias     paqtd="pacman -Qtd"
-alias       pau="sudo pacman -U"
-alias       pas="sudo pacman -S"
-alias      pasi="pacman -Si"
-alias      pass="pacman -Ss"
-alias       par="sudo pacman -Rns"
+alias      pmqs="pacman -Qqs"
+alias     pmqtd="pacman -Qtd"
+alias       pmu="sudo pacman -U"
+alias       pms="sudo pacman -S"
+alias      pmsi="pacman -Si"
+alias      pmss="pacman -Ss"
+alias       pmr="sudo pacman -Rns"
 alias       pgr="sudo pacman -Syu"
 
 
@@ -108,24 +108,24 @@ alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
 
 
 # man() {
-# 	env \
-# 		LESS_TERMCAP_mb=$(printf "\x1b[38;2;255;200;200m") \
-# 		LESS_TERMCAP_md=$(printf "\x1b[38;2;255;100;200m") \
-# 		LESS_TERMCAP_me=$(printf "\x1b[0m") \
-# 		LESS_TERMCAP_so=$(printf "\x1b[38;2;60;90;90;48;2;40;40;40m") \
-# 		LESS_TERMCAP_se=$(printf "\x1b[0m") \
-# 		LESS_TERMCAP_us=$(printf "\x1b[38;2;150;100;200m") \
-# 		LESS_TERMCAP_ue=$(printf "\x1b[0m") \
-# 		man "$@"
+#	env \
+#		LESS_TERMCAP_mb=$(printf "\x1b[38;2;255;200;200m") \
+#		LESS_TERMCAP_md=$(printf "\x1b[38;2;255;100;200m") \
+#		LESS_TERMCAP_me=$(printf "\x1b[0m") \
+#		LESS_TERMCAP_so=$(printf "\x1b[38;2;60;90;90;48;2;40;40;40m") \
+#		LESS_TERMCAP_se=$(printf "\x1b[0m") \
+#		LESS_TERMCAP_us=$(printf "\x1b[38;2;150;100;200m") \
+#		LESS_TERMCAP_ue=$(printf "\x1b[0m") \
+#		man "$@"
 # }
 
 
 man() {
-    LESS_TERMCAP_md=$(printf '\e[01;31m') \
-    LESS_TERMCAP_me=$(printf '\e[0m') \
-    LESS_TERMCAP_se=$(printf '\e[0m') \
-    LESS_TERMCAP_so=$(printf '\e[01;44;33m') \
-    LESS_TERMCAP_ue=$(printf '\e[0m') \
-    LESS_TERMCAP_us=$(printf '\e[01;32m') \
-    command man "$@"
+	LESS_TERMCAP_md=$(printf '\e[01;31m') \
+	LESS_TERMCAP_me=$(printf '\e[0m') \
+	LESS_TERMCAP_se=$(printf '\e[0m') \
+	LESS_TERMCAP_so=$(printf '\e[01;44;33m') \
+	LESS_TERMCAP_ue=$(printf '\e[0m') \
+	LESS_TERMCAP_us=$(printf '\e[01;32m') \
+	command man "$@"
 }

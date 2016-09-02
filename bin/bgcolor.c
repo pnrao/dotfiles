@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdint.h>
 
-uint32_t HsvToRgb(uint8_t h, uint8_t s, uint8_t v)
-{
+uint32_t HsvToRgb(uint8_t h, uint8_t s, uint8_t v) {
 	uint8_t r, g, b;
 	uint8_t region, remainder, p, q, t;
 
-	if (s == 0)
-	{
+	if (s == 0) {
 		r = v;
 		g = v;
 		b = v;
@@ -21,8 +19,7 @@ uint32_t HsvToRgb(uint8_t h, uint8_t s, uint8_t v)
 	q = (v * (255 - ((s * remainder) >> 8))) >> 8;
 	t = (v * (255 - ((s * (255 - remainder)) >> 8))) >> 8;
 
-	switch (region)
-	{
+	switch (region) {
 	case 0:
 		r = v; g = t; b = p;
 		break;
