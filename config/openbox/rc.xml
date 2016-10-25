@@ -197,6 +197,9 @@
         <follow>no</follow>
       </action>
     </keybind>
+    <keybind key="W-n">
+      <action name="Iconify"/>
+    </keybind>
     <keybind key="W-x">
       <action name="ToggleMaximizeFull"/>
     </keybind>

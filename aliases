@@ -26,7 +26,7 @@ alias     uhtop="htop -u $USER"
 #alias       nc="nc.openbsd"
 alias      pess="pygmentize -g $1|less"
 alias       pat="pygmentize -g $1"
-alias      vess="/usr/share/vim/vim74/macros/less.sh"
+alias      vess="/usr/share/vim/vim80/macros/less.sh"
 alias      hman="man -H"
 alias         f="find"
 alias     dmesg="dmesg -H"
@@ -39,6 +39,7 @@ alias      ....="cd ../../.."
 alias       aur="cd /mnt/redsea/AUR/"
 alias    shared="cd /run/media/prash/shared/"
 alias    redsea="cd /mnt/redsea/"
+alias    bluewest="cd /mnt/bluewest/"
 alias      fuji="cd /mnt/fuji320/"
 alias     curat="cd /mnt/redsea/src/curator && . ./setEnvVars.sh"
 alias        pd="pushd"
@@ -83,7 +84,7 @@ alias      yass="yaourt -Ss --color"
 alias       yar="yaourt -Rns"
 alias       ygr="yaourt -Syu --color"
 alias      ygra="yaourt -Sayu --color"
-yag()         { pushd /mnt/redsea/AUR/ && yaourt -G $1 && popd && cd /mnt/redsea/AUR/$1 }
+yag()         { pushd /mnt/redsea/AUR/ && yaourt -G $1 && popd && cd /mnt/redsea/AUR/$1; }
 
 alias     mkdir='mkdir -p'
 
@@ -105,6 +106,9 @@ alias unredsea="umount /mnt/redsea"
 
 alias doblacksea="udisksctl mount -b /dev/disk/by-label/blacksea"
 alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
+
+alias dobluewest="mount /mnt/bluewest"
+alias unbluewest="umount /mnt/bluewest"
 
 
 # man() {
