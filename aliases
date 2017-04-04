@@ -75,7 +75,8 @@ alias      yaqo="yaourt -Qqo"
 if [[ -n $ZSH_NAME ]]; then
 	alias yaqoe="yaourt -Qqo $(which $1)"
 fi
-alias      yaqs="yaourt -Qqs --color"
+alias      yaqs="yaourt -Qs --color"
+alias      yaqqs="yaourt -Qqs --color"
 alias     yaqtd="yaourt -Qtd --color"
 alias       yau="yaourt -U"
 alias       yas="yaourt -S --color"
