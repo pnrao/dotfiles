@@ -1,5 +1,5 @@
 # Lines configured by zsh-newuser-install
-zstyle ':completion:*' completer _oldlist _expand _complete _ignored _match _approximate _prefix
+zstyle ':completion:*' completer _oldlist _expand _complete _ignored _approximate _prefix
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '+' '+m:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=**' '+l:|=* r:|=*'
 zstyle ':completion:*' menu select=0
