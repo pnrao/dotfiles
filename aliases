@@ -92,7 +92,7 @@ alias     mkdir='mkdir -p'
 
 #alias       lt=lxterminal
 
-alias       yt="youtube-dl -t "
+alias       yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s" '
 
 if [[ -n $ZSH_NAME ]]; then
 	# Suffixes
