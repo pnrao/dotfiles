@@ -45,6 +45,10 @@ alias     curat="cd /mnt/redsea/src/curator && . ./setEnvVars.sh"
 alias        pd="pushd"
 alias        vd="popd"
 
+# HID
+alias lap-key-detach="xinput float 13"
+alias lap-key-attach="xinput reattach 13 3"
+
 # SSH
 alias      coli="ssh -XC prashrao@login.coli.uni-saarland.de"
 
