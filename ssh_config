@@ -1,13 +1,11 @@
 # Ignore SSH keys unless specified in Host subsection
 IdentitiesOnly yes
 Compression    yes
-CompressionLevel 9
 
 Host cluster-*.coli.uni-saarland.de forbin.coli.uni-saarland.de
 	User prashrao
 	IdentityFile ~/.ssh/id_rsa
 	Compression yes
-	CompressionLevel 9
 	ForwardX11 yes
 	ControlPath /home/prash/.ssh/tmp/%h_%p_%r
 	ControlMaster auto
@@ -16,7 +14,6 @@ Host cluster-*.coli.uni-saarland.de forbin.coli.uni-saarland.de
 Host cervelatwurst
 	User rao
 	Compression yes
-	CompressionLevel 9
 	ForwardX11 yes
 	ProxyCommand ssh -X -q %r@viscenter -W %h:%p
 
@@ -24,7 +21,6 @@ Host viscenter
 	User rao
 	IdentityFile ~/.ssh/id_rsa
 	Compression yes
-	CompressionLevel 9
 	ForwardX11 yes
 
 Host github.com
@@ -37,5 +33,4 @@ Host aur.archlinux.org
 Host 192.168.*.* 169.254.*.*
 	 IdentityFile ~/.ssh/id_ed25519
 	 Compression yes
-	 CompressionLevel 9
 	 ForwardX11 yes

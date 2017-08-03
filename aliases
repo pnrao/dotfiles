@@ -8,7 +8,7 @@ alias         l.="/usr/bin/ls -Alh --ignore=\* --color"
 alias         mv="mv -i"
 alias         cp="cp -i"
 
-alias       grep="egrep --color"
+alias       grep="grep --color -P"
 alias        agg="ag -g"
 
 alias        du="du -h"
