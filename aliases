@@ -13,7 +13,6 @@ alias        agg="ag -g"
 
 alias        du="du -h"
 alias        df="df -hT"
-alias    uptime="uptime -p"
 alias      sudo="sudo "
 alias       cls='/usr/bin/clear; echo -ne \\033c'
 
