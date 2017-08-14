@@ -4,7 +4,7 @@ pushd /mnt/redsea/AUR
 
 # BOTTOM LEVEL
 
-for i in libsysstat-git libqtxdg-git libfm-qt-git qtermwidget-git liblxqt-git lxqt-globalkeys-git
+for i in lxqt-build-tools-git libsysstat-git libqtxdg-git libfm-qt-git qtermwidget-git liblxqt-git lxqt-globalkeys-git
 do
 	pushd $i
 	rm -rf src/build
