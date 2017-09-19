@@ -18,7 +18,7 @@ alias       cls='/usr/bin/clear; echo -ne \\033c'
 
 alias        eu="TERM=xterm-256color emacs -nw"
 alias         e="emacs -nw"
-s()           { (subl3 $* &) }
+s()           { (subl $* &) }
 k()           { (kate $* 2> /dev/null &) }
 n()           { (nomacs $* &) }
 alias     uhtop="htop -u $USER"
