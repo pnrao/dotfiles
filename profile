@@ -1,7 +1,7 @@
 if [ -z $DISPLAY ]; then
 	export EDITOR=emacs
 else
-	export EDITOR=subl3
+	export EDITOR=subl
 fi
 
 export LESS="-i -R"
