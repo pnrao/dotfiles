@@ -70,7 +70,7 @@ URxvt.color7:               grey80
 URxvt.color15:              White
 
 
-
+xscreensaver.Font:          xft:Ubuntu Mono:pixelsize=14
 
 
 

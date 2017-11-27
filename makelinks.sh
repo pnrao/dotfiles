@@ -16,17 +16,9 @@ ln -s $thisdir/xbindkeysrc ~/.xbindkeysrc
 ln -s $thisdir/zshrc ~/.zshrc
 ln -s $thisdir/tmux.conf ~/.tmux.conf
 ln -s $thisdir/awesome ~/.config/awesome
-ln -s $thisdir/bin/startup.sh ~/bin/startup.sh
-ln -s $thisdir/bin/fan-off ~/bin/
-ln -s $thisdir/bin/context ~/bin/
-ln -s $thisdir/bin/mtxrun ~/bin/
-ln -s $thisdir/bin/bibtex ~/bin/
-ln -s $thisdir/bin/sd-photos ~/bin/
-ln -s $thisdir/bin/network-gui ~/bin/
-ln -s $thisdir/bin/RunUrxvt ~/bin/RunUrxvt
 mkdir -p ~/.ssh/tmp
 ln -s $thisdir/ssh_config ~/.ssh/config
-gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o ~/bin/bgcolor
+gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o $thisdir/bin/bgcolor
 
 mkdir -p ~/.config/openbox
 ln -s $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml

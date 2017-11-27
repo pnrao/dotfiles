@@ -17,7 +17,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 export GOPATH=$HOME/.local/go
 
-export PATH=$HOME/.local/bin:$HOME/bin:$PATH:$GOPATH/bin
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH:$GOPATH/bin:$HOME/src/flutter/bin
 
 export XKB_DEFAULT_MODEL=pc104
 

@@ -34,6 +34,6 @@ Host aur.archlinux.org
 	User aur
 
 Host 192.168.*.* 169.254.*.*
-	 IdentityFile ~/.ssh/id_ed25519
-	 Compression yes
-	 ForwardX11 yes
+	IdentityFile ~/.ssh/id_ed25519
+	Compression yes
+	ForwardX11 yes

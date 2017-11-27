@@ -1,0 +1,9 @@
+#!/usr/bin/dash
+
+## Alternative 1
+export LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libm.so.6 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so /usr/$LIB/libudev.so.1 /usr/$LIB/libGL.so'
+
+## Alternative 2
+export STEAM_RUNTIME=0
+export SDL_AUDIODRIVER=alsa
+exec /usr/lib/steam/steam $@
