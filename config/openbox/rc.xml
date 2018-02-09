@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>10</strength>
@@ -197,6 +196,26 @@
         <follow>no</follow>
       </action>
     </keybind>
+    <keybind key="W-1">
+      <action name="GoToDesktop">
+        <to>1</to>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
     <keybind key="W-n">
       <action name="Iconify"/>
     </keybind>
@@ -204,9 +223,7 @@
       <action name="ToggleMaximizeFull"/>
     </keybind>
     <keybind key="W-v">
-      <action name="ToggleMaximize">
-        <direction>vertical</direction>
-      </action>
+      <action name="ToggleMaximizeVert"/>
     </keybind>
     <keybind key="A-F11">
       <action name="ToggleFullscreen"/>
@@ -222,26 +239,6 @@
     </keybind>
     <keybind key="W-Down">
       <action name="DesktopDown"/>
-    </keybind>
-    <keybind key="W-S-Left">
-      <action name="SendToDesktop">
-        <desktop>1</desktop>
-      </action>
-    </keybind>
-    <keybind key="W-S-Right">
-      <action name="SendToDesktop">
-        <desktop>1</desktop>
-      </action>
-    </keybind>
-    <keybind key="W-S-Up">
-      <action name="SendToDesktop">
-        <desktop>1</desktop>
-      </action>
-    </keybind>
-    <keybind key="W-S-Down">
-      <action name="SendToDesktop">
-        <desktop>1</desktop>
-      </action>
     </keybind>
     <keybind key="A-F4">
       <action name="Close"/>
@@ -268,19 +265,6 @@
         <desktop>yes</desktop>
       </action>
     </keybind>
-    <keybind key="W-S-Right">
-      <action name="DirectionalCycleWindows"/>
-    </keybind>
-    <keybind key="W-S-Left">
-      <action name="DirectionalCycleWindows"/>
-    </keybind>
-    <keybind key="W-S-Up">
-      <action name="DirectionalCycleWindows"/>
-    </keybind>
-    <keybind key="W-S-Down">
-      <action name="DirectionalCycleWindows"/>
-    </keybind>
-    <!-- left tile -->
     <keybind key="W-comma">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -290,7 +274,6 @@
         <height>100%</height>
       </action>
     </keybind>
-    <!-- right tile -->
     <keybind key="W-period">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -300,7 +283,6 @@
         <height>100%</height>
       </action>
     </keybind>
-    <!-- bottom left tile -->
     <keybind key="W-KP_1">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -310,7 +292,6 @@
         <height>50%</height>
       </action>
     </keybind>
-    <!-- bottom tile -->
     <keybind key="W-KP_2">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -320,7 +301,6 @@
         <height>50%</height>
       </action>
     </keybind>
-    <!-- bottom right tile -->
     <keybind key="W-KP_3">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -330,7 +310,6 @@
         <height>50%</height>
       </action>
     </keybind>
-    <!-- left tile -->
     <keybind key="W-KP_4">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -340,10 +319,6 @@
         <height>100%</height>
       </action>
     </keybind>
-    <!-- null tile -->
-    <!--
-	  <keybind key="KP_5"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>45%</y><width>50%</width><height>45%</height></action></keybind>-->
-    <!-- right tile -->
     <keybind key="W-KP_6">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -353,7 +328,6 @@
         <height>100%</height>
       </action>
     </keybind>
-    <!-- top left tile -->
     <keybind key="W-KP_7">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -363,7 +337,6 @@
         <height>50%</height>
       </action>
     </keybind>
-    <!-- top tile -->
     <keybind key="W-KP_8">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -373,7 +346,6 @@
         <height>50%</height>
       </action>
     </keybind>
-    <!-- top right tile -->
     <keybind key="W-KP_9">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -814,6 +786,9 @@
 	<maximized>true</maximized># 'Horizontal', 'Vertical' or boolean (yes/no)
   </application># end of the example
 -->
+    <application class="Firefox" role="browser">
+      <decor>no</decor>
+    </application>
     <application class="Tor Browser" role="browser">
       <decor>no</decor>
     </application>

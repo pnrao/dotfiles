@@ -8,7 +8,7 @@ for i in lxqt-build-tools-git libsysstat-git libqtxdg-git libfm-qt-git qtermwidg
 do
 	pushd $i
 	rm -rf src/build
-	makepkg -isf --asdeps --noconfirm --noprogressbar #--needed
+	makepkg -isf --asdeps --noprogressbar --noconfirm #--needed
 	popd
 done
 
@@ -16,6 +16,6 @@ for i in lxqt-themes-git lximage-qt-git qterminal-git lxqt-admin-git lxqt-about-
 do
 	pushd $i
 	rm -rf src/build
-	makepkg -isf --noconfirm --noprogressbar #--needed
+	makepkg -isf --noprogressbar --noconfirm #--needed
 	popd
 done
