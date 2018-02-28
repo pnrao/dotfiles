@@ -6,7 +6,7 @@
 # to it:  "export PYTHONSTARTUP=~/.pystartup" in bash.
 
 from __future__ import print_function
-print("loading history")
+# print("loading history")
 
 import atexit
 import os

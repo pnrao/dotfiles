@@ -29,7 +29,8 @@ URxvt.keysym.C-Down:        perl:font-size:decrease
 
 
 !URxvt.font:                xft:DejaVu Sans Mono:pixelsize=13
-URxvt.font:                 xft:Ubuntu Mono:pixelsize=14
+!URxvt.font:                 xft:Ubuntu Mono:pixelsize=14
+URxvt.font:                 xft:Noto Mono:pixelsize=12
 !URxvt.font:                xft:Fira Mono:pixelsize=12
 !URxvt.font:                xft:Input Mono:pixelsize=12
 !URxvt.boldFont:            xft:Monaco:Bold:pixelsize=10

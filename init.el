@@ -48,6 +48,7 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(ansi-term-color-vector
    [unspecified "#343d46" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#81a2be" "#dfe1e8"])
+ '(blink-cursor-mode nil)
  '(c-basic-offset 4)
  '(c-default-style
    (quote
@@ -61,13 +62,15 @@
  '(cua-mode t nil (cua-base))
  '(current-language-environment "UTF-8")
  '(custom-enabled-themes (quote (manoj-dark)))
- '(python-indent-guess-indent-offset nil)
+ '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(size-indication-mode t)
  '(tab-width 4)
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(tool-bar-max-label-size 10)
- '(tool-bar-style (quote text)))
+ '(tool-bar-mode nil)
+ '(tool-bar-style (quote text))
+ '(visible-bell nil))
 
 ; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^O)
 ; and redefine (some of) the overridden Emacs functions.
@@ -101,10 +104,8 @@
  '(trailing-whitespace ((t (:background "gray")))))
 
 
-;; (autoload 'python-mode "python-mode.el" "Python mode." t)
-;; (package-initialize)
-;; (elpy-enable)
-
+(autoload 'python-mode "python-mode.el" "Python mode." t)
+(setq auto-mode-alist (append '(("/.*\.py\'" . python-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("/*.\.py2$" . python-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '(("/*.\.jpy$" . python-mode)) auto-mode-alist))
@@ -129,14 +130,18 @@
 ;;(push '("\\.m$" . mercury-mode)
 ;;     auto-mode-alist)
 ;;(setq auto-mode-alist (append '(("/*.\.m$" . prolog-mode)) auto-mode-alist))
-(autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
-(autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
-(autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
-(setq prolog-system 'swi)
-(setq auto-mode-alist (append '(("\.pl$" . prolog-mode)
-								("\.m$" . mercury-mode))
-							  auto-mode-alist))
 
-(add-to-list 'load-path "/usr/lib/mercury/elisp")
-(autoload 'mdb "gud" "Invoke the Mercury debugger" t)
+;;(autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
+;;(autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
+;;(autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
+;;(setq prolog-system 'swi)
+;;(setq auto-mode-alist (append '(("\.pl$" . prolog-mode)
+;;								("\.m$" . mercury-mode))
+;;							  auto-mode-alist))
+;;
+;;(add-to-list 'load-path "/usr/lib/mercury/elisp")
+;;(autoload 'mdb "gud" "Invoke the Mercury debugger" t)
 ;; (require 'go-mode-load)
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\.yml\'" . yaml-mode))
