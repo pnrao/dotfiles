@@ -30,8 +30,8 @@ URxvt.keysym.C-Down:        perl:font-size:decrease
 
 !URxvt.font:                xft:DejaVu Sans Mono:pixelsize=13
 !URxvt.font:                 xft:Ubuntu Mono:pixelsize=14
-URxvt.font:                 xft:Noto Mono:pixelsize=12
-!URxvt.font:                xft:Fira Mono:pixelsize=12
+!URxvt.font:                 xft:Noto Mono:pixelsize=12
+URxvt.font:                xft:Fira Mono:pixelsize=12
 !URxvt.font:                xft:Input Mono:pixelsize=12
 !URxvt.boldFont:            xft:Monaco:Bold:pixelsize=10
 !URxvt.italicFont:          xft:Monaco:Italic:pixelsize=10
@@ -78,7 +78,7 @@ xscreensaver.Font:          xft:Ubuntu Mono:pixelsize=14
 !XTerm*omitTranslation: wheel-mouse
 XTerm*scrollBar:            true
 XTerm*utf8:                 true
-XTerm*faceName:             Ubuntu Mono
+XTerm*faceName:             Fira Mono
 XTerm*faceSize:             10
 XTerm*selectToClipboard:    true
 XTerm*rightScrollBar:       true
