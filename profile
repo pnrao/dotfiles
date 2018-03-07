@@ -44,6 +44,8 @@ export WLC_REPEAT_DELAY=250
 
 export WLC_REPEAT_RATE=30
 
+export WINEDEBUG=-all
+
 # [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
 pgrep -u $(id -u) ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)

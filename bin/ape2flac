@@ -1,0 +1,25 @@
+#!/usr/bin/zsh
+
+if (( $# < 1 )) {
+	print Usage: $0:t "<ape-filename>"
+	exit 1
+}
+
+# Let's use the official Windows build (4.33) for decoding, but the
+# Linux build (3.99) for comparing.
+
+alias mac="wine ~/.wine/drive_c/Apps/MonkeysAudio/MAC.exe"
+
+wineserver -p300
+
+WAV=$(mktemp -u --suffix=.wav)
+
+mac $1 $WAV -d
+
+flac -s --delete-input-file $WAV -8 -f -o $1:r.flac
+
+shncmp -q $1 $1:r.flac && rm $1 && exit 0
+
+echo "APE file and FLAC file differ" > $1:r.err
+
+exit 2
