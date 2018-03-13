@@ -16,7 +16,7 @@ WAV=$(mktemp -u --suffix=.wav)
 
 mac $1 $WAV -d
 
-flac -s --delete-input-file $WAV -8 -f -o $1:r.flac
+flac -s --delete-input-file $WAV -8 -f --keep-foreign-metadata -o $1:r.flac
 
 shncmp -q $1 $1:r.flac && rm $1 && exit 0
 

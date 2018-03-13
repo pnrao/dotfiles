@@ -87,6 +87,7 @@ alias       yas="yaourt -S --color"
 alias      yasi="yaourt -Si --color"
 alias      yass="yaourt -Ss --color"
 alias       yar="yaourt -Rns"
+alias       yay="yes n|yaourt -Syu --color"
 alias       ygr="mount|grep \"redsea\" >/dev/null && yaourt -Syu --color"
 alias      ygra="mount|grep \"redsea\" >/dev/null && yaourt -Sayu --color"
 yag()         { pushd /mnt/redsea/AUR/ && yaourt -G $1 && popd && cd /mnt/redsea/AUR/$1; }

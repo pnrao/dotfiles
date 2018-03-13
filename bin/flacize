@@ -8,28 +8,47 @@ adds "[FLAC]" at the end of each FLAC album."""
 
 import sys
 import glob
-from mutagen import flac
+from os import path
+from mutagen import flac, oggopus
 from pprint import pprint
 
-root = '/mnt/bluewest/Music/'
+root = '/mnt/bluewest/Music'
 
-for ffile in glob.iglob(root+"**/*.flac", recursive=True):
+# First, we add '[FLAC]' to FLAC albums that don't have it
+print('Scanning .flac files')
+for ffile in glob.iglob(path.join(root, '**/*.flac'), recursive=True):
 	try:
 		f = flac.FLAC(ffile)
 		if len(f['album']) > 1:
 			raise IndexError("Found multiple 'album' tags")
 			# For some odd reason 'album' returns a list when read
-		if f['album'][0].endswith('[FLAC]'):
-			continue
-		f['album'] = f['album'][0]+' [FLAC]'
-		# ^^^ This is odd behavior in mutagen: it seems like we are suppose to
-		# assign to the 'album' key, rather than to each object in its list.
-		print(ffile, '=>', f['album'][0])
-		f.save()
-
+		if not f['album'][0].endswith('[FLAC]'):
+			f['album'] = f['album'][0]+' [FLAC]'
+			# ^^^ This is odd behavior in mutagen: it seems like we are suppose to
+			# assign to the 'album' key, rather than to each object in its list.
+			print(ffile, '=>', f['album'][0])
+			f.save()
 	except KeyError:
 		# print("No suitable tags in", ffile, file=sys.stderr)
 		pass
 	except IndexError as err:
 		print(err, 'in', ffile, file=sys.stderr)
+		pass
+
+# Next, we remove '[FLAC]' from OPus albums that have it
+print('Scanning .opus files')
+for ofile in glob.iglob(path.join(root, '**/*.opus'), recursive=True):
+	try:
+		o = oggopus.OggOpus(ofile)
+		if len(o['album']) > 1:
+			raise IndexError("Found multiple 'album' tags")
+		if o['album'][0].endswith('[FLAC]'):
+			o['album'] = o['album'][0][:-6].strip()
+			print(ofile, '=>', o['album'][0])
+			o.save()
+	except KeyError:
+		# print("No suitable tags in", ofile, file=sys.stderr)
+		pass
+	except IndexError as err:
+		print(err, 'in', ofile, file=sys.stderr)
 		pass
