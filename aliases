@@ -107,13 +107,13 @@ if [[ -n $ZSH_NAME ]]; then
 	alias -s     tbz="tar xjf"
 fi
 
-alias doredsea="mount /mnt/redsea && cd /mnt/redsea"
+alias doredsea="mount /mnt/redsea"
 alias unredsea="umount /mnt/redsea"
 
-alias doblacksea="udisksctl mount -b /dev/disk/by-label/blacksea && cd /mnt/blacksea"
+alias doblacksea="udisksctl mount -b /dev/disk/by-label/blacksea"
 alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
 
-alias dobluewest="mount /mnt/bluewest && cd /mnt/bluewest"
+alias dobluewest="mount /mnt/bluewest"
 alias unbluewest="umount /mnt/bluewest"
 
 
