@@ -27,7 +27,7 @@ for ffile in glob.iglob(path.join(root, '**/*.flac'), recursive=True):
 			# ^^^ This is odd behavior in mutagen: it seems like we are suppose to
 			# assign to the 'album' key, rather than to each object in its list.
 			print(ffile, '=>', f['album'][0])
-			f.save()
+			# f.save() # disabled by default to prevent accidental writes
 	except KeyError:
 		# print("No suitable tags in", ffile, file=sys.stderr)
 		pass

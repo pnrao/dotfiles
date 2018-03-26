@@ -43,24 +43,25 @@ uint32_t HsvToRgb(uint8_t h, uint8_t s, uint8_t v) {
 	return r*0x10000 + g*0x100 + b;
 }
 
-void RgbToRgba(uint32_t rgb, char Rgba[]) {
+void RgbToRgba(uint32_t rgb, char Rgba[], int len) {
 	int b = (rgb & 0x0000FF);
 	int g = (rgb & 0x00FF00)>>8;
 	int r = (rgb & 0xFF0000)>>16;
 
-	sprintf(Rgba, "rgba:%02x00/%02x00/%02x00/ffff", r, g, b);
+	snprintf(Rgba, len, "rgba:%02x00/%02x00/%02x00/ffff", r, g, b);
 }
 
 int main(void) {
 	FILE* f = fopen("/dev/urandom", "r");
-	const uint8_t MAX = 0x20; // range for brightness
+	const uint8_t bright_range = 0x20;  // range for brightness
+	const uint8_t bright_min = 0x20;
 	uint8_t h, s, v;
 	char buf[26];
 	fread(&h, 1, 1, f);
 	fread(&s, 1, 1, f);
-	fread(&v, 1, 1, f); v %= MAX; v += 0x30;
+	fread(&v, 1, 1, f); v %= bright_range; v += bright_min;
 	fclose(f);
-	RgbToRgba(HsvToRgb(h, s, v), buf);
+	RgbToRgba(HsvToRgb(h, s, v), buf, sizeof(buf));
 	printf("%s", buf);
 	return 0;
 }
