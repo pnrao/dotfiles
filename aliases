@@ -11,9 +11,8 @@ alias         cp="cp -i"
 alias       grep="grep --color -P"
 alias        agg="ag -g"
 
-alias        du="du -h"
-alias        df="df -hT"
-alias      sudo="sudo "
+alias        du="/usr/bin/du -h"
+alias        df="/usr/bin/df -hT"
 alias       cls='/usr/bin/clear; echo -ne \\033c'
 
 alias      diff="/usr/bin/diff --color"
@@ -31,6 +30,7 @@ alias      hman="man -H"
 alias         f="find"
 alias     dmesg="dmesg -H"
 alias        py="python3"
+alias        ip="ip -c"
 
 # CDs
 # alias      ..="cd .." # not necessary in zsh
@@ -68,33 +68,30 @@ alias       pms="sudo pacman -S"
 alias      pmsi="pacman -Si"
 alias      pmss="pacman -Ss"
 alias       pmr="sudo pacman -Rns"
-alias       pgr="sudo pacman -Syu"
+alias      pmsu="sudo pacman -Syu"
 
 
-alias        ya="yaourt --color"
-alias       yaq="yaourt -Q --color"
-alias      yaqi="yaourt -Qi --color"
-alias      yaql="yaourt -Qql"
-alias      yaqo="yaourt -Qqo"
+alias        ya="yaourt"
+alias       yaq="yay -Q"
+alias      yaqi="yay -Qi"
+alias      yaql="yay -Qql"
+alias      yaqo="yay -Qqo"
 if [[ -n $ZSH_NAME ]]; then
-	alias yaqoe="yaourt -Qqo $(which $1)"
+	alias yaqoe="yay -Qo $(which $1)"
 fi
-alias      yaqs="yaourt -Qs --color"
-alias      yaqqs="yaourt -Qqs --color"
-alias     yaqtd="yaourt -Qtd --color"
-alias       yau="yaourt -U"
-alias       yas="yaourt -S --color"
-alias      yasi="yaourt -Si --color"
-alias      yass="yaourt -Ss --color"
-alias       yar="yaourt -Rns"
-alias       yay="yes n|yaourt -Syu --color"
-alias       ygr="mount|grep \"redsea\" >/dev/null && yaourt -Syu --color"
-alias      ygra="mount|grep \"redsea\" >/dev/null && yaourt -Sayu --color"
-yag()         { pushd /mnt/redsea/AUR/ && yaourt -G $1 && popd && cd /mnt/redsea/AUR/$1; }
+alias      yaqs="yaourt -Qs"
+alias     yaqqs="yaourt -Qqs"
+alias     yaqtd="yaourt -Qtd"
+alias       yau="yay -U"
+alias       yas="yay -S"
+alias      yasi="yay -Si"
+alias      yass="yay -Ss"
+alias       yar="yay -Rns"
+alias       yan="yay -Sy && yay -Puw"
+alias       ygr="[ -d /mnt/redsea/var/cache/pacman/pkg ] && yay -Syu"
+yag()         { pushd /mnt/redsea/AUR/ && yay -G $1 && popd && cd /mnt/redsea/AUR/$1; }
 
 alias     mkdir='mkdir -p'
-
-#alias       lt=lxterminal
 
 alias       yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s" '
 
@@ -115,19 +112,6 @@ alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
 
 alias dobluewest="mount /mnt/bluewest"
 alias unbluewest="umount /mnt/bluewest"
-
-
-# man() {
-#	env \
-#		LESS_TERMCAP_mb=$(printf "\x1b[38;2;255;200;200m") \
-#		LESS_TERMCAP_md=$(printf "\x1b[38;2;255;100;200m") \
-#		LESS_TERMCAP_me=$(printf "\x1b[0m") \
-#		LESS_TERMCAP_so=$(printf "\x1b[38;2;60;90;90;48;2;40;40;40m") \
-#		LESS_TERMCAP_se=$(printf "\x1b[0m") \
-#		LESS_TERMCAP_us=$(printf "\x1b[38;2;150;100;200m") \
-#		LESS_TERMCAP_ue=$(printf "\x1b[0m") \
-#		man "$@"
-# }
 
 
 man() {

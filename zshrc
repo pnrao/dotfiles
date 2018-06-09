@@ -33,6 +33,10 @@ if [ -e ~/.aliases ]; then
 	. ~/.aliases
 fi
 
+if [ -e ~/.private-aliases ]; then
+	. ~/.private-aliases
+fi
+
 precmd () { vcs_info }
 prompt='[%{$fg_bold[green]%}%? %{$fg_bold[blue]%}%n@%m %{$fg_bold[red]%}%~%{$fg_no_bold[default]%}${vcs_info_msg_0_}]
 %# '

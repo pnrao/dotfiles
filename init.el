@@ -19,7 +19,7 @@
 			 ("marmalade" . "https://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-(package-initialize)
+;; (package-initialize)
 
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)

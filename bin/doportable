@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+grep -v "^#" /mnt/bluewest/Music/Portable.m3u|sort > /mnt/bluewest/Music/Portable.list
+adb -s ZY223RFHZK push /mnt/bluewest/Music/Portable.list /storage/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/Music

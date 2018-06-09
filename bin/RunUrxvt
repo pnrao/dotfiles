@@ -1,2 +1,2 @@
-#!/usr/bin/sh
-urxvt -bg `bgcolor` $* &
+#!/usr/bin/dash
+urxvt -bg `$HOME/bin/bgcolor` $* &

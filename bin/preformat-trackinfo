@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+import sys
+from pymediainfo import MediaInfo
+
+for f in sys.argv[1:]:
+	mi = MediaInfo.parse(f)
+	minsec = None
+	tracknum = 0
+	title = None
+	for track in mi.tracks:
+		if track.duration:
+			minutes = track.duration // 60000
+			seconds = round((track.duration - minutes*60000)/1000)
+			if seconds == 60:
+				seconds = 0
+				minutes += 1
+			minsec = '%02d:%02d' % (minutes, seconds)
+		if track.track_name_position:
+			tracknum = int(track.track_name_position)
+		if track.title:
+			title = track.title
+	print('%2d'%tracknum, title, minsec)

@@ -1,3 +1,11 @@
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+
 URxvt.depth:                32
 URxvt.termName:             rxvt-256color
 !URxvt.termName:            rxvt-unicode
@@ -8,7 +16,8 @@ URxvt.iconFile:             /usr/share/icons/breeze/apps/48/utilities-terminal.s
 URxvt.iso14755:             False
 URxvt.iso14755_52:          False
 URxvt.loginShell:           True
-URxvt.perl-ext-common:      default,selection-autotransform,clipboard,matcher,vtwheel,font-size
+URxvt.perl-ext-common:      default,selection-autotransform,clipboard,matcher,vtwheel,font-size,new-window
+!,rand-bg
 URxvt.selection.pattern-0:  ([_0-9a-zA-Z-/.~]+)
 URxvt.clipboard.autocopy:   true
 !URxvt.selection.pattern-0: ([^\\]]+)
@@ -26,14 +35,14 @@ URxvt.keysym.C-Up:          perl:font-size:increase
 URxvt.keysym.C-Down:        perl:font-size:decrease
 !URxvt.keysym.C-S-Up:       perl:font-size:incglobal
 !URxvt.keysym.C-S-Down:     perl:font-size:decglobal
-
+URxvt.keysym.Control-Shift-N: perl:new-window
 
 !URxvt.font:				xft:DejaVu Sans Mono:pixelsize=13
 URxvt.font:					xft:Ubuntu Mono:pixelsize=14
 !URxvt.font:				xft:Noto Mono:pixelsize=12
 !URxvt.font:				xft:Fira Mono:pixelsize=12
 !URxvt.font:				xft:Input Mono:pixelsize=12
-URxvt.letterSpace:          0
+URxvt.letterSpace:          -1
 
 URxvt.geometry:             93x26
 URxvt.background:           rgba:0000/0000/0000/ffff
@@ -71,7 +80,6 @@ URxvt.color15:              White
 xscreensaver.Font:          xft:Ubuntu Mono:pixelsize=14
 
 
-
 !XTerm*omitTranslation: wheel-mouse
 XTerm*scrollBar:            true
 XTerm*utf8:                 true
@@ -80,6 +88,7 @@ XTerm*faceSize:             11
 XTerm*selectToClipboard:    true
 XTerm*rightScrollBar:       true
 
-
-
 xfce4-appfinder.geometry:   +312+340
+
+
+HyperDoc.Font:				xft:Ubuntu Mono:pixelsize=14
