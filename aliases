@@ -8,6 +8,9 @@ alias         l.="/usr/bin/ls -Alh --ignore=\* --color"
 alias         mv="mv -i"
 alias         cp="cp -i"
 
+# Enable sudo to work with alias commands
+alias      sudo="sudo "
+
 alias       grep="grep --color -P"
 alias        agg="ag -g"
 
