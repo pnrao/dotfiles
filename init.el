@@ -17,16 +17,13 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "https://marmalade-repo.org/packages/")
-			 ("melpa" . "http://melpa.milkbox.net/packages/")))
+			 ("melpa" . "http://melpa.org/packages/")))
 
 ;; (package-initialize)
 
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)
 
-;; scroll one line at a time (less "jumpy" than defaults)
-(setq scroll-step           1
-	  scroll-conservatively 10000)
 ;;(if (window-system)
 ;;    (set-frame-height (selected-frame) 30))
 (setq linum-format "%d ")
@@ -51,25 +48,26 @@
  '(blink-cursor-mode nil)
  '(c-basic-offset 4)
  '(c-default-style
-   (quote
-	((c-mode . "linux")
+   '((c-mode . "linux")
 	 (c++-mode . "stroustrup")
 	 (java-mode . "java")
 	 (awk-mode . "awk")
-	 (other . "gnu"))))
+	 (other . "gnu")))
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(current-language-environment "UTF-8")
- '(custom-enabled-themes (quote (manoj-dark)))
+ '(custom-enabled-themes '(manoj-dark))
+ '(package-selected-packages '(markdown-mode company))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
+ '(scroll-step 1)
  '(size-indication-mode t)
  '(tab-width 4)
- '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
+ '(text-mode-hook '(turn-on-auto-fill text-mode-hook-identify))
  '(tool-bar-max-label-size 10)
  '(tool-bar-mode nil)
- '(tool-bar-style (quote text))
+ '(tool-bar-style 'text)
  '(visible-bell nil))
 
 ; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^O)
@@ -118,12 +116,6 @@
 
 ;; Shell script mode for Arch PKGBUILDs
 (setq auto-mode-alist (cons '("\\PKGBUILD$" . sh-mode) auto-mode-alist))
-
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/usr/share/emacs/site-lisp/auto-complete/ac-dict")
-(ac-config-default)
-
 
 ;; (require 'mercury)
 ;;(add-hook 'prolog-mode-hook 'merc-maybe-minor)

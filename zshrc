@@ -28,6 +28,9 @@ zstyle ':vcs_info:*' enable git svn hg
 
 autoload -U colors && colors
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_STYLES[globbing]=fg=magenta
+
 # Alias definitions.
 if [ -e ~/.aliases ]; then
 	. ~/.aliases
