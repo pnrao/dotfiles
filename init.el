@@ -68,7 +68,9 @@
  '(tool-bar-max-label-size 10)
  '(tool-bar-mode nil)
  '(tool-bar-style 'text)
- '(visible-bell nil))
+ '(visible-bell nil)
+ '(oz-indent-chars 4)
+ )
 
 ; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^O)
 ; and redefine (some of) the overridden Emacs functions.
