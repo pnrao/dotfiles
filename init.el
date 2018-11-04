@@ -26,8 +26,8 @@
 
 ;;(if (window-system)
 ;;    (set-frame-height (selected-frame) 30))
-(setq linum-format "%d ")
-(global-linum-mode 1)
+(setq nlinum-format "%d║")
+(global-nlinum-mode t)
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
@@ -58,7 +58,8 @@
  '(cua-mode t nil (cua-base))
  '(current-language-environment "UTF-8")
  '(custom-enabled-themes '(manoj-dark))
- '(package-selected-packages '(markdown-mode company))
+ '(oz-indent-chars 4)
+ '(package-selected-packages '(nlinum markdown-mode company))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(scroll-step 1)
@@ -69,7 +70,6 @@
  '(tool-bar-mode nil)
  '(tool-bar-style 'text)
  '(visible-bell nil)
- '(oz-indent-chars 4)
  )
 
 ; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^O)
