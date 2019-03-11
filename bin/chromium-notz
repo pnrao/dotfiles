@@ -1,4 +1,0 @@
-#!/usr/bin/dash
-
-export TZ=/usr/share/zoneinfo/UTC
-exec chromium $*

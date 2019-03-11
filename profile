@@ -34,7 +34,9 @@ export PYTHONSTARTUP=$HOME/.pystartup
 export PYMACS_PYTHON=python2
 
 # source /opt/context-minimals/setuptex
-export ANALYSIS_PATH=$HOME/src/analysis
+
+# for pacaur
+export AURDEST=/mnt/redsea/AUR
 
 export ANDROID_HOME=/opt/android-sdk
 
@@ -45,6 +47,8 @@ export WLC_REPEAT_DELAY=250
 export WLC_REPEAT_RATE=30
 
 export WINEDEBUG=-all
+
+export IMDB_RENAME_DATA_DIR=~/.cache/imdb-rename
 
 # [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
