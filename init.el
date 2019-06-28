@@ -59,7 +59,7 @@
  '(current-language-environment "UTF-8")
  '(custom-enabled-themes '(manoj-dark))
  '(oz-indent-chars 4)
- '(package-selected-packages '(nlinum markdown-mode company))
+ '(package-selected-packages '(prolog forth-mode nlinum markdown-mode company))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(scroll-step 1)
@@ -88,7 +88,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:slant normal :weight normal :height 98 :width normal :family "Ubuntu Mono" :foundry "unknown"))))
+ '(default ((t (:slant normal :weight normal :height 98 :width normal :family "Go Mono" :foundry "    "))))
  '(bold-italic ((t (:slant oblique :weight bold))))
  '(font-lock-comment-face ((t (:foreground "dark gray"))))
  '(font-lock-doc-face ((t (:foreground "tan"))))

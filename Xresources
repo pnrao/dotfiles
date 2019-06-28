@@ -38,11 +38,12 @@ URxvt.keysym.C-Down:        perl:font-size:decrease
 URxvt.keysym.Control-Shift-N: perl:new-window
 
 !URxvt.font:				xft:DejaVu Sans Mono:pixelsize=13
-URxvt.font:					xft:Ubuntu Mono:pixelsize=14
+!URxvt.font:				xft:Ubuntu Mono:pixelsize=14
 !URxvt.font:				xft:Noto Mono:pixelsize=12
-!URxvt.font:				xft:Fira Mono:pixelsize=12
+!URxvt.font:				xft:Fira Mono:pixelsize=13
 !URxvt.font:				xft:Input Mono:pixelsize=12
-URxvt.letterSpace:          -1
+URxvt.font:					xft:Go Mono:pixelsize=13
+URxvt.letterSpace:          0
 
 URxvt.geometry:             93x26
 URxvt.background:           rgba:0000/0000/0000/ffff
