@@ -15,11 +15,9 @@
 
 
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-			 ("marmalade" . "https://marmalade-repo.org/packages/")
-			 ("melpa" . "http://melpa.org/packages/")))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
-;; (package-initialize)
+(package-initialize)
 
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)
