@@ -74,7 +74,6 @@ alias       pmr="sudo pacman -Rns"
 alias      pmsu="sudo pacman -Syu"
 
 
-alias        ya="yaourt"
 alias       yaq="yay -Q"
 alias      yaqi="yay -Qi"
 alias      yaql="yay -Qql"
@@ -82,9 +81,9 @@ alias      yaqo="yay -Qqo"
 if [[ -n $ZSH_NAME ]]; then
 	alias yaqoe="yay -Qo $(which $1)"
 fi
-alias      yaqs="yaourt -Qs"
-alias     yaqqs="yaourt -Qqs"
-alias     yaqtd="yaourt -Qtd"
+alias      yaqs="yay -Qs"
+alias     yaqqs="yay -Qqs"
+alias     yaqtd="yay -Qtd"
 alias       yau="yay -U"
 alias       yas="yay -S"
 alias      yasi="yay -Si"

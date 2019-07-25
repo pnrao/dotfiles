@@ -19,6 +19,7 @@ zstyle :compinstall filename '/home/prash/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+kitty + complete setup zsh | source /dev/stdin
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*'   actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'

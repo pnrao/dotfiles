@@ -786,7 +786,7 @@
 	<maximized>true</maximized># 'Horizontal', 'Vertical' or boolean (yes/no)
   </application># end of the example
 -->
-    <application class="Firefox" role="browser">
+    <application class="firefox" role="browser">
       <decor>no</decor>
     </application>
     <application class="Falkon Browser">

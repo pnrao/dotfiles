@@ -56,6 +56,7 @@
  '(cua-mode t nil (cua-base))
  '(current-language-environment "UTF-8")
  '(custom-enabled-themes '(manoj-dark))
+ '(doc-view-continuous t)
  '(oz-indent-chars 4)
  '(package-selected-packages '(prolog forth-mode nlinum markdown-mode company))
  '(python-indent-guess-indent-offset t)
@@ -67,8 +68,7 @@
  '(tool-bar-max-label-size 10)
  '(tool-bar-mode nil)
  '(tool-bar-style 'text)
- '(visible-bell nil)
- )
+ '(visible-bell nil))
 
 ; Define some additional "native-Windows" keystrokes (^tab, Alt/F4, ^O)
 ; and redefine (some of) the overridden Emacs functions.
