@@ -14,10 +14,19 @@
 (setq inhibit-startup-echo-area-message "prash")
 
 
+;;; Setup package.el
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(unless package--initialized (package-initialize))
 
-(package-initialize)
+;;; Setup use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)
 
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)
@@ -116,6 +125,8 @@
 
 ;; Shell script mode for Arch PKGBUILDs
 (setq auto-mode-alist (cons '("\\PKGBUILD$" . sh-mode) auto-mode-alist))
+
+(load "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site")
 
 ;; (require 'mercury)
 ;;(add-hook 'prolog-mode-hook 'merc-maybe-minor)

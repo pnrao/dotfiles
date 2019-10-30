@@ -22,8 +22,6 @@ alias      diff="/usr/bin/diff --color"
 alias        eu="TERM=xterm-256color emacs -nw"
 alias         e="emacs -nw"
 s()           { (subl $* &) }
-k()           { (kate $* 2> /dev/null &) }
-n()           { (nomacs $* &) }
 alias     uhtop="htop -u $USER"
 #alias       nc="nc.openbsd"
 alias      pess="pygmentize -g $1|less"
