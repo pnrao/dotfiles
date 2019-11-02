@@ -1,3 +1,4 @@
+bgcolor
 # Lines configured by zsh-newuser-install
 zstyle ':completion:*' completer _oldlist _expand _complete _ignored _approximate _prefix
 zstyle ':completion:*' list-colors ''
