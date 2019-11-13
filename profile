@@ -33,7 +33,7 @@ export PYTHONSTARTUP=$HOME/.pystartup
 
 export PYMACS_PYTHON=python2
 
-# source /opt/context-minimals/setuptex
+source /opt/context-minimals/setuptex
 
 # for pacaur
 export AURDEST=/mnt/redsea/AUR

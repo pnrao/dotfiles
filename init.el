@@ -67,7 +67,8 @@
  '(custom-enabled-themes '(manoj-dark))
  '(doc-view-continuous t)
  '(oz-indent-chars 4)
- '(package-selected-packages '(prolog forth-mode nlinum markdown-mode company))
+ '(package-selected-packages
+   '(julia-mode company-lean lean-mode prolog forth-mode nlinum markdown-mode company))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(scroll-step 1)
