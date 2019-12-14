@@ -147,10 +147,6 @@
 ;;(autoload 'mdb "gud" "Invoke the Mercury debugger" t)
 ;; (require 'go-mode-load)
 
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\.yml\'" . yaml-mode))
-
-
 ;; If the *scratch* buffer is killed, recreate it automatically
 ;; FROM: Morten Welind
 ;;http://www.geocrawler.com/archives/3/338/1994/6/0/1877802/
