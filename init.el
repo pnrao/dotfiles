@@ -127,8 +127,6 @@
 ;; Shell script mode for Arch PKGBUILDs
 (setq auto-mode-alist (cons '("\\PKGBUILD$" . sh-mode) auto-mode-alist))
 
-(load "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site")
-
 ;; (require 'mercury)
 ;;(add-hook 'prolog-mode-hook 'merc-maybe-minor)
 ;;(push '("\\.m$" . mercury-mode)

@@ -1,0 +1,63 @@
+#!/usr/bin/python
+#import sys
+import os
+import subprocess
+import re
+
+def getAdbSdPath(serial):
+    try:
+        r = subprocess.run(['adb', '-s', serial, 'shell', 'mount'], capture_output=True)
+        o = r.stdout.decode()
+        sdp = re.search(r'/storage/[A-F0-9][A-F0-9-]+[A-F0-9]', o, re.IGNORECASE)
+        # FAT fs has the label XXXX-XXXX, where X is an uppercase hex digit
+        # ext fs has the label x[x-]+x, where x is lowercase hex, but there are dashes in between
+        return sdp.group()
+    except:
+        return None
+
+def getAdbChecksums(serial, path):
+    r = subprocess.run([
+        'adb', '-s', serial, 'shell', 'find', os.path.join(path, 'Music'), '-type', 'f',
+        '-exec', 'md5sum', '{}', '+'], capture_output=True)
+    o = r.stdout.decode()
+    return o
+
+def makeLinks(playlist, destbase):
+    with open(playlist) as pl:
+        for f in pl.read().split('\n'):
+            p=f.split('/')
+            if len(p)>3:
+                dest = os.path.join(destbase, *p[3:-1])
+                os.makedirs(dest, exist_ok=True)
+                os.link(f, os.path.join(dest, p[-1]))
+
+def pushMusic(lpath, serial, rpath):
+    subprocess.run(['adb', '-s', serial, 'push', '--sync', 'Music', rpath], cwd=lpath)
+
+def cleanRemoteFiles(serial, path):
+    pass
+
+def cleanLocalLinks(path):
+    for root, dirs, files in os.walk(path, topdown=False):
+        for f in files:
+            fpath = os.path.join(root, f)
+            s = os.stat(fpath)
+            if s.st_nlink > 1: # Only delete files that are links to other files
+                os.remove(fpath) # ^ unique files should NOT exist here
+        for d in dirs:
+            os.rmdir(os.path.join(root, d))
+
+if __name__ == '__main__':
+    # playlist is in ~/.config/quodlibet/playlists
+    # The playlist name matches the ADB serial number of the device
+    playlistDir = os.path.join(os.environ['XDG_CONFIG_HOME'], 'quodlibet', 'playlists')
+    tempDir     = '/mnt/bluewest/temp'
+    for serial in os.listdir(playlistDir):
+        sdpath = getAdbSdPath(serial)
+        if not sdpath:
+            continue
+        print(serial, sdpath)
+        #print(getAdbChecksums(serial, sdpath))
+        makeLinks(os.path.join(playlistDir, serial), tempDir)
+        pushMusic(tempDir, serial, sdpath)
+        cleanLocalLinks(os.path.join(tempDir, 'Music'))
