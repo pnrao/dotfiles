@@ -30,8 +30,10 @@ alias      vess="/usr/share/nvim/runtime/macros/less.sh"
 alias      hman="man -H"
 alias         f="find"
 alias     dmesg="dmesg -H"
+alias        up="uptime -p"
 alias        py="python3"
 alias        ip="ip -c"
+alias        jl="julia"
 
 # CDs
 # alias      ..="cd .." # not necessary in zsh
@@ -94,6 +96,7 @@ yag()         { pushd /mnt/redsea/AUR/ && yay -G $1 && popd && cd /mnt/redsea/AU
 alias     mkdir='mkdir -p'
 
 alias       yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s" '
+alias       yti='youtube-dl --id '
 
 if [[ -n $ZSH_NAME ]]; then
 	# Suffixes
@@ -104,14 +107,14 @@ if [[ -n $ZSH_NAME ]]; then
 	alias -s     tbz="tar xjf"
 fi
 
-alias doredsea="mount /mnt/redsea"
-alias unredsea="umount /mnt/redsea"
+alias doredsea="mount /mnt/redsea && df"
+alias unredsea="umount /mnt/redsea && df"
 
 alias doblacksea="udisksctl mount -b /dev/disk/by-label/blacksea"
 alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
 
-alias dobluewest="mount /mnt/bluewest"
-alias unbluewest="umount /mnt/bluewest"
+alias dobluewest="mount /mnt/bluewest && df"
+alias unbluewest="umount /mnt/bluewest && df"
 
 
 man() {

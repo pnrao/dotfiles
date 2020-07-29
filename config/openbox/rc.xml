@@ -790,6 +790,12 @@
     <application class="firefox" role="browser">
       <decor>no</decor>
     </application>
+    <application class="firefoxdeveloperedition" role="browser">
+      <decor>no</decor>
+    </application>
+    <application class="Min" role="browser-window">
+      <decor>no</decor>
+    </application>
     <application class="Falkon Browser">
       <decor>no</decor>
     </application>

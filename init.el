@@ -64,11 +64,11 @@
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(current-language-environment "UTF-8")
- '(custom-enabled-themes '(manoj-dark))
+ '(custom-enabled-themes nil)
  '(doc-view-continuous t)
  '(oz-indent-chars 4)
  '(package-selected-packages
-   '(julia-mode company-lean lean-mode prolog forth-mode nlinum markdown-mode company))
+   '(pov-mode yaml-mode pkgbuild-mode julia-mode company-lean lean-mode prolog forth-mode nlinum markdown-mode company))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(scroll-step 1)
@@ -96,7 +96,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:slant normal :weight normal :height 98 :width normal :family "Go Mono" :foundry "    "))))
+ '(default ((t (:slant normal :weight normal :height 120 :width normal :family "Ubuntu Mono" :foundry "DAMA"))))
  '(bold-italic ((t (:slant oblique :weight bold))))
  '(font-lock-comment-face ((t (:foreground "dark gray"))))
  '(font-lock-doc-face ((t (:foreground "tan"))))

@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 bgcolor
 # Lines configured by zsh-newuser-install
 zstyle ':completion:*' completer _oldlist _expand _complete _ignored _approximate _prefix
@@ -20,7 +23,10 @@ zstyle :compinstall filename '/home/prash/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-kitty + complete setup zsh | source /dev/stdin
+
+if [[ $TERM="xterm-kitty" ]] ; then
+   kitty + complete setup zsh | source /dev/stdin
+fi
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*'   actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
