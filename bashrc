@@ -26,5 +26,9 @@ export _JAVA_AWT_WM_NONREPARENTING
 export PS1="[\[\033[1;32m\]\$? \[\033[1;34m\]\u@\h\[\033[1;31m\] \w\[\033[0m\]]
 \\$ "
 
+if [[ $TERM="xterm-kitty" ]] ; then
+	source <(kitty + complete setup bash)
+fi
+
 fortune
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

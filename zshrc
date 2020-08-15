@@ -25,7 +25,7 @@ compinit
 # End of lines added by compinstall
 
 if [[ $TERM="xterm-kitty" ]] ; then
-   kitty + complete setup zsh | source /dev/stdin
+	kitty + complete setup zsh | source /dev/stdin
 fi
 
 autoload -Uz vcs_info
@@ -83,10 +83,10 @@ key[PageDown]=${terminfo[knp]}
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 	function zle-line-init () {
-	printf '%s' "${terminfo[smkx]}"
+		printf '%s' "${terminfo[smkx]}"
 	}
 	function zle-line-finish () {
-	printf '%s' "${terminfo[rmkx]}"
+		printf '%s' "${terminfo[rmkx]}"
 	}
 	zle -N zle-line-init
 	zle -N zle-line-finish

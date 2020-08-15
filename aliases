@@ -21,7 +21,7 @@ alias       cls='/usr/bin/clear; echo -ne \\033c'
 alias      diff="/usr/bin/diff --color"
 alias        eu="TERM=xterm-256color emacs -nw"
 alias         e="emacs -nw"
-s()           { (subl $* &) }
+alias         s=subl
 alias     uhtop="htop -u $USER"
 #alias       nc="nc.openbsd"
 alias      pess="pygmentize -g $1|less"
@@ -34,6 +34,8 @@ alias        up="uptime -p"
 alias        py="python3"
 alias        ip="ip -c"
 alias        jl="julia"
+alias      icat="kitty +kitten icat"
+alias         d="kitty +kitten diff"
 
 # CDs
 # alias      ..="cd .." # not necessary in zsh

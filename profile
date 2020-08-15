@@ -31,9 +31,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export PYTHONSTARTUP=$HOME/.pystartup
 
-export PYMACS_PYTHON=python2
-
-source /opt/context-minimals/setuptex
 
 # for pacaur
 export AURDEST=/mnt/redsea/AUR
