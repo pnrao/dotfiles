@@ -112,8 +112,8 @@ fi
 alias doredsea="mount /mnt/redsea && df"
 alias unredsea="umount /mnt/redsea && df"
 
-alias doblacksea="udisksctl mount -b /dev/disk/by-label/blacksea"
-alias unblacksea="udisksctl unmount -b /dev/disk/by-label/blacksea"
+alias doblacksea="mount /mnt/blacksea && df"
+alias unblacksea="umount /mnt/blacksea && df"
 
 alias dobluewest="mount /mnt/bluewest && df"
 alias unbluewest="umount /mnt/bluewest && df"

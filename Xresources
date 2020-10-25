@@ -1,10 +1,9 @@
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
-
+Xft.autohint:				0
+Xft.lcdfilter:				lcddefault
+Xft.hintstyle:				hintslight
+Xft.hinting:				1
+Xft.antialias:				1
+Xft.rgba:					rgb
 
 URxvt.depth:                32
 URxvt.termName:             rxvt-256color
@@ -85,9 +84,16 @@ xscreensaver.Font:          xft:Ubuntu Mono:pixelsize=14
 XTerm*scrollBar:            true
 XTerm*utf8:                 true
 XTerm*faceName:             Ubuntu Mono
-XTerm*faceSize:             11
+XTerm*faceSize:             13
 XTerm*selectToClipboard:    true
 XTerm*rightScrollBar:       true
+
+UXTerm*scrollBar:			true
+UXTerm*utf8:				true
+UXTerm*faceName:			JuliaMono
+UXTerm*faceSize:			11
+UXTerm*selectToClipboard:	true
+UXTerm*rightScrollBar:		true
 
 xfce4-appfinder.geometry:   +312+340
 

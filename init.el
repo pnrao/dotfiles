@@ -51,7 +51,7 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(ansi-term-color-vector
-   [unspecified "#343d46" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#81a2be" "#dfe1e8"])
+   [unspecified "#343d46" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#81a2be" "#dfe1e8"] t)
  '(blink-cursor-mode nil)
  '(c-basic-offset 4)
  '(c-default-style
@@ -68,7 +68,7 @@
  '(doc-view-continuous t)
  '(oz-indent-chars 4)
  '(package-selected-packages
-   '(lsp-julia lsp-ui pov-mode yaml-mode pkgbuild-mode julia-mode company-lean lean-mode prolog forth-mode nlinum markdown-mode company))
+   '(ein lsp-julia lsp-ui pov-mode yaml-mode pkgbuild-mode company-lean lean-mode prolog forth-mode nlinum markdown-mode))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(scroll-step 1)

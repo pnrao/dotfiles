@@ -7,7 +7,7 @@ ln -s $thisdir/aliases ~/.aliases
 ln -s $thisdir/bashrc ~/.bashrc
 ln -s $thisdir/conkyrc ~/.conkyrc
 mkdir -p ~/.emacs.d
-ln -s $thisdir/init.el ~/.emacs.d/init.el
+ln -s $thisdir/init.el ~/.config/emacs/init.el
 ln -s $thisdir/profile ~/.profile
 ln -s $thisdir/profile ~/.zprofile
 ln -s $thisdir/pystartup ~/.pystartup
