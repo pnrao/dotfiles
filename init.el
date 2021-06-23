@@ -6,6 +6,7 @@
 ;; Don't use messages that you don't read
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
+(set-scroll-bar-mode 'right)
 
 ;; You need to set `inhibit-startup-echo-area-message' from the
 ;; customization interface:
@@ -68,7 +69,7 @@
  '(doc-view-continuous t)
  '(oz-indent-chars 4)
  '(package-selected-packages
-   '(ein lsp-julia lsp-ui pov-mode yaml-mode pkgbuild-mode company-lean lean-mode prolog forth-mode nlinum markdown-mode))
+   '(slime ein lsp-julia lsp-ui pov-mode yaml-mode pkgbuild-mode company-lean lean-mode prolog nlinum markdown-mode))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(scroll-step 1)
@@ -96,7 +97,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:slant normal :weight normal :height 113 :width normal :family "JuliaMono" :foundry "UKWN"))))
+ '(default ((t (:slant normal :weight normal :height 88 :width normal :family "Rec Mono Linear" :foundry "ARRW"))))
  '(bold-italic ((t (:slant oblique :weight bold))))
  '(font-lock-comment-face ((t (:foreground "dark gray"))))
  '(font-lock-doc-face ((t (:foreground "tan"))))

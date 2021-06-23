@@ -37,7 +37,7 @@
 				  'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Simple-color</name>
+    <name>Lean</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
 	  available characters are NDSLIMC, each can occur at most once.
@@ -49,11 +49,11 @@
 	  S: shade (roll up/down)
 	  D: omnipresent (on all desktops).
   -->
-    <keepBorder>yes</keepBorder>
+    <keepBorder>no</keepBorder>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
-      <name>Ubuntu Medium</name>
-      <size>8</size>
+      <name>Ubuntu</name>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -61,8 +61,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>Ubuntu Medium</name>
-      <size>8</size>
+      <name>Ubuntu</name>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -71,7 +71,7 @@
     </font>
     <font place="MenuHeader">
       <name>Ubuntu</name>
-      <size>8</size>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -80,7 +80,7 @@
     </font>
     <font place="MenuItem">
       <name>Ubuntu</name>
-      <size>8</size>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -89,7 +89,7 @@
     </font>
     <font place="ActiveOnScreenDisplay">
       <name>Ubuntu</name>
-      <size>8</size>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -98,7 +98,7 @@
     </font>
     <font place="InactiveOnScreenDisplay">
       <name>Ubuntu</name>
-      <size>8</size>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -115,7 +115,7 @@
 
 	   use obconf if you want to change these without having to log out
 	   and back in -->
-    <number>4</number>
+    <number>3</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>1</name>
@@ -787,16 +787,16 @@
 	<maximized>true</maximized># 'Horizontal', 'Vertical' or boolean (yes/no)
   </application># end of the example
 -->
-    <application class="firefox" role="browser">
+    <application class="firefox" role="Toplevel">
       <decor>no</decor>
     </application>
-    <application class="firefoxdeveloperedition" role="browser">
+    <application class="firefoxdeveloperedition" role="Toplevel">
       <decor>no</decor>
     </application>
     <application class="Min" role="browser-window">
       <decor>no</decor>
     </application>
-    <application class="Falkon Browser">
+    <application class="Falkon">
       <decor>no</decor>
     </application>
     <application class="Tor Browser" role="browser">

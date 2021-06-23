@@ -35,6 +35,7 @@ zstyle ':vcs_info:(svn|git|hg):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git svn hg
 
 autoload -U colors && colors
+autoload zmv
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_STYLES[globbing]=fg=magenta
@@ -98,4 +99,3 @@ TIMEFMT="%J
 
 stty -ixon -ixoff
 fortune
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

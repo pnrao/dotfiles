@@ -4,96 +4,20 @@ Xft.hintstyle:				hintslight
 Xft.hinting:				1
 Xft.antialias:				1
 Xft.rgba:					rgb
-
-URxvt.depth:                32
-URxvt.termName:             rxvt-256color
-!URxvt.termName:            rxvt-unicode
-URxvt.scrollBar_right:      True
-URxvt.scrollTtyOutput:      false
-URxvt.scrollTtyKeypress:    true
-URxvt.iconFile:             /usr/share/icons/breeze/apps/48/utilities-terminal.svg
-URxvt.iso14755:             False
-URxvt.iso14755_52:          False
-URxvt.loginShell:           True
-URxvt.perl-ext-common:      default,selection-autotransform,clipboard,matcher,vtwheel,font-size,new-window
-!,rand-bg
-URxvt.selection.pattern-0:  ([_0-9a-zA-Z-/.~]+)
-URxvt.clipboard.autocopy:   true
-!URxvt.selection.pattern-0: ([^\\]]+)
-URxvt.matcher.button:       1
-URxvt.saveLines:			10000
-URxvt.url-launcher:         xdg-open
-!URxvt.keysym.Home:          \033[1~
-!URxvt.keysym.End:           \033[4~
-!URxvt.keysym.KP_Home:       \033[1~
-!URxvt.keysym.KP_End:        \033[4~
-URxvt.keysym.C-M-f:         searchable-scrollback:start
-
-! font size stuff
-URxvt.keysym.C-Up:          perl:font-size:increase
-URxvt.keysym.C-Down:        perl:font-size:decrease
-!URxvt.keysym.C-S-Up:       perl:font-size:incglobal
-!URxvt.keysym.C-S-Down:     perl:font-size:decglobal
-URxvt.keysym.Control-Shift-N: perl:new-window
-
-!URxvt.font:				xft:DejaVu Sans Mono:pixelsize=13
-!URxvt.font:				xft:Ubuntu Mono:pixelsize=14
-!URxvt.font:				xft:Noto Mono:pixelsize=12
-!URxvt.font:				xft:Fira Mono:pixelsize=13
-!URxvt.font:				xft:Input Mono:pixelsize=12
-URxvt.font:					xft:Go Mono:pixelsize=13
-URxvt.letterSpace:          0
-
-URxvt.geometry:             93x26
-URxvt.background:           rgba:0000/0000/0000/ffff
-URxvt.foreground:           #e4e4e4
-URxvt.colorBD:              #80ffff
-URxvt.colorIT:              blue
-URxvt.colorUL:              green
-
-! Black
-URxvt.color0:               Black
-URxvt.color8:               grey50
-! Red
-URxvt.color1:               OrangeRed
-URxvt.color9:               #dc322f
-! Green
-URxvt.color2:               MediumSpringGreen
-URxvt.color10:              #859900
-! Yellow
-URxvt.color3:               gold
-URxvt.color11:              #b58900
-! Blue
-URxvt.color4:               RoyalBlue
-URxvt.color12:              #268bd2
-! Magenta
-URxvt.color5:               magenta2
-URxvt.color13:              #d33682
-! Cyan
-URxvt.color6:               turquoise2
-URxvt.color14:              #2aa198
-! White
-URxvt.color7:               grey80
-URxvt.color15:              White
+Xft.dpi:					132
 
 
-xscreensaver.Font:          xft:Ubuntu Mono:pixelsize=14
+!xscreensaver.Font:          xft:Ubuntu:pixelsize=14
 
 
 !XTerm*omitTranslation: wheel-mouse
 XTerm*scrollBar:            true
 XTerm*utf8:                 true
-XTerm*faceName:             Ubuntu Mono
-XTerm*faceSize:             13
+XTerm*faceName:             JuliaMono
+XTerm*faceSize:             9
 XTerm*selectToClipboard:    true
 XTerm*rightScrollBar:       true
 
-UXTerm*scrollBar:			true
-UXTerm*utf8:				true
-UXTerm*faceName:			JuliaMono
-UXTerm*faceSize:			11
-UXTerm*selectToClipboard:	true
-UXTerm*rightScrollBar:		true
 
 xfce4-appfinder.geometry:   +312+340
 
