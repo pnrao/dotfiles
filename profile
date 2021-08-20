@@ -31,10 +31,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export PYTHONSTARTUP=$HOME/.pystartup
 
-
-# for pacaur
-export AURDEST=/mnt/redsea/AUR
-
 export ANDROID_HOME=/opt/android-sdk
 
 export NODE_REPL_HISTORY_FILE=~/.node_history

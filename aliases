@@ -41,11 +41,12 @@ alias         d="kitty +kitten diff"
 # alias      ..="cd .." # not necessary in zsh
 alias       ...="cd ../.."
 alias      ....="cd ../../.."
-alias       aur="cd /mnt/redsea/AUR/"
+alias       aur="cd /mnt/baysea/AUR/"
 alias    shared="cd /run/media/prash/shared/"
 alias    redsea="cd /mnt/redsea/"
 alias    bluewest="cd /mnt/bluewest/"
 alias      fuji="cd /mnt/fuji320/"
+alias    baysea="cd /mnt/baysea/"
 alias     curat="cd /mnt/redsea/src/curator && . ./setEnvVars.sh"
 alias        pd="pushd"
 alias        vd="popd"
@@ -92,8 +93,8 @@ alias      yasi="yay -Si"
 alias      yass="yay -Ss"
 alias       yar="yay -Rns"
 alias       yan="yay -Sy && yay -Puw"
-alias       ygr="[ -d /mnt/redsea/var/cache/pacman/pkg ] && yay -Syu"
-yag()         { pushd /mnt/redsea/AUR/ && yay -G $1 && popd && cd /mnt/redsea/AUR/$1; }
+alias       ygr="[ -d /mnt/baysea/var/cache/pacman/pkg ] && yay -Syu"
+yag()         { pushd /mnt/baysea/AUR/ && yay -G $1 && popd && cd /mnt/baysea/AUR/$1; }
 
 alias     mkdir='mkdir -p'
 
