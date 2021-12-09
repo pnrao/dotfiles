@@ -18,7 +18,7 @@ unsetopt beep nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/prash/.zshrc'
+zstyle :compinstall filename '/mnt/baysea/home/prash/.zshrc'
 
 autoload -Uz compinit
 compinit

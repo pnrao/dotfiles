@@ -69,7 +69,7 @@
  '(doc-view-continuous t)
  '(oz-indent-chars 4)
  '(package-selected-packages
-   '(slime ein lsp-julia lsp-ui pov-mode yaml-mode pkgbuild-mode company-lean lean-mode prolog nlinum markdown-mode))
+   '(auctex slime ein lsp-julia lsp-ui pov-mode yaml-mode pkgbuild-mode company-lean lean-mode prolog nlinum markdown-mode))
  '(python-indent-guess-indent-offset t)
  '(rng-nxml-auto-validate-flag nil)
  '(scroll-step 1)

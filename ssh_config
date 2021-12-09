@@ -7,7 +7,7 @@ Host cluster-*.coli.uni-saarland.de forbin.coli.uni-saarland.de
 	IdentityFile ~/.ssh/id_rsa
 	Compression yes
 	ForwardX11 yes
-	ControlPath /home/prash/.ssh/tmp/%h_%p_%r
+	ControlPath /mnt/baysea/home/prash/.ssh/tmp/%h_%p_%r
 	ControlMaster auto
 	ProxyCommand ssh -X -q %r@login2.coli.uni-saarland.de -W %h:%p
 

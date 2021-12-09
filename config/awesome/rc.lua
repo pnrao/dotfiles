@@ -38,12 +38,12 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-theme_lua="/home/prash/.config/awesome/themes/prash/theme.lua"
+theme_lua="/mnt/baysea/home/prash/.config/awesome/themes/prash/theme.lua"
 beautiful.init(theme_lua)
 
 -- This is used later as the default terminal and editor to run.
 terminal = "konsole"
--- terminal = "urxvt -bg " .. awful.util.pread("/home/prash/bin/bgcolor")
+-- terminal = "urxvt -bg " .. awful.util.pread("/mnt/baysea/home/prash/bin/bgcolor")
 editor = "scite"
 editor_cmd = editor
 file_manager = "spacefm"
@@ -87,17 +87,17 @@ end
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor .. " " .. awesome.conffile .. " " .. theme_lua  .. " /home/prash/.xbindkeysrc " .. " /home/prash/bin/startup.sh "},
+   { "edit config", editor .. " " .. awesome.conffile .. " " .. theme_lua  .. " /mnt/baysea/home/prash/.xbindkeysrc " .. " /mnt/baysea/home/prash/bin/startup.sh "},
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-	{ "terminal", function () awful.util.spawn("urxvt -bg " .. awful.util.pread("/home/prash/bin/bgcolor")) end, "/usr/share/icons/MeliaeSVG/apps/48/utilities-terminal.svg" },
+	{ "terminal", function () awful.util.spawn("urxvt -bg " .. awful.util.pread("/mnt/baysea/home/prash/bin/bgcolor")) end, "/usr/share/icons/MeliaeSVG/apps/48/utilities-terminal.svg" },
 	{ "kvkbd", function () awful.util.spawn("kvkbd") end, "/usr/share/apps/kvkbd/pics/tray.png" },
 									{ "Applications", xdgmenu },
 									-- { "edit config", editor_cmd .. " " .. awesome.conffile, beautiful.awesome_icon },
-									{ "Exit", "/home/prash/bin/shutdown_dialog.sh", "/usr/share/icons/MeliaeSVG/stock/48/stock_exit.svg"}
+									{ "Exit", "/mnt/baysea/home/prash/bin/shutdown_dialog.sh", "/usr/share/icons/MeliaeSVG/stock/48/stock_exit.svg"}
 								 },
 						  theme = { width=160}
 						})
@@ -532,4 +532,4 @@ function run_once(prg,arg_string,pname,screen)
 	end
 end
 
-run_once("/home/prash/bin/startup.sh")
+run_once("/mnt/baysea/home/prash/bin/startup.sh")

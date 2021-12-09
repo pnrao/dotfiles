@@ -98,8 +98,8 @@ yag()         { pushd /mnt/baysea/AUR/ && yay -G $1 && popd && cd /mnt/baysea/AU
 
 alias     mkdir='mkdir -p'
 
-alias       yt='youtube-dl -o "%(title)s-%(id)s.%(ext)s" '
-alias       yti='youtube-dl --id '
+alias       yt='yt-dlp -o "%(title)s-%(id)s.%(ext)s" '
+alias       yti='yt-dlp --id '
 
 if [[ -n $ZSH_NAME ]]; then
 	# Suffixes
