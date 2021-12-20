@@ -1,8 +1,7 @@
-alias         l="/usr/bin/ls --color"
-alias         ls="/usr/bin/ls -sh --color"
-alias         ll="/usr/bin/ls -lh --color"
-alias         la="/usr/bin/ls -Alh --color"
-alias         l.="/usr/bin/ls -Alh --ignore=\* --color"
+alias          l="/usr/bin/exa -l --no-permissions --no-user --no-time -G"
+alias         ll="/usr/bin/exa -l --git"
+alias         la="/usr/bin/exa -la --git"
+alias         l.="/usr/bin/exa -lad .*"
 
 # alias       rm="rm -i"
 alias         mv="mv -i"
