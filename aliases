@@ -48,6 +48,7 @@ alias    baysea="cd /mnt/baysea/"
 alias        pd="pushd"
 alias        vd="popd"
 alias       src="cd /mnt/baysea/src"
+alias      tcas="cd ~/src/DEV/trunk/Stationary_TCAS"
 
 # HID
 alias lap-key-detach="xinput float 13"
