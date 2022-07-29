@@ -15,7 +15,7 @@ alias        agg="ag -g"
 
 alias        du="/usr/bin/du -h"
 alias        df="/usr/bin/df -hT"
-alias       cls='/usr/bin/clear; echo -ne \\033c'
+alias       cls='/usr/bin/clear; echo -ne \\033c && bgcolor'
 
 alias      diff="/usr/bin/diff --color"
 alias        eu="TERM=xterm-256color emacs -nw"
@@ -125,5 +125,5 @@ man() {
 	LESS_TERMCAP_so=$(printf '\e[01;44;33m') \
 	LESS_TERMCAP_ue=$(printf '\e[0m') \
 	LESS_TERMCAP_us=$(printf '\e[01;32m') \
-	command man "$@"
+	MANSECT="1,1p,l,8,3,3p,0,0p,2,5,4,9,6,7" command man "$@"
 }

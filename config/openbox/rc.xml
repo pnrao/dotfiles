@@ -35,6 +35,7 @@
 	   from 1, specifying a particular monitor.  Or it can be one of the
 	   following: 'Mouse' - where the mouse is, or
 				  'Active' - where the active window is -->
+    <center>yes</center>
   </placement>
   <theme>
     <name>Lean</name>
@@ -284,7 +285,7 @@
         <height>100%</height>
       </action>
     </keybind>
-    <keybind key="W-KP_1">
+    <keybind key="W-semicolon">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <x>0</x>
@@ -302,7 +303,7 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-KP_3">
+    <keybind key="W-apostrophe">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <x>50%</x>
@@ -329,7 +330,7 @@
         <height>100%</height>
       </action>
     </keybind>
-    <keybind key="W-KP_7">
+    <keybind key="W-bracketleft">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <x>0</x>
@@ -347,7 +348,7 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-KP_9">
+    <keybind key="W-bracketright">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <x>50%</x>
