@@ -97,7 +97,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:slant normal :weight normal :height 88 :width normal :family "Rec Mono Linear" :foundry "ARRW"))))
+ '(default ((t (:slant normal :weight normal :height 88 :width normal :family "JuliaMono" :foundry "UKWN"))))
  '(bold-italic ((t (:slant oblique :weight bold))))
  '(font-lock-comment-face ((t (:foreground "dark gray"))))
  '(font-lock-doc-face ((t (:foreground "tan"))))
@@ -168,3 +168,26 @@
   (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
   ;; Since we killed it, don't let caller do that.
   nil)
+
+
+(defadvice server-process-filter (before prefer-graphical activate)
+  ;; STRING is a sequence of commands sent from emacsclient to the server.
+  (when (and
+                ;; Check that we're editing a file, as opposed to evaluating elisp.
+                (string-match "-file" string)
+                ;; Check that there are no frames beyond the Emacs daemon's terminal.
+                (daemonp)
+                (null (cdr (frame-list)))
+                (eq (selected-frame) terminal-frame)
+                ;; Check that we have a graphical display.
+                ;; `display-graphic-p' doesn't work here.
+                (getenv "DISPLAY"))
+       (setq string (concat
+                                 ;; STRING must be all one line, but comes to us
+                                 ;; newline-terminated.  Strip off the trailing newline.
+                                 (replace-regexp-in-string "\n$" "" string)
+                                 ;; Add the commands to create a graphical frame.
+                                 "-window-system "
+                                 "-display " (getenv "DISPLAY")
+                                 ;; Add back the newline.
+                                 "\n"))))
