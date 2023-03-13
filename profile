@@ -17,7 +17,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 export GOPATH=$HOME/.local/go
 
-export PATH=$HOME/.local/bin:$HOME/bin:$PATH:$GOPATH/bin
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH:$GOPATH/bin:$HOME/node_modules/.bin
 
 export XKB_DEFAULT_MODEL=pc104
 
@@ -46,3 +46,5 @@ export IMDB_RENAME_DATA_DIR=~/.cache/imdb-rename
 # [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
 pgrep -u $(id -u) ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)
+
+export PATH="$HOME/.elan/bin:$PATH"

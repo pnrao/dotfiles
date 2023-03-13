@@ -37,3 +37,7 @@ Host 192.168.*.* 169.254.*.*
 	IdentityFile ~/.ssh/id_ed25519
 	Compression yes
 	ForwardX11 yes
+
+Host gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519_gitlab

@@ -18,7 +18,7 @@ ln -sf $thisdir/tmux.conf ~/.tmux.conf
 ln -sf $thisdir/awesome ~/.config/awesome
 mkdir -p ~/.ssh/tmp
 ln -sf $thisdir/ssh_config ~/.ssh/config
-gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o $thisdir/bin/bgcolor
+gcc -Wall -O3 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o $HOME/bin/bgcolor
 
 mkdir -p ~/.config/openbox
 ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
