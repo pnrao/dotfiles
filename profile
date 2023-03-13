@@ -2,6 +2,7 @@ if [ -z $DISPLAY ]; then
 	export EDITOR=emacs
 else
 	export EDITOR=subl
+	[ x"$XDG_CURRENT_DESKTOP" = x"KDE" ] || [ x"$XDG_CURRENT_DESKTOP" = x"GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 fi
 
 export LESS="-i -R"

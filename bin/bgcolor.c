@@ -65,8 +65,8 @@ int main(int argc, char* argv[]) {
 	fread(&v, 1, 1, f); v %= bright_range; v += bright_min;
 	fclose(f);
 	rgb = HsvToRgb(h, s, v);
-	char *term = getenv("TERM");
-	if (term && strcmp(term, "xterm-kitty") == 0) {
+	char *term = getenv("COLORTERM");
+	if (term && (strcmp(term, "truecolor") == 0 || strcmp(term, "24bit"))) {
 		printf("\x1b]11;#%06x\x1b\\", rgb);
 	}
 	if (argc>1 && strcmp(argv[1], "-v") == 0) {
