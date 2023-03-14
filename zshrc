@@ -13,7 +13,7 @@ zstyle ':completion:*' verbose true
 HISTFILE=~/.sh_history
 HISTSIZE=100000
 SAVEHIST=100000
-setopt appendhistory autocd extendedglob notify histreduceblanks prompt_subst Autopushd histignorespace histignoredups incappendhistory
+setopt appendhistory autocd extendedglob notify histreduceblanks prompt_subst Autopushd histignorespace histignoredups incappendhistory INTERACTIVE_COMMENTS
 unsetopt beep nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -37,8 +37,13 @@ zstyle ':vcs_info:*' enable git svn hg
 autoload -U colors && colors
 autoload zmv
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_STYLES[globbing]=fg=magenta
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=cyan'
+
+source /etc/zsh_command_not_found
 
 # Alias definitions.
 if [ -e ~/.aliases ]; then
