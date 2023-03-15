@@ -41,10 +41,6 @@ alias        ip="ip -c"
 alias        jl="julia"
 alias      icat="kitty +kitten icat"
 alias         d="kitty +kitten diff"
-if $(uname -a|grep "Ubuntu" >/dev/null )
-then
-alias       bat="/usr/bin/batcat"
-fi
 
 # CDs
 # alias      ..="cd .." # not necessary in zsh
@@ -149,4 +145,16 @@ man() {
 	LESS_TERMCAP_ue=$(printf '\e[0m') \
 	LESS_TERMCAP_us=$(printf '\e[01;32m') \
 	MANSECT="1,1p,l,8,3,3p,0,0p,2,5,4,9,6,7" command man "$@"
+}
+
+# ag wrapper that takes any number of words as arguments and searches for files that contain all of them
+# Mostly created by ChatGPT!
+function agn() {
+    words=("$@")  # get the words passed as arguments
+    ag_cmd="ag -l '${words[0]}'"  # start with the first word
+    for ((i=1; i<${#words[@]}; i++)); do
+        ag_cmd+=" | xargs ag -l '${words[i]}'"  # pipe results to the next word search
+    done
+    ag_cmd+=" | xargs ag '${words[*]// /|}'"  # search for lines that contain all words
+    eval "$ag_cmd"  # execute the command
 }
