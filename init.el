@@ -77,7 +77,6 @@
  '(tab-width 4)
  '(text-mode-hook '(turn-on-auto-fill text-mode-hook-identify))
  '(tool-bar-max-label-size 10)
- '(global-display-line-numbers-mode t)
  '(tool-bar-mode nil)
  '(tool-bar-style 'text)
  '(visible-bell nil))
@@ -174,43 +173,43 @@
 (defadvice server-process-filter (before prefer-graphical activate)
   ;; STRING is a sequence of commands sent from emacsclient to the server.
   (when (and
-                ;; Check that we're editing a file, as opposed to evaluating elisp.
-                (string-match "-file" string)
-                ;; Check that there are no frames beyond the Emacs daemon's terminal.
-                (daemonp)
-                (null (cdr (frame-list)))
-                (eq (selected-frame) terminal-frame)
-                ;; Check that we have a graphical display.
-                ;; `display-graphic-p' doesn't work here.
-                (getenv "DISPLAY"))
-       (setq string (concat
-                                 ;; STRING must be all one line, but comes to us
-                                 ;; newline-terminated.  Strip off the trailing newline.
-                                 (replace-regexp-in-string "\n$" "" string)
-                                 ;; Add the commands to create a graphical frame.
-                                 "-window-system "
-                                 "-display " (getenv "DISPLAY")
-                                 ;; Add back the newline.
-                                 "\n"))))
+				;; Check that we're editing a file, as opposed to evaluating elisp.
+				(string-match "-file" string)
+				;; Check that there are no frames beyond the Emacs daemon's terminal.
+				(daemonp)
+				(null (cdr (frame-list)))
+				(eq (selected-frame) terminal-frame)
+				;; Check that we have a graphical display.
+				;; `display-graphic-p' doesn't work here.
+				(getenv "DISPLAY"))
+	   (setq string (concat
+								 ;; STRING must be all one line, but comes to us
+								 ;; newline-terminated.  Strip off the trailing newline.
+								 (replace-regexp-in-string "\n$" "" string)
+								 ;; Add the commands to create a graphical frame.
+								 "-window-system "
+								 "-display " (getenv "DISPLAY")
+								 ;; Add back the newline.
+								 "\n"))))
 
 (defadvice server-process-filter (before prefer-graphical activate)
   ;; STRING is a sequence of commands sent from emacsclient to the server.
   (when (and
-     ;; Check that we're editing a file, as opposed to evaluating elisp.
-     (string-match "-file" string)
-     ;; Check that there are no frames beyond the Emacs daemon's terminal.
-     (daemonp)
-     (null (cdr (frame-list)))
-     (eq (selected-frame) terminal-frame)
-     ;; Check that we have a graphical display.
-     ;; `display-graphic-p' doesn't work here.
-     (getenv "DISPLAY"))
+	 ;; Check that we're editing a file, as opposed to evaluating elisp.
+	 (string-match "-file" string)
+	 ;; Check that there are no frames beyond the Emacs daemon's terminal.
+	 (daemonp)
+	 (null (cdr (frame-list)))
+	 (eq (selected-frame) terminal-frame)
+	 ;; Check that we have a graphical display.
+	 ;; `display-graphic-p' doesn't work here.
+	 (getenv "DISPLAY"))
   (setq string (concat
-          ;; STRING must be all one line, but comes to us
-          ;; newline-terminated.  Strip off the trailing newline.
-          (replace-regexp-in-string "\n$" "" string)
-          ;; Add the commands to create a graphical frame.
-          "-window-system "
-          "-display " (getenv "DISPLAY")
-          ;; Add back the newline.
-          "\n"))))
+		  ;; STRING must be all one line, but comes to us
+		  ;; newline-terminated.  Strip off the trailing newline.
+		  (replace-regexp-in-string "\n$" "" string)
+		  ;; Add the commands to create a graphical frame.
+		  "-window-system "
+		  "-display " (getenv "DISPLAY")
+		  ;; Add back the newline.
+		  "\n"))))

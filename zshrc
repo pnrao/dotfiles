@@ -24,7 +24,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-if [[ $TERM=="xterm-kitty" ]] ; then
+if [ $TERM="xterm-kitty" ] ; then
 	kitty + complete setup zsh | source /dev/stdin
 fi
 
