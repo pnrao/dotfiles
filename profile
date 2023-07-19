@@ -49,3 +49,21 @@ export IMDB_RENAME_DATA_DIR=~/.cache/imdb-rename
 pgrep -u $(id -u) ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)
 
 export PATH="$HOME/.elan/bin:$PATH"
+
+export GUIX_PROFILE="$HOME/.config/guix/current"
+export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/pnrao/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/pnrao/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

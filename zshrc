@@ -104,3 +104,12 @@ TIMEFMT="%J
 
 stty -ixon -ixoff
 fortune
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/pnrao/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

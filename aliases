@@ -56,8 +56,9 @@ alias        pd="pushd"
 alias        vd="popd"
 
 alias     stcas="cd ~/src/stcas/trunk/Stationary_TCAS"
+alias   stcasro="cd ~/src/stcasro"
 alias     ltcas="cd ~/src/ltcas/trunk/Loco_TCAS"
-alias   ltcasro="cd ~/src/ltcas-ro/trunk/Loco_TCAS"
+alias   ltcasro="cd ~/src/ltcasro"
 if $(uname -a|grep "Ubuntu" >/dev/null )
 then
 alias        g9='[[ ":$PATH:" == *$HOME/gcc-9:* ]] || PATH="$HOME/gcc-9:$PATH"'
