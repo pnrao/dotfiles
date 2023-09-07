@@ -48,7 +48,7 @@ export IMDB_RENAME_DATA_DIR=~/.cache/imdb-rename
 
 pgrep -u $(id -u) ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)
 
-export PATH="$HOME/.elan/bin:$PATH"
+export PATH="$PATH:$HOME/.elan/bin"
 
 export GUIX_PROFILE="$HOME/.config/guix/current"
 export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
@@ -67,3 +67,6 @@ case ":$PATH:" in
 esac
 
 # <<< juliaup initialize <<<
+
+
+export PATH="$PATH:~/opt/ghidra/"

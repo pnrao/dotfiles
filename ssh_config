@@ -33,7 +33,12 @@ Host aur.archlinux.org
 	IdentityFile ~/.ssh/id_ed25519-aur
 	User aur
 
-Host 192.168.*.* 169.254.*.*
+#Host 192.168.10.*
+#	IdentityFile ~/.ssh/id_rsa
+#	Compression yes
+#	ForwardX11 yes
+
+Host 192.168.1.* 169.254.*.*
 	IdentityFile ~/.ssh/id_ed25519
 	Compression yes
 	ForwardX11 yes
@@ -41,3 +46,31 @@ Host 192.168.*.* 169.254.*.*
 Host gitlab.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_ed25519_gitlab
+
+# Host 192.168.10.105
+#	User user1
+#	Compression yes
+#	ForwardX11 yes
+
+ Host 192.168.11.179
+	User user1
+	Compression yes
+	ForwardX11 yes
+	#ProxyCommand ssh -X -q -W %h:%p 192.168.10.105 # enable when connecting over VPN
+
+Host 192.168.30.254
+	#User root
+	Compression yes
+	ForwardX11 yes
+	ControlPath ~/.ssh/tmp/%h_%p_%r
+	ControlMaster auto
+	#ProxyCommand ssh -X -q user1@192.168.10.105 -W %h:%p # BLR STCAS
+	ProxyCommand ssh -X -q user1@192.168.11.179 -W %h:%p # Mohali STCAS
+
+Host 10.0.*.*
+	User root
+	Compression yes
+	ForwardX11 yes
+	ControlPath ~/.ssh/tmp/%h_%p_%r
+	ControlMaster auto
+	ProxyCommand ssh -X -q root@192.168.30.254 -W %h:%p
