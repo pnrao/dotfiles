@@ -47,30 +47,11 @@ Host gitlab.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_ed25519_gitlab
 
-# Host 192.168.10.105
-#	User user1
-#	Compression yes
-#	ForwardX11 yes
-
- Host 192.168.11.179
-	User user1
+Host 49.207.12.100
 	Compression yes
-	ForwardX11 yes
-	#ProxyCommand ssh -X -q -W %h:%p 192.168.10.105 # enable when connecting over VPN
-
-Host 192.168.30.254
-	#User root
-	Compression yes
-	ForwardX11 yes
-	ControlPath ~/.ssh/tmp/%h_%p_%r
 	ControlMaster auto
-	#ProxyCommand ssh -X -q user1@192.168.10.105 -W %h:%p # BLR STCAS
-	ProxyCommand ssh -X -q user1@192.168.11.179 -W %h:%p # Mohali STCAS
-
-Host 10.0.*.*
-	User root
-	Compression yes
-	ForwardX11 yes
 	ControlPath ~/.ssh/tmp/%h_%p_%r
-	ControlMaster auto
-	ProxyCommand ssh -X -q root@192.168.30.254 -W %h:%p
+	ForwardX11 yes
+	IdentityFile ~/.ssh/id_rsa-sanajet
+	Port 4422
+	User pnr

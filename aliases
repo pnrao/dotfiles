@@ -13,6 +13,7 @@ alias      sudo="sudo "
 alias       grep="grep --color -P"
 alias         ag="ag --silent"
 alias        agg="ag -g"
+alias         rg="rg --no-messages"
 
 alias        du="/usr/bin/du -h"
 alias        df="/usr/bin/df -hT"
@@ -26,8 +27,6 @@ alias         s=subl
 
 alias     uhtop="htop -u $USER"
 #alias       nc="nc.openbsd"
-alias      pess="pygmentize -g $1|less"
-alias       pat="pygmentize -g $1"
 alias      hman="man -H"
 alias         f="find"
 alias       fdg="fd -g"
@@ -51,16 +50,6 @@ alias      fuji="cd /mnt/fuji320/"
 alias    baysea="cd /mnt/baysea/"
 alias        pd="pushd"
 alias        vd="popd"
-
-alias     stcas="cd ~/src/stcas/trunk/Stationary_TCAS"
-alias   stcasro="cd ~/src/stcasro"
-alias     ltcas="cd ~/src/ltcas/trunk/Loco_TCAS"
-alias   ltcasro="cd ~/src/ltcasro"
-if $(uname -a|grep "Ubuntu" >/dev/null )
-then
-    alias        g9='[[ ":$PATH:" == *$HOME/gcc-9:* ]] || PATH="$HOME/gcc-9:$PATH"'
-    alias        g?="gcc --version"
-fi
 
 # HID
 alias lap-key-detach="xinput float 13"

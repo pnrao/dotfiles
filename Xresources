@@ -18,6 +18,12 @@ XTerm*faceSize:             13
 XTerm*selectToClipboard:    true
 XTerm*rightScrollBar:       true
 
+UXTerm*scrollBar:            true
+UXTerm*utf8:                 true
+UXTerm*faceName:             JuliaMono
+UXTerm*faceSize:             13
+UXTerm*selectToClipboard:    true
+UXTerm*rightScrollBar:       true
 
 xfce4-appfinder.geometry:   +312+340
 
