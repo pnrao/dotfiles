@@ -1,7 +1,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+zmodload zsh/datetime
+start=$EPOCHREALTIME
+typeset -g TIMEZSHRC=0
 
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 bgcolor
+export ZSH_COMPDUMP="/tmp/${USER}.zcompdump"
 # Lines configured by zsh-newuser-install
 zstyle ':completion:*' completer _oldlist _expand _complete _ignored _approximate _prefix
 zstyle ':completion:*' list-colors ''
@@ -17,16 +22,27 @@ setopt appendhistory autocd extendedglob notify histreduceblanks prompt_subst Au
 unsetopt beep nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/mnt/baysea/home/prash/.zshrc'
 
-autoload -Uz compinit
-compinit
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
+# The following lines were added by compinstall
+
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
+# initialise completions with ZSH's compinit
+autoload -Uz compinit 
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
+compinit -d $ZSH_COMPDUMP
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
+
 # End of lines added by compinstall
 
-if [ $TERM="xterm-kitty" ] ; then
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
+if [ $TERM = "xterm-kitty" ] ; then
 	kitty + complete setup zsh | source /dev/stdin
+	echo Finished kitty setup
 fi
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*'   actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
@@ -48,10 +64,6 @@ source /etc/zsh_command_not_found
 # Alias definitions.
 if [ -e ~/.aliases ]; then
 	. ~/.aliases
-fi
-
-if [ -e ~/.private-aliases ]; then
-	. ~/.private-aliases
 fi
 
 precmd () { vcs_info }
@@ -115,3 +127,7 @@ path=('/home/pnrao/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+
+export PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Total load time"
+true
