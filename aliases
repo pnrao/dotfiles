@@ -17,6 +17,7 @@ alias         rg="rg --no-messages"
 
 alias        du="/usr/bin/du -h"
 alias        df="/usr/bin/df -hT"
+alias        dy="dysk"
 alias       cls='/usr/bin/clear; echo -ne \\033c && bgcolor'
 
 alias      diff="/usr/bin/diff --color"
