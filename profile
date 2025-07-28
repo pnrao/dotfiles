@@ -70,3 +70,7 @@ esac
 
 
 export PATH="$PATH:~/opt/ghidra/"
+
+export PATH="$HOME/.elan/bin:$PATH"
+
+export PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"

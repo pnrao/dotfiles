@@ -23,16 +23,13 @@ unsetopt beep nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-# append completions to fpath
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-
 # The following lines were added by compinstall
 
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 # initialise completions with ZSH's compinit
-autoload -Uz compinit 
+autoload -Uz compinit
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
-compinit -d $ZSH_COMPDUMP
+compinit -C -d $ZSH_COMPDUMP
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 # End of lines added by compinstall
@@ -40,7 +37,6 @@ compinit -d $ZSH_COMPDUMP
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 if [ $TERM = "xterm-kitty" ] ; then
 	kitty + complete setup zsh | source /dev/stdin
-	echo Finished kitty setup
 fi
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
@@ -53,17 +49,21 @@ zstyle ':vcs_info:*' enable git svn hg
 autoload -U colors && colors
 autoload zmv
 
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=cyan'
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 source /etc/zsh_command_not_found
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 # Alias definitions.
 if [ -e ~/.aliases ]; then
 	. ~/.aliases
+	(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 fi
 
 precmd () { vcs_info }
@@ -98,6 +98,7 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" history-beginning-search-forward
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
@@ -111,13 +112,16 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 	zle -N zle-line-init
 	zle -N zle-line-finish
 fi
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 TIMEFMT="%J
 %U user, %S system, %P cpu, %*E total
 %XKB avg. code, %DKB avg. data, %KKB avg. both, %MKB peak, %F disk swaps"
 
 stty -ixon -ixoff
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 fortune
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 # >>> juliaup initialize >>>
 
@@ -127,7 +131,16 @@ path=('/home/pnrao/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
-export PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
+# Load uv and uvx completions in the background after startup
+{
+  eval "$(uv generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
+} &!
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Total load time"
-true
+true # start with a clean exit status
