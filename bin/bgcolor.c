@@ -66,16 +66,20 @@ void RgbToStr(uint32_t rgb, char rgbs[], int len) {
 	snprintf(rgbs, len, "rgb:%02x/%02x/%02x", r, g, b);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	const uint8_t bright_range = 0x20; // range for brightness
 	const uint8_t bright_min = 0x20;
 	uint8_t hsv[3];
-	getrandom(hsv, sizeof(hsv), GRND_NONBLOCK);
+	ssize_t err __attribute__((unused)) =
+	    getrandom(hsv, sizeof(hsv), GRND_NONBLOCK);
+
 	hsv[2] %= bright_range;
 	hsv[2] += bright_min;
 	uint32_t rgb = HsvToRgb(hsv[0], hsv[1], hsv[2]);
-	char *term = getenv("COLORTERM");
-	if (term && (strcmp(term, "truecolor") == 0 || strcmp(term, "24bit"))) {
+	const char *term = getenv("COLORTERM");
+	const char *term_prog = getenv("TERM_PROGRAM");
+	if (term && (strcmp(term, "truecolor") == 0 || strcmp(term, "24bit")) &&
+	    (term_prog == NULL || strcmp(term_prog, "vscode") != 0)) {
 		printf("\x1b]11;#%06x\x1b\\", rgb);
 	}
 	if (argc > 1 && strcmp(argv[1], "-v") == 0) {
