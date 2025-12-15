@@ -1,8 +1,10 @@
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/random.h>
+#include <unistd.h>
 
 uint32_t HsvToRgb(uint8_t h, uint8_t s, uint8_t v) {
 	uint8_t r, g, b;
@@ -66,7 +68,11 @@ void RgbToStr(uint32_t rgb, char rgbs[], int len) {
 	snprintf(rgbs, len, "rgb:%02x/%02x/%02x", r, g, b);
 }
 
-int main(int argc, const char *argv[]) {
+int main(int argc, char *const argv[]) {
+	bool verbose = false;
+	bool force = false;
+	int opt;
+
 	const uint8_t bright_range = 0x20; // range for brightness
 	const uint8_t bright_min = 0x20;
 	uint8_t hsv[3];
@@ -76,13 +82,27 @@ int main(int argc, const char *argv[]) {
 	hsv[2] %= bright_range;
 	hsv[2] += bright_min;
 	uint32_t rgb = HsvToRgb(hsv[0], hsv[1], hsv[2]);
+
+	while ((opt = getopt(argc, argv, "vf")) != -1) {
+		switch (opt) {
+		case 'v':
+			verbose = true;
+			break;
+		case 'f':
+			force = true;
+			break;
+		}
+	}
+
 	const char *term = getenv("COLORTERM");
 	const char *term_prog = getenv("TERM_PROGRAM");
-	if (term && (strcmp(term, "truecolor") == 0 || strcmp(term, "24bit")) &&
-	    (term_prog == NULL || strcmp(term_prog, "vscode") != 0)) {
+	if (force ||
+	    (term && (strcmp(term, "truecolor") == 0 || strcmp(term, "24bit")) &&
+	     (term_prog == NULL || strcmp(term_prog, "vscode") != 0))) {
 		printf("\x1b]11;#%06x\x1b\\", rgb);
 	}
-	if (argc > 1 && strcmp(argv[1], "-v") == 0) {
+
+	if (verbose) {
 		// for terminals that don't support ANSI code to set background
 		char buf[14];
 		RgbToStr(rgb, buf, sizeof(buf));
