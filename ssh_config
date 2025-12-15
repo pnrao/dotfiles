@@ -55,3 +55,8 @@ Host 49.207.12.100
 	IdentityFile ~/.ssh/id_rsa-sanajet
 	Port 4422
 	User pnr
+
+
+Host *sr.ht
+  IdentityFile ~/.ssh/id_rsa
+  PreferredAuthentications publickey

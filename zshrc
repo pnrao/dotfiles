@@ -123,24 +123,20 @@ stty -ixon -ixoff
 fortune
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
-# >>> juliaup initialize >>>
 
-# !! Contents within this block are managed by juliaup !!
-
-path=('/home/pnrao/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 
 # append completions to fpath
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
-# Load uv and uvx completions in the background after startup
-{
+
+# { # Load additional completions in the background after startup
   eval "$(uv generate-shell-completion zsh)"
   eval "$(uvx --generate-shell-completion zsh)"
-} &!
+# } &!
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Total load time"
 true # start with a clean exit status

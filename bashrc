@@ -22,20 +22,7 @@ fi
 fortune
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
-# >>> juliaup initialize >>>
 
-# !! Contents within this block are managed by juliaup !!
-
-case ":$PATH:" in
-    *:/home/pnrao/.juliaup/bin:*)
-        ;;
-
-    *)
-        export PATH=/home/pnrao/.juliaup/bin${PATH:+:${PATH}}
-        ;;
-esac
-
-# <<< juliaup initialize <<<
 
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"

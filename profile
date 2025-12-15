@@ -32,9 +32,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export PYTHONSTARTUP=$HOME/.pystartup
 
-export ANDROID_HOME=/opt/android-sdk
+export ANDROID_HOME=/opt/android
 
 export NODE_REPL_HISTORY_FILE=~/.node_history
+
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 export WLC_REPEAT_DELAY=250
 
@@ -48,25 +50,15 @@ export IMDB_RENAME_DATA_DIR=~/.cache/imdb-rename
 
 pgrep -u $(id -u) ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)
 
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$HOME/.elan/bin"
+export PATH="$PATH:$HOME/src/flutter/bin"
+export CHROME_EXECUTABLE="/usr/bin/brave-browser"
 
 export GUIX_PROFILE="$HOME/.config/guix/current"
 export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
 
-# >>> juliaup initialize >>>
 
-# !! Contents within this block are managed by juliaup !!
-
-case ":$PATH:" in
-    *:/home/pnrao/.juliaup/bin:*)
-        ;;
-
-    *)
-        export PATH=/home/pnrao/.juliaup/bin${PATH:+:${PATH}}
-        ;;
-esac
-
-# <<< juliaup initialize <<<
 
 
 export PATH="$PATH:~/opt/ghidra/"

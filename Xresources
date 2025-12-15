@@ -29,3 +29,6 @@ xfce4-appfinder.geometry:   +312+340
 
 
 HyperDoc.Font:				xft:Ubuntu Mono:pixelsize=14
+
+Xcursor.theme: DMZ-White
+Xcursor.size: 21
