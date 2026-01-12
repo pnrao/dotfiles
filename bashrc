@@ -12,6 +12,10 @@ if [ -f ~/.aliases ]; then
 	. ~/.aliases
 fi
 
+if [ -f ~/private-exports ]; then
+	. ~/private-exports
+fi
+
 export PS1="[\[\033[1;32m\]\$? \[\033[1;34m\]\u@\h\[\033[1;31m\] \w\[\033[0m\]]
 \\$ "
 

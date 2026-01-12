@@ -66,6 +66,10 @@ if [ -e ~/.aliases ]; then
 	(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 fi
 
+if [ -f ~/private-exports ]; then
+	. ~/private-exports
+fi
+
 precmd () { vcs_info }
 prompt='[%{$fg_bold[green]%}%? %{$fg_bold[blue]%}%n@%m %{$fg_bold[red]%}%~%{$fg_no_bold[default]%}${vcs_info_msg_0_}]
 %# '
