@@ -4,15 +4,13 @@ thisdir=$0:a:h
 ln -sf $thisdir/Xresources ~/.Xresources
 ln -sf $thisdir/aliases ~/.aliases
 ln -sf $thisdir/bashrc ~/.bashrc
-ln -sf $thisdir/conkyrc ~/.conkyrc
 mkdir -p ~/.emacs.d
 ln -sf $thisdir/init.el ~/.config/emacs/init.el
 ln -sf $thisdir/init.el ~/.emacs
-ln -sf $thisdir/profile ~/.profile
+ln -sf $thisdir/profile ~/.bash_profile
 ln -sf $thisdir/profile ~/.zprofile
 ln -sf $thisdir/pystartup ~/.pystartup
 ln -sf $thisdir/vimrc ~/.vimrc
-ln -sf $thisdir/xbindkeysrc ~/.xbindkeysrc
 ln -sf $thisdir/zshrc ~/.zshrc
 ln -sf $thisdir/tmux.conf ~/.tmux.conf
 mkdir -p ~/.ssh/tmp
@@ -21,6 +19,3 @@ gcc -Wall -Wextra -O3 -std=gnu23 -fdata-sections -ffunction-sections -Wl,--gc-se
 
 mkdir -p ~/.config/openbox
 ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
-
-mkdir -p ~/.config/sway
-ln -sf $thisdir/config/sway/config ~/.config/sway/config

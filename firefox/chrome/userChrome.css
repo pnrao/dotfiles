@@ -1,4 +1,0 @@
-.tabbrowser-arrowscrollbox > .arrowscrollbox-scrollbox {
-    /* Place bindings.xml in the same folder as userChrome.css */
-    -moz-binding: url("bindings.xml#tabs-scroll") !important;
-}
