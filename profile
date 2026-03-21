@@ -16,9 +16,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'
 
 export XDG_CONFIG_HOME=$HOME/.config
 
-export GOPATH=$HOME/.local/go
-
-export PATH=$HOME/.local/bin:$HOME/bin:$PATH:$GOPATH/bin:$HOME/node_modules/.bin
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH:$HOME/node_modules/.bin:$HOME/.cache/.bun/bin
 
 export XKB_DEFAULT_MODEL=pc104
 
@@ -57,12 +55,5 @@ export CHROME_EXECUTABLE="/usr/bin/brave-browser"
 
 export GUIX_PROFILE="$HOME/.config/guix/current"
 export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
-
-
-
-
-export PATH="$PATH:~/opt/ghidra/"
-
-export PATH="$HOME/.elan/bin:$PATH"
 
 export PATH="$PATH:${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
