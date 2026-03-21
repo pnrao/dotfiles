@@ -1,3 +1,0 @@
-#! /bin/zsh
-cd /sys/devices/virtual/thermal/
-for i in cooling_device<0-15>;do; echo -n 0 > $i/cur_state; done
