@@ -1,7 +1,8 @@
 if [ -z $DISPLAY ]; then
 	export EDITOR=emacs
 else
-	export EDITOR=subl
+	export EDITOR=emacs
+	export VISUAL=subl
 fi
 
 export LESS="-i -R"
@@ -14,6 +15,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[1;32m'
 
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
 
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH:$HOME/node_modules/.bin:$HOME/.cache/.bun/bin
 
