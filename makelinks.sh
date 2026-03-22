@@ -19,3 +19,6 @@ gcc -Wall -Wextra -O3 -std=gnu23 -fdata-sections -ffunction-sections -Wl,--gc-se
 
 mkdir -p ~/.config/openbox
 ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
+
+ln -sf $thisdir/config/wezterm ~/.config/wezterm
+ln -sf $thisdir/config/labwc ~/.config/labwc

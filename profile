@@ -2,7 +2,6 @@ if [ -z $DISPLAY ]; then
 	export EDITOR=emacs
 else
 	export EDITOR=subl
-	[ x"$XDG_CURRENT_DESKTOP" = x"KDE" ] || [ x"$XDG_CURRENT_DESKTOP" = x"GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 fi
 
 export LESS="-i -R"
@@ -36,15 +35,9 @@ export NODE_REPL_HISTORY_FILE=~/.node_history
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export WLC_REPEAT_DELAY=250
-
-export WLC_REPEAT_RATE=30
-
 export WINEDEBUG=-all
 
 export IMDB_RENAME_DATA_DIR=~/.cache/imdb-rename
-
-# [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
 pgrep -u $(id -u) ssh-agent > /dev/null || (eval $(ssh-agent) && ssh-add)
 

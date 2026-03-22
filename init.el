@@ -1,6 +1,4 @@
 (setq inhibit-splash-screen t)
-;; (setq ring-bell-function 'ignore)
-(setq visible-bell 1)
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)
 ;; Don't use messages that you don't read
@@ -34,8 +32,6 @@
 
 ;;(if (window-system)
 ;;    (set-frame-height (selected-frame) 30))
-(setq nlinum-format "%d║")
-;;(global-nlinum-mode t)
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
@@ -115,38 +111,10 @@
  '(trailing-whitespace ((t (:background "gray")))))
 
 
-(autoload 'python-mode "python-mode.el" "Python mode." t)
-(setq auto-mode-alist (append '(("/.*\.py\'" . python-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '(("/*.\.py2$" . python-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '(("/*.\.jpy$" . python-mode)) auto-mode-alist))
-
-(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-
-(setq auto-mode-alist (append '(("/*.\.tex$" . context-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '(("/*.\.context$" . context-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '(("\.py2$" . python-mode) ("\.jpy$" . python-mode)) auto-mode-alist))
 
 ;; Shell script mode for Arch PKGBUILDs
 (setq auto-mode-alist (cons '("\\PKGBUILD$" . sh-mode) auto-mode-alist))
-
-;; (require 'mercury)
-;;(add-hook 'prolog-mode-hook 'merc-maybe-minor)
-;;(push '("\\.m$" . mercury-mode)
-;;     auto-mode-alist)
-;;(setq auto-mode-alist (append '(("/*.\.m$" . prolog-mode)) auto-mode-alist))
-
-;;(autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
-;;(autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
-;;(autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
-;;(setq prolog-system 'swi)
-;;(setq auto-mode-alist (append '(("\.pl$" . prolog-mode)
-;;								("\.m$" . mercury-mode))
-;;							  auto-mode-alist))
-;;
-;;(add-to-list 'load-path "/usr/lib/mercury/elisp")
-;;(autoload 'mdb "gud" "Invoke the Mercury debugger" t)
-;; (require 'go-mode-load)
 
 ;; If the *scratch* buffer is killed, recreate it automatically
 ;; FROM: Morten Welind
@@ -183,35 +151,18 @@
 				(eq (selected-frame) terminal-frame)
 				;; Check that we have a graphical display.
 				;; `display-graphic-p' doesn't work here.
-				(getenv "DISPLAY"))
+				(or (getenv "DISPLAY") (getenv "WAYLAND_DISPLAY")))
 	   (setq string (concat
 								 ;; STRING must be all one line, but comes to us
 								 ;; newline-terminated.  Strip off the trailing newline.
 								 (replace-regexp-in-string "\n$" "" string)
 								 ;; Add the commands to create a graphical frame.
 								 "-window-system "
-								 "-display " (getenv "DISPLAY")
+								 ;; On X11, specify the display explicitly.
+								 ;; On Wayland, omit it — Emacs picks up WAYLAND_DISPLAY automatically.
+								 (if (getenv "DISPLAY")
+									 (concat "-display " (getenv "DISPLAY"))
+								   "")
 								 ;; Add back the newline.
 								 "\n"))))
 
-(defadvice server-process-filter (before prefer-graphical activate)
-  ;; STRING is a sequence of commands sent from emacsclient to the server.
-  (when (and
-	 ;; Check that we're editing a file, as opposed to evaluating elisp.
-	 (string-match "-file" string)
-	 ;; Check that there are no frames beyond the Emacs daemon's terminal.
-	 (daemonp)
-	 (null (cdr (frame-list)))
-	 (eq (selected-frame) terminal-frame)
-	 ;; Check that we have a graphical display.
-	 ;; `display-graphic-p' doesn't work here.
-	 (getenv "DISPLAY"))
-  (setq string (concat
-		  ;; STRING must be all one line, but comes to us
-		  ;; newline-terminated.  Strip off the trailing newline.
-		  (replace-regexp-in-string "\n$" "" string)
-		  ;; Add the commands to create a graphical frame.
-		  "-window-system "
-		  "-display " (getenv "DISPLAY")
-		  ;; Add back the newline.
-		  "\n"))))
