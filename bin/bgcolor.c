@@ -97,7 +97,7 @@ int main(int argc, char *const argv[]) {
 	const char *term = getenv("COLORTERM");
 	const char *term_prog = getenv("TERM_PROGRAM");
 	if (force ||
-	    (term && (strcmp(term, "truecolor") == 0 || strcmp(term, "24bit")) &&
+	    (term && (strcmp(term, "truecolor") == 0 || strcmp(term, "24bit") == 0) &&
 	     (term_prog == NULL || strcmp(term_prog, "vscode") != 0))) {
 		printf("\x1b]11;#%06x\x1b\\", rgb);
 	}
