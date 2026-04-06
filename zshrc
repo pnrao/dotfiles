@@ -140,7 +140,7 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
   eval "$(uvx --generate-shell-completion zsh)"
 # } &!
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Total load time"
 true # start with a clean exit status

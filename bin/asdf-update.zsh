@@ -46,5 +46,3 @@ for plugin in $plugins; do
         done
     fi
 done
-
-echo "Update complete."

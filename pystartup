@@ -1,44 +1,15 @@
-# Add auto-completion and a stored history file of commands to your Python
-# interactive interpreter. Requires Python 2.0+, readline. Autocomplete is
-# bound to the Esc key by default (you can change it - see readline docs).
-#
-# Store the file in ~/.pystartup, and set an environment variable to point
-# to it:  "export PYTHONSTARTUP=~/.pystartup" in bash.
-
-from __future__ import print_function
-# print("loading history")
-
-import atexit
-import os
-import readline
-import rlcompleter
 import pprint
 import sys
 
 orig_displayhook = sys.displayhook
 
-historyPath = os.path.expanduser("~/.pyhistory")
-readline.parse_and_bind('tab: complete')
-
-
-def save_history(historyPath=historyPath):
-    import readline
-    readline.write_history_file(historyPath)
-
-if os.path.exists(historyPath):
-    readline.read_history_file(historyPath)
-
-atexit.register(save_history)
-del os, atexit, readline, rlcompleter, save_history, historyPath
-
 def mdir(a=None):
-    try:
-        return [x+'()' if hasattr(getattr(a, x), '__call__') else x+'*' for x in dir(a)]
-    except:
-        return [x+'()' if hasattr(x, '__call__') else x+'*' for x in dir()]
+    if a is not None:
+        return [x + '()' if callable(getattr(a, x)) else x + '*' for x in dir(a)]
+    return [x + '()' if callable(x) else x + '*' for x in dir()]
 
 def myhook(value):
-    if value != None:
+    if value is not None:
         __builtins__._ = value
         pprint.pprint(value)
 
