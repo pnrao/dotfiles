@@ -7,7 +7,7 @@ exceptions=("protonge")
 # Makes Erlang build-install faster
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
 
-# Get list of installed plugins
+# asdf plugin update --all # slow
 plugins=($(asdf plugin list))
 
 for plugin in $plugins; do

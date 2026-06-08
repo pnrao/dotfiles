@@ -10,7 +10,6 @@ alias         cp="cp -i"
 # Enable sudo to work with alias commands
 alias      sudo="sudo "
 
-alias       grep="grep --color -P"
 alias         ag="ag --silent"
 alias        agg="ag -g"
 alias         rg="rg --no-messages"
@@ -146,4 +145,9 @@ function agn() {
     done
     ag_cmd+=" | xargs ag '${words[*]// /|}'"  # search for lines that contain all words
     eval "$ag_cmd"  # execute the command
+}
+
+# Markdown viewer using pandoc and w3m
+mdv() {
+    pandoc "$1" -t html | w3m -T text/html
 }

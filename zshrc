@@ -5,7 +5,11 @@ start=$EPOCHREALTIME
 typeset -g TIMEZSHRC=0
 
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
+if [[ "$COLORTERM" = "kmscon" ]]; then
+    export COLORTERM=truecolor
+fi
 bgcolor
+
 export ZSH_COMPDUMP="/tmp/${USER}.zcompdump"
 # Lines configured by zsh-newuser-install
 zstyle ':completion:*' completer _oldlist _expand _complete _ignored _approximate _prefix

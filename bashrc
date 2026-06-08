@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [[ "$COLORTERM" == "kmscon" ]]; then
+    export COLORTERM=truecolor
+fi
 bgcolor
 
 HISTFILE=~/.sh_history

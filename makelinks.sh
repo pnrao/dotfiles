@@ -22,3 +22,4 @@ ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
 
 ln -sf $thisdir/config/wezterm ~/.config/wezterm
 ln -sf $thisdir/config/labwc ~/.config/labwc
+ln -sf $thisdir/w3m_config ~/.w3m/config

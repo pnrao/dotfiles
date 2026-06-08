@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""Browse and filter the Ollama model library."""
+
+import argparse
+import re
+import subprocess
+import sys
+
+try:
+    import requests
+    from bs4 import BeautifulSoup
+    from rich.console import Console
+    from rich.table import Table
+    import rich.box
+except ImportError as e:
+    print(f"Missing dependency: {e}\nInstall with: pip install requests beautifulsoup4 rich")
+    sys.exit(1)
+
+LIBRARY_URL = "https://ollama.com/library"
+HEADERS = {"User-Agent": "Mozilla/5.0"}
+
+
+def get_installed():
+    """Returns {model_base: set_of_tags} from `ollama list`."""
+    try:
+        out = subprocess.check_output(["ollama", "list"], text=True, stderr=subprocess.DEVNULL)
+    except (subprocess.SubprocessError, FileNotFoundError):
+        return {}
+    result = {}
+    for line in out.splitlines()[1:]:
+        parts = line.split()
+        if not parts:
+            continue
+        base, _, tag = parts[0].rpartition(":")
+        if base:
+            result.setdefault(base, set()).add(tag.lower())
+    return result
+
+
+def parse_pulls(text):
+    m = re.match(r"([\d.]+)([KMBkmb]?)", text.strip())
+    if not m:
+        return 0.0
+    n = float(m.group(1))
+    return n * {"k": 1e3, "m": 1e6, "b": 1e9}.get(m.group(2).lower(), 1)
+
+
+def parse_size_b(s):
+    """'70b' -> 70.0, '405b' -> 405.0, '1.5b' -> 1.5"""
+    m = re.match(r"([\d.]+)([bBmM]?)", s.strip())
+    if not m:
+        return None
+    n = float(m.group(1))
+    return n / 1000 if m.group(2).lower() == "m" else n
+
+
+def fetch_models(query="", sort="popular"):
+    params = {k: v for k, v in {"q": query, "sort": sort}.items() if v}
+    resp = requests.get(LIBRARY_URL, params=params, headers=HEADERS, timeout=15)
+    resp.raise_for_status()
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    models = []
+
+    for li in soup.find_all("li", attrs={"x-test-model": True}):
+        title_el = li.find(attrs={"x-test-model-title": True})
+        name = title_el["title"] if title_el else ""
+
+        desc_el = li.find("p", class_=re.compile(r"break-words"))
+        description = desc_el.get_text(strip=True) if desc_el else ""
+
+        caps = [s.get_text(strip=True) for s in li.find_all(attrs={"x-test-capability": True})]
+        sizes = [s.get_text(strip=True) for s in li.find_all(attrs={"x-test-size": True})]
+
+        pull_el = li.find(attrs={"x-test-pull-count": True})
+        pulls_str = pull_el.get_text(strip=True) if pull_el else "0"
+
+        updated_el = li.find(attrs={"x-test-updated": True})
+        updated_rel = updated_el.get_text(strip=True) if updated_el else ""
+        updated_date = ""
+        if updated_el and updated_el.parent:
+            updated_date = updated_el.parent.get("title", "")
+
+        models.append({
+            "name": name,
+            "description": description,
+            "capabilities": caps,
+            "sizes": sizes,
+            "pulls": pulls_str,
+            "pulls_n": parse_pulls(pulls_str),
+            "updated": updated_rel,
+            "updated_date": updated_date,
+        })
+
+    return models
+
+
+def size_in_range(sizes, min_b, max_b):
+    nums = [parse_size_b(s) for s in sizes]
+    nums = [n for n in nums if n is not None]
+    if not nums:
+        return False
+    return any((min_b is None or n >= min_b) and (max_b is None or n <= max_b) for n in nums)
+
+
+def main():
+    ap = argparse.ArgumentParser(
+        description="Search and filter the Ollama model library.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+examples:
+  ollama-search
+  ollama-search -q llama --sort newest
+  ollama-search --min-size 7 --max-size 70
+  ollama-search --capability vision --limit 10
+  ollama-search -q mistral --no-desc
+""",
+    )
+    ap.add_argument("-q", "--query", default="", metavar="TEXT", help="search query")
+    ap.add_argument("--sort", choices=["popular", "newest"], default="popular")
+    ap.add_argument("--min-size", type=float, metavar="B", help="min parameter size in billions")
+    ap.add_argument("--max-size", type=float, metavar="B", help="max parameter size in billions")
+    ap.add_argument("--capability", metavar="CAP", help="filter by capability tag (e.g. tools, vision, code, embedding)")
+    ap.add_argument("--limit", type=int, default=30, metavar="N", help="max results to show (default: 30)")
+    ap.add_argument("--no-desc", action="store_true", help="hide description column")
+    args = ap.parse_args()
+
+    console = Console()
+
+    with console.status("[cyan]Fetching models…[/cyan]"):
+        try:
+            models = fetch_models(query=args.query, sort=args.sort)
+        except requests.RequestException as e:
+            console.print(f"[red]Request failed:[/red] {e}")
+            sys.exit(1)
+
+    if args.min_size is not None or args.max_size is not None:
+        models = [m for m in models if size_in_range(m["sizes"], args.min_size, args.max_size)]
+
+    if args.capability:
+        cap = args.capability.lower()
+        models = [m for m in models if any(cap in c.lower() for c in m["capabilities"])]
+
+    models = models[: args.limit]
+
+    if not models:
+        console.print("[yellow]No models matched.[/yellow]")
+        sys.exit(0)
+
+    installed = get_installed()
+    palette = ["bright_white", "bright_cyan"]
+
+    table = Table(box=rich.box.SIMPLE, header_style="bold cyan", pad_edge=False, show_edge=False)
+    table.add_column("Model", min_width=18, no_wrap=True)
+    if not args.no_desc:
+        table.add_column("Description")
+    table.add_column("Sizes", no_wrap=True)
+    table.add_column("Capabilities", style="magenta")
+    table.add_column("Pulls", justify="right", style="green")
+    table.add_column("Updated", style="dim")
+
+    for i, m in enumerate(models):
+        color = palette[i % 2]
+        local_tags = installed.get(m["name"], set())
+        sizes_str = " ".join(
+            f"[dark_red bold]{s}[/]" if s.lower() in local_tags else f"[cyan]{s}[/]"
+            for s in m["sizes"]
+        ) or "—"
+        row = [f"[bold {color}]{m['name']}[/]"]
+        if not args.no_desc:
+            row.append(f"[{color}]{m['description']}[/]")
+        row += [
+            sizes_str,
+            " ".join(m["capabilities"]) or "—",
+            m["pulls"],
+            m["updated"],
+        ]
+        table.add_row(*row)
+
+    console.print(table)
+    console.print(f"[dim]{len(models)} model(s)[/dim]")
+
+
+if __name__ == "__main__":
+    main()
