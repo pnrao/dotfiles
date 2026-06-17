@@ -4,11 +4,26 @@
 # Add plugin names to this array as needed
 exceptions=("protonge")
 
+# Plugins that take a long time to build — processed last so fast upgrades appear first
+slow_plugins=("erlang" "lean")
+
 # Makes Erlang build-install faster
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
 
 # asdf plugin update --all # slow
-plugins=($(asdf plugin list))
+all_plugins=($(asdf plugin list))
+
+# Reorder: fast plugins first, slow ones deferred to the end
+plugins=()
+deferred=()
+for plugin in $all_plugins; do
+    if [[ " ${slow_plugins[@]} " =~ " $plugin " ]]; then
+        deferred+=("$plugin")
+    else
+        plugins+=("$plugin")
+    fi
+done
+plugins+=($deferred)
 
 for plugin in $plugins; do
     # Get latest version
