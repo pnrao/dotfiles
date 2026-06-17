@@ -33,4 +33,12 @@ fortune
 
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
+
+# Emit OSC 7 to notify foot of current directory (enables Ctrl+Shift+N to open in same dir)
+function osc7_pwd() {
+    printf "\e]7;file://%s%s\e\\" "${HOSTNAME}" "${PWD}"
+}
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_pwd"
+osc7_pwd
+
 true

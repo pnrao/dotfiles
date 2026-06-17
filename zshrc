@@ -147,4 +147,12 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Total load time"
+# Emit OSC 7 to notify foot of current directory (enables Ctrl+Shift+N to open in same dir)
+function osc7-pwd() {
+    print -Pn "\e]7;file://${HOSTNAME}%d\e\\"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd osc7-pwd
+osc7-pwd
+
 true # start with a clean exit status
