@@ -17,7 +17,7 @@ config.color_scheme = 'Abernathy'
 
 config.font = wezterm.font_with_fallback {
   'JuliaMono',
-  'NotoSans Mono',
+  'Noto Sans Mono',
   'FontAwesome',
   'Fira Code'
 }
