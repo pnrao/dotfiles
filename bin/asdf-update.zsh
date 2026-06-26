@@ -5,7 +5,13 @@
 exceptions=("protonge")
 
 # Plugins that take a long time to build — processed last so fast upgrades appear first
-slow_plugins=("erlang" "lean")
+slow_plugins=("elixir" "erlang" "julia" "lean")
+
+# --light skips the slow plugins entirely
+light=0
+if [[ "$1" == "--light" ]]; then
+    light=1
+fi
 
 # Makes Erlang build-install faster
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
@@ -23,7 +29,9 @@ for plugin in $all_plugins; do
         plugins+=("$plugin")
     fi
 done
-plugins+=($deferred)
+if [[ $light -eq 0 ]]; then
+    plugins+=($deferred)
+fi
 
 for plugin in $plugins; do
     # Get latest version
