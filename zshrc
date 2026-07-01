@@ -30,6 +30,8 @@ bindkey -e
 # The following lines were added by compinstall
 
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
+# custom completions (must precede compinit to be picked up)
+fpath=($HOME/dotfiles/config/zsh/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"

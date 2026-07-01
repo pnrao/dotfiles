@@ -1,0 +1,41 @@
+#compdef ollama
+
+# `ollama stop <TAB>` completes only the models that are *currently loaded*
+# (from `ollama ps`); other model-taking subcommands complete the full
+# installed list (`ollama list`). Both are metadata calls, no inference.
+
+_ollama_loaded_models() {
+  local -a models
+  models=(${(f)"$(ollama ps 2>/dev/null | awk 'NR>1 {print $1}')"})
+  _describe -t models 'loaded models' models
+}
+
+_ollama_all_models() {
+  local -a models
+  models=(${(f)"$(ollama list 2>/dev/null | awk 'NR>1 {print $1}')"})
+  _describe -t models 'models' models
+}
+
+_ollama() {
+  local curcontext="$curcontext" state line
+  local -a subcommands
+  subcommands=(
+    'serve:Start ollama'          'create:Create a model'
+    'show:Show model information' 'run:Run a model'
+    'stop:Stop a running model'   'pull:Pull a model from a registry'
+    'push:Push a model'           'list:List models'
+    'ps:List running models'      'cp:Copy a model'
+    'rm:Remove a model'           'help:Help about any command'
+  )
+  _arguments -C '1: :->cmd' '*:: :->args'
+  case $state in
+    cmd)  _describe -t commands 'ollama command' subcommands ;;
+    args)
+      case $line[1] in
+        stop)                 _ollama_loaded_models ;;   # <- ps, not list
+        run|show|rm|cp|push)  _ollama_all_models    ;;
+      esac ;;
+  esac
+}
+
+_ollama "$@"
