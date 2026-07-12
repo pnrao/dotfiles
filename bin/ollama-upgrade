@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#
+# ollama-upgrade - Compare installed Ollama against the latest published release.
+#
+# The official install.sh has no version guard: piping it to sh always
+# re-downloads and reinstalls whatever is current, even if you already have it.
+# This checks first, and only offers to run the installer when they differ.
+#
+#   ollama-upgrade          # report installed vs latest
+
+set -euo pipefail
+
+REPO="ollama/ollama"
+
+installed="$(ollama --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true)"
+[ -n "$installed" ] || { echo "ollama not found or not running" >&2; exit 1; }
+
+latest="$(curl -fsS --max-time 8 "https://api.github.com/repos/$REPO/releases/latest" \
+          | grep -oE '"tag_name": *"v?[0-9]+\.[0-9]+\.[0-9]+"' \
+          | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || true)"
+[ -n "$latest" ] || { echo "could not reach GitHub (offline?)" >&2; exit 2; }
+
+echo "installed: $installed"
+echo "latest:    $latest"
+
+if [ "$installed" = "$latest" ]; then
+    echo "up to date — skip the install script."
+    exit 0
+fi
+
+echo "a newer release is available."
+echo "running official installer..."
+curl -fsSL https://ollama.com/install.sh | sh
+exit 3

@@ -4,16 +4,19 @@
 # (from `ollama ps`); other model-taking subcommands complete the full
 # installed list (`ollama list`). Both are metadata calls, no inference.
 
+# Use compadd, NOT _describe: model tags contain a colon (e.g. "ornith:9b"),
+# and _describe would treat that as "value:description" — completing to a
+# tagless "ornith", which `ollama stop` then can't find.
 _ollama_loaded_models() {
   local -a models
   models=(${(f)"$(ollama ps 2>/dev/null | awk 'NR>1 {print $1}')"})
-  _describe -t models 'loaded models' models
+  compadd -a models
 }
 
 _ollama_all_models() {
   local -a models
   models=(${(f)"$(ollama list 2>/dev/null | awk 'NR>1 {print $1}')"})
-  _describe -t models 'models' models
+  compadd -a models
 }
 
 _ollama() {
