@@ -286,6 +286,72 @@
     <keybind key="W-x">
       <action name="ToggleMaximize"/>
     </keybind>
+    <keybind key="W-Right">
+      <action name="GoToDesktop" to="right" wrap="yes"/>
+    </keybind>
+    <keybind key="W-Left">
+      <action name="GoToDesktop" to="left" wrap="yes"/>
+    </keybind>
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1"/>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2"/>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3"/>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4"/>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="5"/>
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop" to="6"/>
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop" to="7"/>
+    </keybind>
+    <keybind key="W-8">
+      <action name="GoToDesktop" to="8"/>
+    </keybind>
+    <keybind key="W-9">
+      <action name="GoToDesktop" to="9"/>
+    </keybind>
+    <keybind key="W-Right">
+      <action name="GoToDesktop" to="right" wrap="yes"/>
+    </keybind>
+    <keybind key="W-Left">
+      <action name="GoToDesktop" to="left" wrap="yes"/>
+    </keybind>
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1"/>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2"/>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3"/>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4"/>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="5"/>
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop" to="6"/>
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop" to="7"/>
+    </keybind>
+    <keybind key="W-8">
+      <action name="GoToDesktop" to="8"/>
+    </keybind>
+    <keybind key="W-9">
+      <action name="GoToDesktop" to="9"/>
+    </keybind>
     <keybind key="W-comma">
       <action name="SnapToEdge" direction="left"/>
     </keybind>
