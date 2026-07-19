@@ -97,25 +97,38 @@ def fetch_models(sort="popular"):
 
     soup = BeautifulSoup(resp.text, "html.parser")
     models = []
+    size_re = re.compile(r"^\d+(\.\d+)?[bm]$", re.I)
 
-    for li in soup.find_all("li", attrs={"x-test-model": True}):
-        title_el = li.find(attrs={"x-test-model-title": True})
+    for li in soup.find_all("li", class_=re.compile(r"items-baseline")):
+        if not li.find("a", href=re.compile(r"^/library/")):
+            continue
+
+        title_el = li.find("div", title=True)
         name = title_el["title"] if title_el else ""
 
         desc_el = li.find("p", class_=re.compile(r"break-words"))
         description = desc_el.get_text(strip=True) if desc_el else ""
 
-        caps = [s.get_text(strip=True) for s in li.find_all(attrs={"x-test-capability": True})]
-        sizes = [s.get_text(strip=True) for s in li.find_all(attrs={"x-test-size": True})]
+        tags_el = li.find("div", class_=re.compile(r"flex-wrap"))
+        caps, sizes = [], []
+        for s in (tags_el.find_all("span") if tags_el else []):
+            text = s.get_text(strip=True)
+            if not text:
+                continue
+            (sizes if size_re.match(text) else caps).append(text)
 
-        pull_el = li.find(attrs={"x-test-pull-count": True})
-        pulls_str = pull_el.get_text(strip=True) if pull_el else "0"
-
-        updated_el = li.find(attrs={"x-test-updated": True})
-        updated_rel = updated_el.get_text(strip=True) if updated_el else ""
+        pulls_str = "0"
+        updated_rel = ""
         updated_date = ""
-        if updated_el and updated_el.parent:
-            updated_date = updated_el.parent.get("title", "")
+        stats_el = li.find("p", class_=re.compile(r"my-4"))
+        for stat in (stats_el.find_all("span", class_="flex items-center") if stats_el else []):
+            label = stat.get_text(" ", strip=True)
+            values = stat.find_all("span")
+            if "Pulls" in label:
+                pulls_str = values[0].get_text(strip=True) if values else "0"
+            elif "Updated" in label:
+                updated_date = stat.get("title", "")
+                updated_rel = values[-1].get_text(strip=True) if values else ""
 
         models.append({
             "name": name,
