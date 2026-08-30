@@ -128,7 +128,7 @@ TIMEFMT="%J
 %U user, %S system, %P cpu, %*E total
 %XKB avg. code, %DKB avg. data, %KKB avg. both, %MKB peak, %F disk swaps"
 
-stty -ixon -ixoff
+stty -ixon -ixoff || true
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 fortune
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
@@ -148,6 +148,9 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 
 [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# cargo-installed binaries (e.g. typort)
+export PATH="$HOME/.cargo/bin:$PATH"
+
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Total load time"
 # Emit OSC 7 to notify foot of current directory (enables Ctrl+Shift+N to open in same dir)
 function osc7-pwd() {
@@ -156,5 +159,3 @@ function osc7-pwd() {
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd osc7-pwd
 osc7-pwd
-
-true # start with a clean exit status
