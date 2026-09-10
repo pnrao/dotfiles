@@ -16,6 +16,7 @@ ln -sf $thisdir/tmux.conf ~/.tmux.conf
 mkdir -p ~/.ssh/tmp
 ln -sf $thisdir/ssh_config ~/.ssh/config
 gcc -Wall -Wextra -O3 -std=gnu23 -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o $HOME/bin/bgcolor
+ln -sf $thisdir/bin/start-menu.sh ~/bin/start-menu
 
 mkdir -p ~/.config/openbox
 ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
