@@ -33,6 +33,8 @@ fortune
 
 eval "$(uv generate-shell-completion bash)"
 eval "$(uvx --generate-shell-completion bash)"
+eval "$(typst completions bash)"
+eval "$(asdf completion bash)"
 
 # Emit OSC 7 to notify foot of current directory (enables Ctrl+Shift+N to open in same dir)
 function osc7_pwd() {

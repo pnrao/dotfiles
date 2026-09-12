@@ -31,7 +31,7 @@ bindkey -e
 
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 # custom completions (must precede compinit to be picked up)
-fpath=($HOME/dotfiles/config/zsh/completions $fpath)
+fpath=($HOME/dotfiles/config/zsh/completions ${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
@@ -134,11 +134,6 @@ fortune
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 
-(( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
-
-
-# append completions to fpath
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 # { # Load additional completions in the background after startup
