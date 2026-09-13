@@ -24,3 +24,13 @@ ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
 ln -sf $thisdir/config/wezterm ~/.config/wezterm
 ln -sf $thisdir/config/labwc ~/.config/labwc
 ln -sf $thisdir/w3m_config ~/.w3m/config
+
+mkdir -p ~/.config/hypr
+ln -sf $thisdir/config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+ln -sf $thisdir/config/hypr/hyprlock.conf ~/.config/hypr/hyprlock.conf
+ln -sf $thisdir/config/hypr/hypridle.conf ~/.config/hypr/hypridle.conf
+ln -sf $thisdir/config/hypr/power_menu.sh ~/.config/hypr/power_menu.sh
+ln -sf $thisdir/config/hypr/wallpaper-rotate.sh ~/.config/hypr/wallpaper-rotate.sh
+ln -sf $thisdir/config/waybar ~/.config/waybar
+ln -sf $thisdir/config/wofi ~/.config/wofi
+ln -sf $thisdir/config/mako ~/.config/mako

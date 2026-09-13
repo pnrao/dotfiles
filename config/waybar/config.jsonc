@@ -1,0 +1,52 @@
+{
+    "layer": "top",
+    "position": "left",
+    "width": 40,
+    "spacing": 4,
+    "modules-left": ["custom/menu", "hyprland/workspaces"],
+    "modules-center": ["clock", "hyprland/language", "custom/weather", "custom/updates"],
+    "modules-right": ["tray", "custom/power"],
+
+    "custom/menu": {
+        "format": "",
+        "on-click": "wofi -I --show drun,run --style ~/.config/wofi/style.css",
+        "tooltip-text": "Applications"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+    "clock": {
+        "format": "{:%H\n%M}",
+        "tooltip-format": "<big>{:%Y %B %d, %a}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "US",
+        "tooltip": false
+    },
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh",
+        "return-type": "json",
+        "interval": 1800,
+        "tooltip": true
+    },
+    "custom/updates": {
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "on-click": "wezterm start -- sh -c 'sudo apt update && sudo apt upgrade; read -p \"Press enter to close\"'"
+    },
+    "tray": {
+        "spacing": 8
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "~/.config/hypr/power_menu.sh",
+        "tooltip-text": "Power menu"
+    }
+}
