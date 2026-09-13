@@ -1,0 +1,201 @@
+#!/usr/bin/env julia
+#
+# julia-compiled-gc — remove precompile caches for Julia versions you no longer run.
+#
+# Pkg.gc() cannot do this. It decides what to collect by reachability from
+# Manifest.toml files; ~/.julia/compiled/vX.Y is keyed by Julia *version*, so a
+# version you have uninstalled has no manifest to be unreachable from and is
+# invisible to it. Those trees just sit there, often for years.
+#
+# Deleting a cache is never destructive — worst case is a slow first `using`
+# while it recompiles. The currently running version is protected regardless,
+# and any version juliaup reports as installed is protected by default.
+#
+# ---------------------------------------------------------------------------
+# Where this fits — do the other two first, they usually reclaim more
+# ---------------------------------------------------------------------------
+#
+# This script covers exactly one gap and deliberately nothing else. It does not
+# touch packages/, artifacts/ or scratchspaces/. The full sweep is three steps:
+#
+#   1. PkgCleanup.jl — prune stale *references*
+#
+#      NOT in the General registry — `] add PkgCleanup` fails. Install by URL:
+#          ] add https://github.com/giordano/PkgCleanup.jl
+#
+#          using PkgCleanup
+#          PkgCleanup.manifests()    # drop dead environments from
+#          PkgCleanup.artifacts()    #   ~/.julia/logs/{manifest,artifact}_usage.toml
+#
+#      Pkg.gc() refuses to collect anything still referenced by an environment
+#      listed in those logs — including environments deleted years ago. This is
+#      why `gc` so often reports freeing nothing. PkgCleanup removes the dead
+#      references so gc can do its job. It does not touch compiled/ either.
+#          https://github.com/giordano/PkgCleanup.jl
+#
+#   2. Pkg.gc — now actually reclaims
+#          using Pkg, Dates
+#          Pkg.gc(collect_delay=Day(0))
+#
+#      On a depot with years of accumulation the artifacts freed here (CUDA,
+#      MKL, GR, ffmpeg blobs) will usually dwarf what step 3 gives you.
+#
+#   3. this script — the part neither of the above can reach.
+#
+# Why step 3 needs to exist: Pkg.gc() decides what to collect by reachability
+# from Manifest.toml files. compiled/vX.Y is keyed by Julia *version*, so a
+# version you have uninstalled has no manifest to be unreachable from and is
+# invisible to gc by construction. Upstream has an open request for a `purge`
+# command covering this: https://github.com/JuliaLang/Pkg.jl/issues/1459
+#
+#   julia-compiled-gc                     # dry run: what would go, and how much
+#   julia-compiled-gc --delete            # actually remove
+#   julia-compiled-gc --keep v1.10,v1.11  # protect extra versions
+#   julia-compiled-gc --all               # ignore juliaup; keep only the running version
+#   julia-compiled-gc --depot /path       # a depot other than the default
+
+using Printf
+
+const PROG = "julia-compiled-gc"
+
+function usage()
+    println("""
+    $PROG — remove precompile caches for Julia versions you no longer run.
+
+    usage: $PROG [--delete] [--keep vX.Y,...] [--all] [--depot PATH]
+
+      --delete       remove them (default is a dry run)
+      --keep LIST    comma-separated versions to protect, e.g. v1.10,v1.11
+      --all          do not auto-protect juliaup-installed versions;
+                     keep only the version currently running
+      --depot PATH   depot to clean (default: first entry of DEPOT_PATH)
+      -h, --help     this message
+
+    The running version is always protected.
+    """)
+end
+
+# Versions juliaup knows about, as a Set of "vX.Y". Best effort: if juliaup
+# isn't installed or its output changes shape, we simply protect nothing extra
+# and say so, rather than guessing wrong and deleting a live cache.
+function juliaup_versions()
+    try
+        out = read(`juliaup status`, String)
+        vs = Set{String}()
+        for m in eachmatch(r"\b(\d+)\.(\d+)\.\d+", out)
+            push!(vs, "v$(m.captures[1]).$(m.captures[2])")
+        end
+        return vs, true
+    catch
+        return Set{String}(), false
+    end
+end
+
+function dirsize(path)
+    total = 0
+    for (root, _, files) in walkdir(path; onerror = _ -> nothing)
+        for f in files
+            try
+                total += filesize(joinpath(root, f))
+            catch
+                # unreadable or vanished mid-walk; skip
+            end
+        end
+    end
+    return total
+end
+
+human(bytes) = bytes >= 1024^3 ? @sprintf("%.2f GB", bytes / 1024^3) :
+                                 @sprintf("%.1f MB", bytes / 1024^2)
+
+function main(args)
+    delete   = false
+    useall   = false
+    keep     = String[]
+    depot    = first(DEPOT_PATH)
+
+    i = 1
+    while i <= length(args)
+        a = args[i]
+        if a == "--delete"
+            delete = true
+        elseif a == "--all"
+            useall = true
+        elseif a == "--keep" && i < length(args)
+            i += 1
+            append!(keep, split(args[i], ',', keepempty = false))
+        elseif a == "--depot" && i < length(args)
+            i += 1
+            depot = args[i]
+        elseif a in ("-h", "--help")
+            usage(); return 0
+        else
+            println(stderr, "$PROG: unrecognised argument: $a\n")
+            usage(); return 2
+        end
+        i += 1
+    end
+
+    cdir = joinpath(depot, "compiled")
+    if !isdir(cdir)
+        println("$PROG: no compiled cache at $cdir — nothing to do.")
+        return 0
+    end
+
+    current = "v$(VERSION.major).$(VERSION.minor)"
+    keepset = Set{String}([current])
+    union!(keepset, keep)
+
+    if !useall
+        vs, ok = juliaup_versions()
+        if ok
+            union!(keepset, vs)
+            isempty(vs) || println("protecting juliaup versions: ", join(sort(collect(vs)), ", "))
+        else
+            println("(juliaup not available — protecting only the running version and --keep)")
+        end
+    end
+
+    println("depot: $cdir")
+    println()
+
+    stale = Tuple{String,Int}[]
+    kept  = 0
+    for d in sort(readdir(cdir))
+        path = joinpath(cdir, d)
+        isdir(path) || continue
+        sz = dirsize(path)
+        if d in keepset
+            note = d == current ? "  (running)" : ""
+            @printf("  keep    %-8s %10s%s\n", d, human(sz), note)
+            kept += sz
+        else
+            @printf("  STALE   %-8s %10s\n", d, human(sz))
+            push!(stale, (path, sz))
+        end
+    end
+
+    total = sum(last.(stale); init = 0)
+    println()
+    if isempty(stale)
+        println("nothing stale. kept $(human(kept)).")
+        return 0
+    end
+
+    if delete
+        for (path, _) in stale
+            try
+                rm(path; recursive = true, force = true)
+            catch e
+                println(stderr, "  failed to remove $path: $e")
+            end
+        end
+        println("deleted $(human(total)) across $(length(stale)) version(s).")
+    else
+        println("reclaimable: $(human(total)) across $(length(stale)) version(s).")
+        println("re-run with --delete to remove.")
+    end
+    return 0
+end
+
+exit(main(ARGS))
