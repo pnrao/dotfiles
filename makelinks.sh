@@ -29,3 +29,4 @@ ln -sfT $thisdir/config/hypr ~/.config/hypr
 ln -sf $thisdir/config/waybar ~/.config/waybar
 ln -sf $thisdir/config/wofi ~/.config/wofi
 ln -sf $thisdir/config/mako ~/.config/mako
+ln -sf $thisdir/config/espanso ~/.config/espanso
