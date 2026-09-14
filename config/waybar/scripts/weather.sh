@@ -45,6 +45,15 @@ fi
 condition=$(curl -s -m 5 "$query/?format=%c" 2>/dev/null | tr -d '\n ')
 temp=$(curl -s -m 5 "$query/?format=%t" 2>/dev/null | tr -d '\n+°C ')
 
+# wttr.in sometimes returns 200 with an error page instead of weather data;
+# reject anything that isn't a plausible emoji condition + numeric temp.
+case "$temp" in
+    ''|*[!0-9-]*) temp="" ;;
+esac
+case "$condition" in
+    *[a-zA-Z]*) condition="" ;;
+esac
+
 if [ -z "$condition" ] || [ -z "$temp" ]; then
     printf '%s\n' '{"text": "", "tooltip": "weather unavailable"}'
 else

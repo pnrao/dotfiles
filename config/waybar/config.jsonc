@@ -33,13 +33,15 @@
         "exec": "~/.config/waybar/scripts/weather.sh",
         "return-type": "json",
         "interval": 1800,
-        "tooltip": true
+        "tooltip": true,
+        "max-length": 6
     },
     "custom/updates": {
         "exec": "~/.config/waybar/scripts/updates.sh",
         "return-type": "json",
         "interval": 3600,
-        "on-click": "wezterm start -- sh -c 'sudo apt update && sudo apt upgrade; read -p \"Press enter to close\"'"
+        "on-click": "wezterm start -- sh -c 'sudo apt update && sudo apt upgrade; read -p \"Press enter to close\"'",
+        "max-length": 4
     },
     "tray": {
         "spacing": 8
