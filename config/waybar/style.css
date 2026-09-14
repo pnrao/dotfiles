@@ -64,9 +64,14 @@ box#waybar {
     font-weight: bold;
 }
 
-#language,
+#language {
+    font-size: 14px;
+}
+
 #custom-weather {
-    font-size: 11px;
+    font-family: "Ubuntu", "Noto Sans", sans-serif;
+    font-size: 16px;
+    padding: 4px 0;
 }
 
 #battery.warning {
