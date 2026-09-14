@@ -1,7 +1,21 @@
-* {
+/* Font is set on the window node only (not "* ") and left to inherit
+   down to children. GTK continues this widget-path into popup/dbusmenu
+   windows attached to tray icons, so without the menu rule below they'd
+   inherit this font too. */
+window#waybar {
     font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
     font-size: 13px;
+}
+
+window#waybar * {
     min-height: 0;
+}
+
+/* Direct match beats the inherited bar font above, no specificity
+   fight needed, so this restores the system theme font in tray popups. */
+menu, menu * {
+    font-family: "Ubuntu", "Noto Sans", sans-serif;
+    font-size: 10pt;
 }
 
 window#waybar {
