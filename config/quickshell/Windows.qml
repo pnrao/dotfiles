@@ -1,5 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
+import Quickshell.Widgets
 import Quickshell.Hyprland
 
 ColumnLayout {
@@ -18,6 +20,9 @@ ColumnLayout {
         delegate: ColumnLayout {
             required property HyprlandToplevel modelData
             required property int index
+
+            readonly property var desktopEntry: modelData.wayland ? DesktopEntries.heuristicLookup(modelData.wayland.appId) : null
+            readonly property string iconSource: desktopEntry ? Quickshell.iconPath(desktopEntry.icon, "") : ""
 
             spacing: 6
             Layout.alignment: Qt.AlignHCenter
@@ -44,7 +49,15 @@ ColumnLayout {
                     radius: 6
                     color: modelData.activated ? "#3d59a1" : "#292e42"
 
+                    IconImage {
+                        visible: iconSource !== ""
+                        anchors.centerIn: parent
+                        implicitSize: 16
+                        source: iconSource
+                    }
+
                     Text {
+                        visible: iconSource === ""
                         anchors.centerIn: parent
                         text: modelData.title.slice(0, 2)
                         font.pixelSize: 11

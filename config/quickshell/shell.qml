@@ -46,12 +46,10 @@ PanelWindow {
 
             onClicked: Quickshell.execDetached(["wofi", "-I", "--show", "drun,run", "--style", "/home/pnrao/.config/wofi/style.css"])
 
-            Text {
+            IconImage {
                 anchors.centerIn: parent
-                text: ""
-                font.family: "JetBrainsMono Nerd Font"
-                font.pixelSize: 18
-                color: "#c0caf5"
+                implicitSize: 22
+                source: "file:///usr/share/icons/Papirus/48x48/apps/ubuntu-logo-icon.svg"
             }
         }
 
@@ -102,6 +100,22 @@ PanelWindow {
                         modelData.display(bar, mouse.x, mouse.y);
                     }
                 }
+            }
+        }
+
+        MouseArea {
+            Layout.preferredWidth: 32
+            Layout.preferredHeight: 24
+            Layout.alignment: Qt.AlignHCenter
+
+            onClicked: Quickshell.execDetached(["/home/pnrao/.config/hypr/power_menu.sh"])
+
+            Text {
+                anchors.centerIn: parent
+                text: ""
+                font.family: "JetBrainsMono Nerd Font"
+                font.pixelSize: 16
+                color: "#c0caf5"
             }
         }
     }
