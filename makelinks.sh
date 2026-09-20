@@ -21,12 +21,13 @@ ln -sf $thisdir/bin/start-menu.sh ~/bin/start-menu
 mkdir -p ~/.config/openbox
 ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
 
-ln -sf $thisdir/config/wezterm ~/.config/wezterm
-ln -sf $thisdir/config/labwc ~/.config/labwc
+ln -sfT $thisdir/config/wezterm ~/.config/wezterm
+ln -sfT $thisdir/config/labwc ~/.config/labwc
 ln -sf $thisdir/w3m_config ~/.w3m/config
 
 ln -sfT $thisdir/config/hypr ~/.config/hypr
-ln -sf $thisdir/config/waybar ~/.config/waybar
-ln -sf $thisdir/config/wofi ~/.config/wofi
-ln -sf $thisdir/config/mako ~/.config/mako
-ln -sf $thisdir/config/espanso ~/.config/espanso
+ln -sfT $thisdir/config/waybar ~/.config/waybar
+ln -sfT $thisdir/config/quickshell ~/.config/quickshell
+ln -sfT $thisdir/config/wofi ~/.config/wofi
+ln -sfT $thisdir/config/mako ~/.config/mako
+ln -sfT $thisdir/config/espanso ~/.config/espanso

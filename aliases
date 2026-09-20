@@ -152,5 +152,5 @@ mdv() {
     pandoc "$1" -t html | w3m -T text/html
 }
 
-# reload waybar in place (SIGUSR2); falls back to a fresh launch if not running
-alias wbr='killall -SIGUSR2 waybar 2>/dev/null || (waybar >/dev/null 2>&1 &)'
+# restart the quickshell bar (no in-place reload signal like waybar had)
+alias wbr='killall quickshell 2>/dev/null; (quickshell >/dev/null 2>&1 &)'
