@@ -5,7 +5,7 @@
 exceptions=("protonge")
 
 # Plugins that take a long time to build — processed last so fast upgrades appear first
-slow_plugins=("elixir" "erlang" "julia" "lean")
+slow_plugins=("elixir" "erlang" "flutter" "julia" "lean")
 
 # --light skips the slow plugins entirely
 light=0
