@@ -4,7 +4,14 @@
 # Output defaults to <file>-diff.typ next to the source; compile it yourself.
 set -euo pipefail
 src=$1; rev=${2:-HEAD}; out=${3:-${src%.typ}-diff.typ}
-old=$(mktemp --suffix=.typ); trap 'rm -f "$old"' EXIT
+old=$(mktemp --suffix=.typ); new=$(mktemp --suffix=.typ); trap 'rm -f "$old" "$new"' EXIT
 git show "$rev:$(git ls-files --full-name -- "$src")" > "$old"
-typdiff "$old" "$src" -o "$out"
+cp "$src" "$new"
+# typdiff's word diff can split *bold* / _emph_ markers across diff brackets
+# ("unclosed delimiter"). Function calls are atomic to typdiff, so rewrite the
+# shorthand as #strong[...] / #emph[...] in both copies first.
+for f in "$old" "$new"; do
+  perl -0pi -e 's/(?<![\\\w*])\*([^*\n]+?)\*(?![\w*])/#strong[$1]/g; s/(?<![\\\w])_([^_\n]+?)_(?!\w)/#emph[$1]/g' "$f"
+done
+typdiff "$old" "$new" -o "$out"
 echo "$out"
