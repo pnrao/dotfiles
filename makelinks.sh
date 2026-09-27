@@ -17,6 +17,8 @@ mkdir -p ~/.ssh/tmp
 ln -sf $thisdir/ssh_config ~/.ssh/config
 gcc -Wall -Wextra -O3 -std=gnu17 -static -fdata-sections -ffunction-sections -Wl,--gc-sections $thisdir/bin/bgcolor.c -o $HOME/bin/bgcolor
 ln -sf $thisdir/bin/start-menu.sh ~/bin/start-menu
+ln -sf $thisdir/bin/typdiff-rev ~/bin/typdiff-rev
+ln -sf $thisdir/bin/typdiff-watch ~/bin/typdiff-watch
 
 mkdir -p ~/.config/openbox
 ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml

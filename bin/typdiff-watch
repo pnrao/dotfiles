@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Re-run typdiff-rev whenever <file.typ> is saved (2 s debounce).
+# Usage: typdiff-watch <file.typ> [rev]
+# Pair with: typst watch <file>-diff.typ
+set -euo pipefail
+src=$1; rev=${2:-HEAD}
+here=$(dirname "$(readlink -f "$0")")
+dir=$(dirname "$src"); name=$(basename "$src")
+"$here/typdiff-rev" "$src" "$rev"
+# Watch the directory: editors often save via rename, which drops a file watch.
+while inotifywait -qq -e close_write,moved_to --include "/${name//./\\.}\$" "$dir"; do
+  sleep 2
+  "$here/typdiff-rev" "$src" "$rev" || echo "typdiff failed" >&2
+done

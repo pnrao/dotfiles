@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Mark up changes in a .typ file against a git revision (default HEAD) using typdiff.
+# Usage: typdiff-rev <file.typ> [rev] [out.typ]
+# Output defaults to <file>-diff.typ next to the source; compile it yourself.
+set -euo pipefail
+src=$1; rev=${2:-HEAD}; out=${3:-${src%.typ}-diff.typ}
+old=$(mktemp --suffix=.typ); trap 'rm -f "$old"' EXIT
+git show "$rev:$(git ls-files --full-name -- "$src")" > "$old"
+typdiff "$old" "$src" -o "$out"
+echo "$out"
