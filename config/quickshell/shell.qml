@@ -76,7 +76,7 @@ PanelWindow {
                 Layout.preferredWidth: 32
                 Layout.preferredHeight: 24
                 Layout.alignment: Qt.AlignHCenter
-                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
                 hoverEnabled: true
 
                 onEntered: {
@@ -94,12 +94,24 @@ PanelWindow {
                 }
 
                 onClicked: mouse => {
-                    if (mouse.button === Qt.LeftButton) {
+                    const pos = trayItem.mapToItem(null, mouse.x, mouse.y);
+                    // pasystray's appindicator item has no Activate and ignores SecondaryActivate
+                    const isPasystray = modelData.id === "pasystray";
+                    if (mouse.button === Qt.MiddleButton) {
+                        if (isPasystray)
+                            Quickshell.execDetached(["wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle"]);
+                        else
+                            modelData.secondaryActivate();
+                    } else if (mouse.button === Qt.LeftButton && isPasystray) {
+                        volumePopup.anchor.item = trayItem;
+                        volumePopup.visible = !volumePopup.visible;
+                    } else if (mouse.button === Qt.LeftButton && !modelData.onlyMenu) {
                         modelData.activate();
-                    } else {
-                        modelData.display(bar, mouse.x, mouse.y);
+                    } else if (modelData.hasMenu) {
+                        modelData.display(bar, pos.x, pos.y);
                     }
                 }
+                onWheel: wheel => modelData.scroll(wheel.angleDelta.y / 120, false)
             }
         }
 
@@ -122,5 +134,9 @@ PanelWindow {
 
     Tooltip {
         id: trayTooltip
+    }
+
+    VolumePopup {
+        id: volumePopup
     }
 }
