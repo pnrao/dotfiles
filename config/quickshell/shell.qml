@@ -111,7 +111,13 @@ PanelWindow {
                         modelData.display(bar, pos.x, pos.y);
                     }
                 }
-                onWheel: wheel => modelData.scroll(wheel.angleDelta.y / 120, false)
+                onWheel: wheel => {
+                    // Scrolling pasystray through SNI came out inverted, so drive the sink directly
+                    if (modelData.id === "pasystray")
+                        Quickshell.execDetached(["wpctl", "set-volume", "-l", "1", "@DEFAULT_AUDIO_SINK@", wheel.angleDelta.y > 0 ? "5%+" : "5%-"]);
+                    else
+                        modelData.scroll(wheel.angleDelta.y / 120, false);
+                }
             }
         }
 
