@@ -7,7 +7,7 @@ PopupWindow {
 
     property date viewDate: new Date()
 
-    readonly property var today: new Date()
+    property var today: new Date()
     readonly property int year: viewDate.getFullYear()
     readonly property int month: viewDate.getMonth()
 
@@ -33,6 +33,10 @@ PopupWindow {
     implicitHeight: content.implicitHeight + 20
     color: "transparent"
     visible: false
+
+    // The shell runs for days; refresh "today" whenever the popup opens
+    onVisibleChanged: if (visible)
+        today = new Date()
 
     anchor.edges: Edges.Top | Edges.Right
     anchor.gravity: Edges.Right | Edges.Bottom
