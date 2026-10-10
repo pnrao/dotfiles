@@ -1,0 +1,12 @@
+#!/bin/sh
+# Speak stdin with SVOX Pico for speech-dispatcher's generic module.
+# Usage: pico-say LANG RATE   (RATE is speechd's -100..100; Chromium sends 100*log3(speed))
+f=$(mktemp -p "${XDG_RUNTIME_DIR:-/tmp}" pico.XXXXXX.wav) || exit 1
+trap 'rm -f "$f"' EXIT
+speed=$(awk -v r="$2" 'BEGIN { print int(100 * 3 ^ (r / 100)) }')
+# Pico parses its input as markup, so escape it before wrapping it in a speed tag
+{
+	printf '<speed level="%s">' "$speed"
+	sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g'
+	printf '</speed>'
+} | pico2wave -l "$1" -w "$f" && pw-play "$f"

@@ -33,3 +33,14 @@ ln -sfT $thisdir/config/quickshell ~/.config/quickshell
 ln -sfT $thisdir/config/wofi ~/.config/wofi
 ln -sfT $thisdir/config/mako ~/.config/mako
 ln -sfT $thisdir/config/espanso ~/.config/espanso
+ln -sfT $thisdir/config/speech-dispatcher ~/.config/speech-dispatcher
+mkdir -p ~/.config/systemd/user
+ln -sf $thisdir/config/speech-dispatcher/kitten.{socket,service} ~/.config/systemd/user/
+
+# Brave only uses speech-dispatcher voices with the first flag; the second shows
+# Speedreader's read-aloud button (on by default only from late 2026)
+if [ -f /usr/share/applications/brave-browser.desktop ]; then
+    mkdir -p ~/.local/share/applications
+    sed 's|^Exec=/usr/bin/brave-browser-stable|& --enable-speech-dispatcher --enable-features=Speedreader:tts/true|' \
+        /usr/share/applications/brave-browser.desktop >~/.local/share/applications/brave-browser.desktop
+fi

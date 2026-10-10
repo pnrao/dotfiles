@@ -1,0 +1,21 @@
+#!/usr/bin/python3 -IS
+"""Send stdin to kitten-server and write the PCM reply to stdout.
+
+Usage: kitten-say VOICE RATE   (RATE is speechd's -100..100; Chromium sends 100*log3(speed))
+"""
+
+import os
+import socket
+import sys
+
+voice, rate = sys.argv[1], float(sys.argv[2])
+sock = socket.socket(socket.AF_UNIX)
+sock.connect(
+    os.path.join(
+        os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"), "kitten.sock"
+    )
+)
+sock.sendall(f"{voice} {3 ** (rate / 100):.3f}\n".encode() + sys.stdin.buffer.read())
+sock.shutdown(socket.SHUT_WR)
+while chunk := sock.recv(65536):
+    sys.stdout.buffer.write(chunk)

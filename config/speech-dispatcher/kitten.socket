@@ -1,0 +1,8 @@
+[Unit]
+Description=Kitten TTS socket (starts kitten.service on first use)
+
+[Socket]
+ListenStream=%t/kitten.sock
+
+[Install]
+WantedBy=sockets.target

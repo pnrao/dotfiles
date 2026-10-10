@@ -1,0 +1,6 @@
+[Unit]
+Description=Kitten TTS server for speech-dispatcher (exits when idle)
+Requires=kitten.socket
+
+[Service]
+ExecStart=%h/.config/speech-dispatcher/kitten-server

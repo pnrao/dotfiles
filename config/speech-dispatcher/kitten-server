@@ -1,0 +1,51 @@
+#!/usr/bin/env -S uv run --quiet --script
+# /// script
+# dependencies = ["kittentts @ https://github.com/KittenML/KittenTTS/releases/download/0.8.1/kittentts-0.8.1-py3-none-any.whl"]
+# ///
+"""Keep Kitten TTS (nano) loaded and synthesize for kitten-say. Socket-activated by kitten.socket.
+
+Request: "VOICE SPEED\n" then UTF-8 text until EOF. Reply: raw s16le mono PCM at 24 kHz.
+Exits after IDLE seconds without a request.
+"""
+
+import os
+import socket
+
+os.environ["HF_HUB_OFFLINE"] = "1"  # use the cached model; never contact Hugging Face
+
+import numpy as np
+from kittentts import KittenTTS
+
+IDLE = 300
+MODEL = "KittenML/kitten-tts-nano-0.8-int8"
+
+
+def serve(conn, model):
+    with conn, conn.makefile("rb") as f:
+        voice, speed = f.readline().decode().split()
+        # Pages often pass through their source line breaks and indentation
+        text = " ".join(f.read().decode().split())
+        if text:
+            audio = model.generate(text, voice=voice, speed=float(speed))
+            conn.sendall((np.clip(audio, -1, 1) * 32767).astype("<i2").tobytes())
+
+
+def main():
+    # systemd passes the listening socket as fd 3 (LISTEN_FDS)
+    listener = socket.socket(fileno=3)
+    listener.settimeout(IDLE)
+    model = KittenTTS(MODEL)
+    while True:
+        try:
+            conn, _ = listener.accept()
+        except TimeoutError:
+            return
+        conn.settimeout(None)
+        try:
+            serve(conn, model)
+        except (BrokenPipeError, ConnectionResetError, ValueError):
+            pass  # client was stopped mid-utterance, or sent a malformed request
+
+
+if __name__ == "__main__":
+    main()
