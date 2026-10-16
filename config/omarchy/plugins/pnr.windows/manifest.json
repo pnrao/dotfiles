@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "pnr.windows",
+  "name": "Windows",
+  "version": "1.0.0",
+  "author": "pnr",
+  "description": "Open windows as app icons, grouped by workspace; click to focus",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Windows",
+    "description": "Open windows as app icons, grouped by workspace; click to focus",
+    "category": "Compositor",
+    "allowMultiple": false
+  }
+}

@@ -56,14 +56,21 @@ autoload -U colors && colors
 autoload zmv
 
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+for f in /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+         /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+    [[ -f $f ]] && { source $f; break }
+done
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=cyan'
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
-source /etc/zsh_command_not_found
+if [[ -f /etc/zsh_command_not_found ]]; then
+    source /etc/zsh_command_not_found
+elif [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
+    source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
 (( TIMEZSHRC )) && echo "[$(( (EPOCHREALTIME - start) * 1000 ))ms] Line $LINENO"
 
 # Alias definitions.
@@ -142,6 +149,19 @@ fortune
 # } &!
 
 [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if (( $+commands[mise] )); then
+    eval "$(mise activate zsh)"
+fi
+
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+fi
+
+if (( $+commands[fzf] )); then
+    [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
+    [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+fi
 
 # cargo-installed binaries (e.g. typort)
 export PATH="$HOME/.cargo/bin:$PATH"

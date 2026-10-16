@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (setq inhibit-splash-screen t)
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)

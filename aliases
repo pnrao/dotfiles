@@ -152,5 +152,5 @@ mdv() {
     pandoc "$1" -t html | w3m -T text/html
 }
 
-# restart the quickshell bar (no in-place reload signal like waybar had)
-alias wbr='killall quickshell 2>/dev/null; (quickshell >/dev/null 2>&1 &)'
+# restart the Omarchy shell (bar, notifications)
+alias wbr='omarchy restart shell'
