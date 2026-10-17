@@ -30,6 +30,10 @@ BarWidget {
   readonly property string activeFormat: configuredFormat
   readonly property string displayText: formatted(displayDate)
   readonly property var verticalLines: displayText.split("\n")
+  readonly property color dateColor: {
+    var c = Model.separatedDateColor(Color.accent, button.foreground, Color.bar.background)
+    return Qt.rgba(c.r, c.g, c.b, 1)
+  }
 
   function refresh() {
     displayDate = new Date()
@@ -176,8 +180,9 @@ BarWidget {
           font.family: button.fontFamily
           font.pixelSize: Math.round(modelData.length > 3 ? button.fontSize * 0.9 : button.fontSize)
           font.bold: true
-          // Date lines in the theme accent; the last two (HH, mm) stay foreground
-          color: index < root.verticalLines.length - 2 ? Color.accent : button.foreground
+          // Date lines in the theme accent, pushed apart in lightness from the
+          // last two (HH, mm), which stay foreground
+          color: index < root.verticalLines.length - 2 ? root.dateColor : button.foreground
         }
       }
     }

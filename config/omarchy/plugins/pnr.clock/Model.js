@@ -267,6 +267,45 @@ function stepMonth(year, month, delta) {
   return { year: target.getFullYear(), month: target.getMonth() }
 }
 
+// ---- Date/time contrast. A theme's accent and foreground can sit at nearly
+//      the same lightness (a saturated blue next to near-black reads as "dark
+//      text" either way), so the date is blended toward the bar background
+//      until its perceived lightness is clearly apart from the time's. The
+//      blend stops early rather than fade the date into the background.
+//      Colors are { r, g, b } in 0..1, which QML colors already satisfy.
+
+var DATE_LIGHTNESS_GAP = 0.45
+var DATE_BACKGROUND_GAP = 0.28
+
+function linearChannel(c) {
+  return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
+}
+
+// OKLab L: perceptual lightness, 0 black to 1 white.
+function perceivedLightness(color) {
+  var r = linearChannel(color.r), g = linearChannel(color.g), b = linearChannel(color.b)
+  var l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b)
+  var m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b)
+  var s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b)
+  return 0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s
+}
+
+function mixColor(a, b, t) {
+  return { r: a.r + (b.r - a.r) * t, g: a.g + (b.g - a.g) * t, b: a.b + (b.b - a.b) * t }
+}
+
+function separatedDateColor(accent, time, background) {
+  var timeL = perceivedLightness(time)
+  var backgroundL = perceivedLightness(background)
+  var t = 0
+  while (t < 1) {
+    if (Math.abs(perceivedLightness(mixColor(accent, background, t)) - timeL) >= DATE_LIGHTNESS_GAP) break
+    if (Math.abs(perceivedLightness(mixColor(accent, background, t + 0.01)) - backgroundL) < DATE_BACKGROUND_GAP) break
+    t += 0.01
+  }
+  return mixColor(accent, background, Math.min(t, 1))
+}
+
 if (typeof module !== "undefined") {
   module.exports = {
     dateKey: dateKey,
@@ -291,6 +330,8 @@ if (typeof module !== "undefined") {
     clockFormats: clockFormats,
     clockFormatRing: clockFormatRing,
     nextClockFormat: nextClockFormat,
-    isoWeekLiteral: isoWeekLiteral
+    isoWeekLiteral: isoWeekLiteral,
+    perceivedLightness: perceivedLightness,
+    separatedDateColor: separatedDateColor
   }
 }
