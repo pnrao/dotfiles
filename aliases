@@ -103,12 +103,21 @@ alias     mkdir='mkdir -p'
 
 alias       yt='yt-dlp -o "%(title)s-%(id)s.%(ext)s" '
 alias       yti='yt-dlp --id '
-# Subtitles only, in the video's original language (manual if any, else auto)
+# Subtitles only, as srt, in the video's original language (manual if any, else auto)
 yts() {
-	local lang=$(yt-dlp --print language -- "$1")
+	local lang url base f
+	{ read -r lang; read -r url; read -r base; } < <(yt-dlp --print language --print webpage_url \
+		--print filename -o "%(title)s-%(id)s" -- "$1")
+	[[ -n $base ]] || return 1
 	[[ $lang == NA ]] && lang='.*-orig'
 	yt-dlp --skip-download --write-subs --write-auto-subs --sub-langs "$lang" --sub-format "srt/best" \
-		-o "%(title)s-%(id)s.%(ext)s" -- "$1"
+		-o "%(title)s-%(id)s.%(ext)s" -- "$1" || return
+	# srt has no metadata, so the source link goes in as a 1 ms first cue
+	[[ -n $ZSH_VERSION ]] && setopt localoptions nullglob
+	for f in "$base".*.srt; do
+		[[ -e $f ]] && ! grep -qxF "$url" "$f" || continue
+		{ printf '0\n00:00:00,000 --> 00:00:00,001\n%s\n\n' "$url"; cat "$f"; } >"$f.tmp" && command mv "$f.tmp" "$f"
+	done
 }
 
 alias get-idf='. $HOME/src/esp-idf/export.sh'
