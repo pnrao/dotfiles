@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+"""Convert .srt subtitles to readable Markdown prose, written next to each input as .md."""
+
+import argparse
+import html
+import re
+import sys
+from pathlib import Path
+
+TIME = re.compile(r'(\d+):(\d+):(\d+)[,.](\d+)\s*-->\s*(\d+):(\d+):(\d+)[,.](\d+)')
+TAGS = re.compile(r'<[^>]*>|\{\\[^}]*\}')
+DASH = re.compile(r'^(?:[-–—]|>>)\s*')
+LANG = re.compile(r'\.[a-z]{2,3}(-[A-Za-z0-9]+)*$')
+URL = re.compile(r'^https?://\S+$')
+
+PAUSE = 2.0       # silence (s) that always starts a new paragraph
+SOFT_LEN = 45.0   # paragraph length (s) after which to break at a sentence end
+HARD_LEN = 90.0   # paragraph length (s) after which to break anyway
+
+
+def seconds(h, m, s, ms):
+    return int(h) * 3600 + int(m) * 60 + int(s) + int(ms.ljust(3, '0')[:3]) / 1000
+
+
+def parse(text):
+    """Yield (start, end, lines) per cue, tolerating missing indices and stray blank lines."""
+    cue, number = None, None  # number: a digits-only line, held until we know it isn't an index
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        m = TIME.search(line)
+        if m:
+            if cue:
+                yield cue
+            cue, number = (seconds(*m.groups()[:4]), seconds(*m.groups()[4:]), []), None
+            continue
+        if number and cue:
+            cue[2].append(number)
+        number = None
+        if line.isdigit():
+            number = line
+        elif cue:
+            line = html.unescape(TAGS.sub('', line)).strip()
+            if line:
+                cue[2].append(line)
+    if number and cue:
+        cue[2].append(number)
+    if cue:
+        yield cue
+
+
+def paragraphs(cues):
+    paras, cur, para_start, last_end = [], [], 0.0, None
+    recent = []  # last few emitted lines, to drop rolling-caption repeats
+
+    def flush():
+        if cur:
+            paras.append(' '.join(cur))
+            cur.clear()
+
+    for start, end, lines in cues:
+        while lines and lines[0] in recent:
+            lines = lines[1:]
+        if not lines:
+            continue
+        span = start - para_start
+        tail = cur[-1] if cur else ''
+        if (last_end is not None and start - last_end > PAUSE
+                or span > HARD_LEN
+                or span > SOFT_LEN and tail.endswith(('.', '?', '!', '."', '?"', '!"'))):
+            flush()
+        for line in lines:
+            if DASH.match(line):  # speaker change
+                flush()
+                line = DASH.sub('', line)
+            if not cur:
+                para_start = start
+            cur.append(line)
+            recent = (recent + [line])[-3:]
+        last_end = max(end, last_end or 0)
+    flush()
+    return paras
+
+
+def convert(src, force):
+    dst = src.with_suffix('.md')
+    if dst.exists() and not force:
+        print(f'{dst}: exists, skipping (use -f to overwrite)', file=sys.stderr)
+        return False
+    text = src.read_text(encoding='utf-8-sig', errors='replace')
+    title = LANG.sub('', src.stem)
+    cues = list(parse(text))
+    header = f'# {title}\n\n'
+    # A first cue that is just a URL names the source (yts puts one there)
+    if cues and len(cues[0][2]) == 1 and URL.match(cues[0][2][0]):
+        header += f'Source: <{cues.pop(0)[2][0]}>\n\n'
+    body = '\n\n'.join(paragraphs(cues))
+    dst.write_text(f'{header}{body}\n', encoding='utf-8')
+    print(dst)
+    return True
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('files', nargs='+', type=Path, metavar='FILE.srt')
+    ap.add_argument('-f', '--force', action='store_true', help='overwrite existing .md files')
+    args = ap.parse_args()
+    ok = True
+    for src in args.files:
+        if not src.is_file():
+            print(f'{src}: not a file', file=sys.stderr)
+            ok = False
+            continue
+        ok &= convert(src, args.force)
+    sys.exit(0 if ok else 1)
+
+
+if __name__ == '__main__':
+    main()

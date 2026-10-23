@@ -22,6 +22,7 @@ gcc -Wall -Wextra -O3 -std=gnu17 -static -fdata-sections -ffunction-sections -Wl
 ln -sf $thisdir/bin/start-menu.sh ~/.local/bin/start-menu
 ln -sf $thisdir/bin/typdiff-rev ~/.local/bin/typdiff-rev
 ln -sf $thisdir/bin/typdiff-watch ~/.local/bin/typdiff-watch
+ln -sf $thisdir/bin/srt2md ~/.local/bin/srt2md
 
 mkdir -p ~/.config/openbox
 ln -sf $thisdir/config/openbox/rc.xml ~/.config/openbox/rc.xml
