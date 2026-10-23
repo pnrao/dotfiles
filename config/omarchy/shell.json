@@ -35,14 +35,17 @@
         {
           "id": "pnr.clock",
           "format": "dddd HH:mm",
-          "formatAlt": "d MMMM 'W'ww yyyy",
           "verticalFormat": "yy\nMM\ndd\nHH\nmm"
         },
         {
           "id": "omarchy.weather"
         },
         {
-          "id": "omarchy.tray"
+          "id": "omarchy.tray",
+          "pinned": [
+            "qps"
+          ],
+          "hidden": []
         },
         {
           "id": "omarchy.agents"

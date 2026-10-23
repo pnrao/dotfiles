@@ -151,9 +151,8 @@ Panel {
   // Applied locally first so the panel redraws on the click itself; the
   // shell.json write comes back through the bar as the same value. With no
   // writable entry (the widget is not in the layout) it stays a session-only
-  // preference rather than doing nothing. The host widget builds its own
-  // entry when the label format is cycled, so it has to be kept in step or
-  // it would write this key straight back out from a stale copy.
+  // preference rather than doing nothing. The host widget's settings are kept
+  // in step so the label and the popup read the same entry.
   function persistSettings(values) {
     var entry = { id: root.moduleName }
     for (var existing in root.settings) if (existing !== "id") entry[existing] = root.settings[existing]
