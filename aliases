@@ -103,6 +103,13 @@ alias     mkdir='mkdir -p'
 
 alias       yt='yt-dlp -o "%(title)s-%(id)s.%(ext)s" '
 alias       yti='yt-dlp --id '
+# Subtitles only, in the video's original language (manual if any, else auto)
+yts() {
+	local lang=$(yt-dlp --print language -- "$1")
+	[[ $lang == NA ]] && lang='.*-orig'
+	yt-dlp --skip-download --write-subs --write-auto-subs --sub-langs "$lang" --sub-format "srt/best" \
+		-o "%(title)s-%(id)s.%(ext)s" -- "$1"
+}
 
 alias get-idf='. $HOME/src/esp-idf/export.sh'
 
