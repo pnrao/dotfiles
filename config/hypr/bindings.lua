@@ -32,9 +32,11 @@
 hl.unbind("SUPER + W")
 o.bind("ALT + F4", "Close window", hl.dsp.window.close())
 
--- SUPER+C launches the default terminal (replaces Universal copy).
+-- SUPER+C launches WezTerm in the active terminal's cwd (replaces Universal
+-- copy). Foot stays the default terminal, so SUPER+RETURN and the screensaver,
+-- which doesn't support WezTerm, use foot.
 hl.unbind("SUPER + C")
-o.bind("SUPER + C", "Terminal", { omarchy = "terminal" })
+o.bind("SUPER + C", "WezTerm", { launch = 'wezterm start --cwd "$(omarchy-cmd-terminal-cwd)"' })
 
 -- Disable universal paste and cut.
 hl.unbind("SUPER + V")
