@@ -61,3 +61,9 @@ o.bind("SUPER + SHIFT + R", "Reload Hyprland", "hyprctl reload")
 
 -- ALT+F2 also opens the apps launcher (as SUPER+ALT+SPACE does).
 o.bind("ALT + F2", "Apps menu", "omarchy-menu toggle apps")
+
+-- SUPER+S launches Sublime Text instead of toggling the scratchpad, and the
+-- scratchpad's move-window binding is dropped too.
+hl.unbind("SUPER + S")
+hl.unbind("SUPER + ALT + S")
+o.bind("SUPER + S", "Sublime Text", "subl")
