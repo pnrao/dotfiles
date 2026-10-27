@@ -43,7 +43,8 @@
         {
           "id": "omarchy.tray",
           "pinned": [
-            "qps"
+            "qps",
+            "vlc"
           ],
           "hidden": []
         },
